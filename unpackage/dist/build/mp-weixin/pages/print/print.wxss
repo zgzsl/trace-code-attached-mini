@@ -1,0 +1,43 @@
+.print {
+  padding-top: 15px;
+}
+.print .concent {
+  font-size: 30rpx;
+  padding: 10px 15px;
+}
+.print_header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid #76d7c4;
+  width: -webkit-calc(100vw - 100rpx);
+  width: calc(100vw - 100rpx);
+  margin: 0 auto 0;
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
+}
+.print_header .item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+  font-size: 13px;
+  padding: 5px;
+}
+.print_header .item.active {
+  color: #fff;
+  background: #76d7c4;
+}
+.print_header .item:first-child {
+  -webkit-border-radius: 10px 0 0 10px;
+          border-radius: 10px 0 0 10px;
+  border-right: 1px solid #76d7c4;
+}
+.print_header .item:last-child {
+  -webkit-border-radius: 0 10px 10px 0;
+          border-radius: 0 10px 10px 0;
+}
+
+page::after{position: fixed;left: -1000px;top: -1000px;content: url(https://cdn.dcloud.net.cn/img/shadow-grey.png)}
