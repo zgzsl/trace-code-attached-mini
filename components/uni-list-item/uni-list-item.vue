@@ -8,6 +8,9 @@
 			<view class="uni-list-cell__icon" v-else-if="showExtraIcon === true || showExtraIcon === 'true'">
 				<uni-icon :color="extraIcon.color" :size="extraIcon.size" :type="extraIcon.type"></uni-icon>
 			</view>
+			<view class="uni-list-btn" v-if="showBtn">
+				<button type="primary" size="mini" style="background:linear-gradient(to left, #f53647, #fd973c);color: #fff;" @tap="select">选择</button>
+			</view>
 			<view class="uni-list-cell__content">
 				<view class="uni-list-cell__content-title" style="font-size: 12px;">{{title}}</view>
 				<view class="uni-list-cell__content-note" v-if="note">{{note}}</view>
@@ -36,11 +39,16 @@
 			};
 		},
 		props: {
+			router:String,
 			title: String, //列表标题
 			note: String, //列表描述
 			disabled: { //是否禁用
 				type: [Boolean, String],
 				default: false
+			},
+			showBtn:{
+				type: [Boolean, String],
+				default: true
 			},
 			showArrow: { //是否显示箭头
 				type: [Boolean, String],
@@ -85,12 +93,20 @@
 			},
 			onSwitchChange(e) {
 				this.$emit('switchChange', e.detail)
+			},
+			select(){
+				this.$emit('select', this.router)
 			}
 		}
 	}
 </script>
 
 <style lang="scss">
+	.uni-list-btn{
+		position: absolute;
+		right: 56rpx;
+		
+	}
 	@mixin list-hover {
 		background-color: $uni-bg-color-hover;
 	}
@@ -197,7 +213,7 @@
 		height: 0px;
 	}
 	.uni-list-cell__extra{
-		width: 35% !important;
+		width: 60% !important;
 	
 	}
 	.uni-badge-success{

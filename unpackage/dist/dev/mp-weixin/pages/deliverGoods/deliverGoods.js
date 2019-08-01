@@ -120,14 +120,133 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
-  methods: {
-    jump: function jump() {
-      uni.navigateTo({
-        url: '../deliverFinish/deliverFinish' });
+  data: function data() {
+    return {
+      current: 0,
+      codeArr: [],
+      arr: ['中国', '美国', '巴西', '日本'],
+      index: 0,
+      active: 0,
+      List: [],
+      sellerName: "" };
 
-    } } };exports.default = _default;
+  },
+  methods: {
+    radioChange: function radioChange(evt) {
+      console.log(evt);
+      this.current = Number(evt.detail.value);
+      console.log(this.current);
+    },
+    next: function next() {
+      if (this.codeArr.length > 0) {
+        this.active = 1;
+      } else {
+        this.$common.showToast("请添加货物", 'none');
+      }
+    },
+    nextConfirm: function nextConfirm() {var _this = this;
+      if (this.codeArr.length === 0) {
+        this.$common.showToast("外码或内码不能为空", 'none');
+        return;
+      }
+      if (Number(this.current) === 1) {
+        if (!this.$common.trim(this.sellerName)) {
+          this.$common.showToast("请输入商家名称", 'none');
+          return;
+        }
+      } else {
+        if (!this.List[Number(this.index)].agentName) {
+          this.$common.showToast("请选择代理商", 'none');
+          return;
+        }
+      }
+      var param = {
+        codeNumber: this.codeArr,
+        bussName: this.sellerName };
+
+      this.$common.post('/trace-api/trace/deliverGoods', param).then(function (res) {
+        console.log(res);
+        if (Number(res.data.code) === 200) {
+          _this.$common.showToast(res.data.message, 'success');
+          setTimeout(function () {
+            uni.navigateBack({
+              delta: 1 });
+
+          }, 1500);
+        } else {
+          _this.$common.showToast(res.data.message, 'none');
+        }
+      });
+    },
+    getList: function getList() {var _this2 = this;
+      var merchantId = uni.getStorageSync("setUserData").merchant.merchantId;
+      this.$common.get("/agent/merchantAgent/list/page?merchantId=" + merchantId + "&pageNum=1&pageSize=10000").then(function (res) {
+        _this2.List = res.data.data.data || [];
+      });
+    },
+    bindPickerChange: function bindPickerChange(e) {
+      console.log('picker发送选择改变，携带值为', this.List[Number(e.target.value)]);
+      this.index = e.target.agentName;
+    },
+    jump: function jump() {
+      this.active = 1;
+    },
+    deleteCode: function deleteCode(index) {var _this3 = this;
+      uni.showModal({
+        title: '提示',
+        content: '此操作将删除此编号',
+        success: function success(res) {
+          if (res.confirm) {
+            _this3.codeArr.splice(index, 1);
+            _this3.$common.tip("删除成功", "success");
+          }
+        } });
+
+
+    },
+    scanCode: function scanCode() {var _this4 = this;
+      uni.scanCode({
+        success: function success(res) {
+          _this4.$common.tip("扫码成功", "success");
+          _this4.codeArr.push(res.result);
+        } });
+
+    } },
+
+  created: function created() {
+    this.getList();
+    // this.scanCode()
+  } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
@@ -158,6 +277,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var m0 = Number(_vm.active)
+  var m1 = Number(_vm.active)
+
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event) {
+      _vm.active = 0
+    }
+  }
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        m0: m0,
+        m1: m1
+      }
+    }
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

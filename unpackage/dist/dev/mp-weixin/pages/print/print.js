@@ -98,160 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniSteps = function uniSteps() {return __webpack_require__.e(/*! import() | components/qingqing-steps/uni-steps */ "components/qingqing-steps/uni-steps").then(__webpack_require__.bind(null, /*! ../../components/qingqing-steps/uni-steps.vue */ "../../../../project/pengkai/mini-scode/components/qingqing-steps/uni-steps.vue"));};var MxDatePicker = function MxDatePicker() {return __webpack_require__.e(/*! import() | components/mx-datepicker/mx-datepicker */ "components/mx-datepicker/mx-datepicker").then(__webpack_require__.bind(null, /*! @/components/mx-datepicker/mx-datepicker.vue */ "../../../../project/pengkai/mini-scode/components/mx-datepicker/mx-datepicker.vue"));};var uniList = function uniList() {return __webpack_require__.e(/*! import() | components/uni-list/uni-list */ "components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/components/uni-list/uni-list.vue */ "../../../../project/pengkai/mini-scode/components/uni-list/uni-list.vue"));};var uniListItem = function uniListItem() {return __webpack_require__.e(/*! import() | components/uni-list-item/uni-list-item */ "components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/components/uni-list-item/uni-list-item.vue */ "../../../../project/pengkai/mini-scode/components/uni-list-item/uni-list-item.vue"));};var pengkaiDraw = function pengkaiDraw() {return __webpack_require__.e(/*! import() | components/pengkai-draw */ "components/pengkai-draw").then(__webpack_require__.bind(null, /*! @/components/pengkai-draw.vue */ "../../../../project/pengkai/mini-scode/components/pengkai-draw.vue"));};var _default =
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniSteps = function uniSteps() {return __webpack_require__.e(/*! import() | components/qingqing-steps/uni-steps */ "components/qingqing-steps/uni-steps").then(__webpack_require__.bind(null, /*! ../../components/qingqing-steps/uni-steps.vue */ "../../../../project/pengkai/mini-scode/components/qingqing-steps/uni-steps.vue"));};var MxDatePicker = function MxDatePicker() {return __webpack_require__.e(/*! import() | components/mx-datepicker/mx-datepicker */ "components/mx-datepicker/mx-datepicker").then(__webpack_require__.bind(null, /*! @/components/mx-datepicker/mx-datepicker.vue */ "../../../../project/pengkai/mini-scode/components/mx-datepicker/mx-datepicker.vue"));};var uniList = function uniList() {return __webpack_require__.e(/*! import() | components/uni-list/uni-list */ "components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/components/uni-list/uni-list.vue */ "../../../../project/pengkai/mini-scode/components/uni-list/uni-list.vue"));};var uniListItem = function uniListItem() {return __webpack_require__.e(/*! import() | components/uni-list-item/uni-list-item */ "components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/components/uni-list-item/uni-list-item.vue */ "../../../../project/pengkai/mini-scode/components/uni-list-item/uni-list-item.vue"));};var pengkaiDraw = function pengkaiDraw() {return __webpack_require__.e(/*! import() | components/pengkai-draw */ "components/pengkai-draw").then(__webpack_require__.bind(null, /*! @/components/pengkai-draw.vue */ "../../../../project/pengkai/mini-scode/components/pengkai-draw.vue"));};var _default =
 
 
 
@@ -392,18 +239,31 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
   data: function data() {
     return {
+      start: '',
+      end: '',
+      zsCodeArr: [], //追溯码列表
+      zsCodeInfo: {},
+      traceCodeNumberArr: [],
+      traceCodeNumberInfo: {},
+      current: "",
       activeIndex: 0,
       scrollY: true,
       visible: false,
-      showPicker: false,
+      showPickerEnd: false,
+      showPickerStart: false,
       date: '2019/01/01',
       time: '15:00:12',
       datetime: '2019/01/01 15:00:12',
       range: ['2019/01/01', '2019/01/06'],
       rangetime: ['2019/01/08 14:00', '2019/01/16 13:59'],
-      type: 'rangetime',
+      type: 'datetime',
       value: '',
-      active: 1,
+      active: 0,
+      pageNum: 1,
+      historypageNum: 1, //历史记录
+      traceCodeNumberFlag: '', //历史记录追溯码
+      getGoodsLists: [], //设置对应比例
+      count: "", //设置外码数量
       NavList: [{
         name: '设置外码比例' },
 
@@ -426,10 +286,140 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
   },
+  created: function created() {
+    this.getTraceCode();
+
+  },
+  watch: {
+    "activeIndex": function activeIndex(val) {
+      if (Number(val) === 0) {
+        if (this.$store.state && this.$store.state.activeZs) {
+          this.current = Number(this.$store.state.activeZs);
+        }
+      }
+      if (Number(val) === 1) {
+        this.getGoodsList();
+      }
+    } },
+
+  onReachBottom: function onReachBottom() {
+    if (this.zsCodeInfo.total > this.zsCodeInfo.pageSize) {
+      this.pageNum++;
+      this.getTraceCode();
+    }
+  },
   methods: {
-    print: function print() {
+    //根据数量生成外码
+    outZsCode: function outZsCode() {
+      if (!this.count) {
+        uni.showToast({
+          title: "请输入数量",
+          duration: 2000,
+          icon: "none" });
+
+        return;
+      }
+      this.$common.get("/trace-api/trace/generateOutCodeByCount?count=" + this.count).then(function (res) {
+
+      });
+    },
+    scroll: function scroll() {
+      if (this.traceCodeNumberInfo.total > this.traceCodeNumberInfo.pageSize) {
+        this.historypageNum++;
+        this.getHistory(this.traceCodeNumberFlag);
+      }
 
     },
+    //获取商品列表
+    getGoodsList: function getGoodsList() {var _this = this;
+      console.log(this.$store.state.zsCodeNumber);
+      this.$common.get("/trace-api/trace/getTraceRecordByPage?traceCodeNumber=" +
+      this.$store.state.zsCodeNumber +
+      "&pageNum=100000").then(function (res) {
+        console.log(res);
+        var arr = res.data.data.list;
+        _this.getGoodsLists = [];var _iteratorNormalCompletion = true;var _didIteratorError = false;var _iteratorError = undefined;try {
+          for (var _iterator = arr[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {var item = _step.value;
+            _this.getGoodsLists.push({
+              "traceCodeNumber": item.traceCodeNumber,
+              "traceToNumber": item.traceToNumber,
+              "traceFromNumber": item.traceFromNumber,
+              "outCodeRadio": "",
+              "traceGoodId": item.traceGoodId,
+              "traceStallId": -1,
+              "traceGoodsName": item.traceGoodsName });
+
+          }} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return != null) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}
+
+      });
+
+    },
+    nextPrint: function nextPrint() {var _this2 = this;
+      console.log(this.getGoodsLists);
+      if (this.getGoodsLists.length === 0) {
+        this.$common.showToast("此批次号暂无商品,无法进行打印", 'none');
+        return;
+      }
+      var arr = this.getGoodsLists;
+      var flagArr = [];var _iteratorNormalCompletion2 = true;var _didIteratorError2 = false;var _iteratorError2 = undefined;try {
+        for (var _iterator2 = arr[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {var item = _step2.value;
+          if (item.outCodeRadio) {
+            flagArr.push({
+              "traceCodeNumber": item.traceCodeNumber,
+              "traceToNumber": item.traceToNumber,
+              "traceFromNumber": item.traceFromNumber,
+              "outCodeRadio": Number(item.outCodeRadio),
+              "traceGoodId": item.traceGoodId,
+              "traceStallId": -1 });
+
+          }
+        }} catch (err) {_didIteratorError2 = true;_iteratorError2 = err;} finally {try {if (!_iteratorNormalCompletion2 && _iterator2.return != null) {_iterator2.return();}} finally {if (_didIteratorError2) {throw _iteratorError2;}}}
+      uni.showModal({
+        title: '是否立即打印?',
+        success: function success(res) {
+          if (res.confirm) {
+            console.log('用户点击确定');
+            uni.showToast({
+              title: '先打一局吃鸡',
+              icon: 'loading' });
+
+            _this2.$common.post("/trace-api/trace/generateOutCode", flagArr).then(function (res) {
+              uni.hideToast();
+              _this2.activeIndex = 2;
+            });
+          }
+        } });
+
+
+    },
+    radioChange: function radioChange(evt) {
+
+      this.$store.commit("setZsCodeNumber", evt.detail.value);
+
+      var active = 0;
+      for (var index in this.zsCodeArr) {
+        if (this.zsCodeArr[index].traceCodeNumber === evt.detail.value) {
+          active = index;
+        }
+      }
+      console.log(active);
+      this.$store.commit("setActiveZs", active);
+
+    },
+    getHistory: function getHistory(traceCodeNumber) {var _this3 = this;
+      this.$common.get("/trace-api/trace/getTraceRecordByPage?traceCodeNumber=" +
+      traceCodeNumber +
+      "&pageNum=" + this.historypageNum).then(function (res) {
+        console.log(res);
+        if (Number(res.data.code) === 200) {
+          _this3.traceCodeNumberInfo = res.data.data;
+          _this3.traceCodeNumberArr = res.data.data.list || [];
+        } else {
+          _this3.$common.error(res.data.message);
+        }
+      });
+    },
+
     next: function next() {
       if (this.activeIndex < 3) {
         this.activeIndex++;
@@ -449,28 +439,92 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     tapNav: function tapNav(index) {
       this.active = index;
       this.activeIndex = 0;
+      this.start = '';
+      this.end = '';
+      this.$store.commit("setActiveZs", 0);
+      this.$store.commit("setZsCodeNumber", "");
+
     },
-    onShowDatePicker: function onShowDatePicker(type) {//显示
+
+    onShowDatePicker: function onShowDatePicker(type, info) {//显示
       this.type = type;
-      this.showPicker = true;
+      if (info === 'start') {
+        this.showPickerStart = true;
+      } else {
+        this.showPickerEnd = true;
+      }
       this.value = this[type];
     },
-    onSelected: function onSelected(e) {//选择
-      this.showPicker = false;
-      if (e) {
-        this[this.type] = e.value;
-        //选择的值
-        console.log('value => ' + e.value);
-        //原始的Date对象
-        console.log('date => ' + e.date);
+    onSelected: function onSelected(info, e, methods) {//选择
+      console.log(e.value);
+      if (methods === 'cancel') {
+
+        if (info === 'start') {
+          this.showPickerStart = false;
+          this.start = "";
+          this.zsCodeArr = [];
+          this.getTraceCode();
+        } else {
+          this.showPickerEnd = false;
+          this.end = "";
+          this.zsCodeArr = [];
+          this.getTraceCode();
+        }
+      } else {
+        this.zsCodeArr = [];
+        if (info === 'start') {
+          this.showPickerStart = false;
+          this.start = e.value;
+          console.log(this.$common.replace(e.value));
+          if (this.end) {
+            this.getTraceCode(+new Date(this.$common.replace(e.value)), +new Date(this.$common.replace(this.end)));
+          } else {
+            this.getTraceCode(+new Date(this.$common.replace(e.value)));
+          }
+
+        } else {
+          this.showPickerEnd = false;
+          this.end = e.value;
+          var traceApplyEndDate = e.value;
+          if (this.start) {
+            this.getTraceCode(+new Date(this.$common.replace(this.start)), +new Date(this.$common.replace(e.value)));
+          } else {
+            this.getTraceCode("", +new Date(this.$common.replace(e.value)));
+          }
+
+        }
       }
+    },
+    //获取批次号
+    getTraceCode: function getTraceCode() {var _this4 = this;var traceApplyStartDate = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';var traceApplyEndDate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+      console.log("traceApplyStartDate", traceApplyStartDate);
+      console.log("traceApplyEndDate", traceApplyEndDate);
+      if (traceApplyStartDate && traceApplyEndDate && traceApplyStartDate >= traceApplyEndDate) {
+        this.$common.error("开始时间必须小于结束时间");
+        return;
+      }
+      this.$common.get("/trace-api/trace/getByPage?traceApplyStartDate=" + traceApplyStartDate + "&traceApplyEndDate=" +
+      traceApplyEndDate + "&pageNum=" + this.pageNum).then(function (res) {
+        console.log(res);
+        if (Number(res.data.code) === 200) {
+          _this4.zsCodeInfo = res.data.data;
+          _this4.zsCodeArr = _this4.zsCodeArr.concat(res.data.data.list) || [];
+          console.log(_this4.zsCodeArr);
+        } else {
+          _this4.$common.error(res.data.message);
+        }
+      });
     },
     closeDrawer: function closeDrawer() {
       this.visible = false;
     },
-    detailCode: function detailCode() {
+    //获取追溯详情
+    detailCode: function detailCode(traceCodeNumber) {
       this.visible = true;
+      this.getHistory(traceCodeNumber);
+      this.traceCodeNumberFlag = traceCodeNumber;
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 
@@ -503,6 +557,21 @@ var render = function() {
   var m0 = Number(_vm.activeIndex)
   var m1 = Number(_vm.activeIndex)
   var m2 = Number(_vm.activeIndex)
+
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event) {
+      _vm.showPickerStart = true
+    }
+
+    _vm.e1 = function($event) {
+      _vm.showPickerEnd = true
+    }
+
+    _vm.e2 = function($event) {
+      _vm.count = ""
+    }
+  }
+
   _vm.$mp.data = Object.assign(
     {},
     {

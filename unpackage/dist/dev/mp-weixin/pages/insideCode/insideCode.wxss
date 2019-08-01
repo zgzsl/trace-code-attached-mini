@@ -38,12 +38,11 @@
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 14px;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  min-height: 50px;
+  font-size: 28rpx;
+  padding: 10px 5px;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
 }
 .setting_insideCode .item text {
   -webkit-box-flex: 1;
@@ -52,10 +51,11 @@
           flex: 1;
 }
 .setting_insideCode .item .name {
-  padding: 0 0 0 15px;
-  width: 80px;
+  padding: 0 0 0 15rpx;
+  width: 180rpx;
 }
 .setting_insideCode .item .btn {
+  margin-left: 10px;
   width: 100px;
   font-family: PingFang-SC-Medium;
   font-weight: 500;

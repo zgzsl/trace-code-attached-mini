@@ -124,6 +124,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
+
+
 {
   name: 'uni-list-item',
   components: {
@@ -136,11 +139,16 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
   },
   props: {
+    router: String,
     title: String, //列表标题
     note: String, //列表描述
     disabled: { //是否禁用
       type: [Boolean, String],
       default: false },
+
+    showBtn: {
+      type: [Boolean, String],
+      default: true },
 
     showArrow: { //是否显示箭头
       type: [Boolean, String],
@@ -185,6 +193,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     },
     onSwitchChange: function onSwitchChange(e) {
       this.$emit('switchChange', e.detail);
+    },
+    select: function select() {
+      this.$emit('select', this.router);
     } } };exports.default = _default2;
 
 /***/ }),

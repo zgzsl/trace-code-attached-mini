@@ -22,7 +22,7 @@
   background: -webkit-linear-gradient(right, #f53647, #fd973c);
   background: -o-linear-gradient(right, #f53647, #fd973c);
   background: linear-gradient(to left, #f53647, #fd973c);
-  line-height: 3;
+  line-height: 2;
   -webkit-border-radius: 49px;
           border-radius: 49px;
   margin: 10px 15px;

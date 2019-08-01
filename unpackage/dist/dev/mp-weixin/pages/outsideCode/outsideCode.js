@@ -98,6 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -138,8 +139,81 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
+var _default =
+{
+  data: function data() {
+    return {
+      info: {
+        outCodeStart: '',
+        outCodeEnd: '',
+        inCodeStart: '',
+        inCodeEnd: '' } };
 
+
+
+  },
+  methods: {
+    confirm: function confirm() {
+      if (!this.info.outCodeStart) {
+
+        this.$common.showToast("请输入外码开始编号", 'none');
+
+        return;
+      }
+      if (!this.info.outCodeEnd) {
+
+        this.$common.showToast("请输入外码结束编号", 'none');
+        return;
+      }
+      if (Number(this.info.outCodeStart) > Number(this.info.outCodeEnd)) {
+
+        this.$common.showToast("外码结束编号不能小于开始编号", 'none');
+        return;
+      }
+      if (!this.info.inCodeStart) {
+
+        this.$common.showToast("请输入内码开始编号", 'none');
+        return;
+      }
+      if (!this.info.inCodeEnd) {
+
+
+        this.$common.showToast("请输入内码结束编号", 'none');
+        return;
+      }
+      if (Number(this.info.inCodeStart) > Number(this.info.inCodeEnd)) {
+
+        this.$common.showToast("内码结束编号不能小于开始编号", 'none');
+        return;
+      }
+      if (Number(this.info.inCodeEnd) - Number(this.info.inCodeStart) !== Number(this.info.outCodeEnd) - Number(this.info.
+      outCodeStart)) {
+
+        this.$common.showToast("外码与内码比值为1", 'none');
+        return;
+      }
+      this.$common.post("/trace-api/trace/changOutCodeBatch", this.info).then(function (res) {
+        console.log(res);
+        if (Number(res.data.code) === 200) {
+          uni.showToast({
+            title: res.data.message,
+            duration: 2000 });
+
+          setTimeout(function () {
+            uni.navigateBack({
+              delta: 1 });
+
+          }, 1500);
+        } else {
+          uni.showToast({
+            title: res.data.message,
+            duration: 2000,
+            icon: "none" });
+
+        }
+      });
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

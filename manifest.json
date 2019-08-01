@@ -55,7 +55,7 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "wx0294fa09fd871908",
+        "appid" : "wx2b15995a2f4a7e31",
         "setting" : {
             "urlCheck" : false,
             "es6" : true,
@@ -72,5 +72,34 @@
     },
     "mp-toutiao" : {
         "usingComponents" : true
+    },
+    "h5" : {
+        "devServer" : {
+            "proxy" : {
+                "/" : {
+                    "ws" : false,
+                    "target" : "https://zs-beta.cntracechain.com",
+                    // "target" : "http://192.168.2.173:8088",
+                    "changeOrigin" : true
+                }
+            }
+        },
+        "router" : {
+            "mode" : "hash",
+            "base" : "/"
+        },
+        "title" : "追溯链商城",
+        "template" : "template.html",
+        "domain" : "https://zs-beta.cntracechain.com",
+        // "domain" : "https://mall-beta.cntracechain.com",
+        "sdkConfigs" : {
+            "maps" : {
+                "qqmap" : {
+                    "key" : ""
+                }
+            }
+        }
     }
 }
+// "target" : "https://mall-beta.cntracechain.com",
+

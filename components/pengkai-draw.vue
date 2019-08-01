@@ -1,8 +1,8 @@
 <template>
-	<view v-if="visibleSync" class="uni-drawer" @touchmove.stop.prevent="moveHandle" :class="{'uni-drawer--visible':showDrawer,'uni-drawer--right':rightMode}">
-		<view class="uni-drawer__mask" @tap="close"></view>
-		<view class="uni-drawer__content">
-			<slot></slot>
+	<view v-if="visibleSync" class="uni-drawer" :class="{'uni-drawer--visible':showDrawer,'uni-drawer--right':rightMode}">
+		<view class="uni-drawer__mask" @tap="close"  catchtouchmove="false"></view>
+		<view class="uni-drawer__content" >
+			<slot ></slot>
 			
 
 		</view>
@@ -128,6 +128,7 @@
 				left: auto;
 				right: 0;
 				transform: translatex(100%);
+				z-index: 998;
 			}
 		}
 
@@ -141,6 +142,7 @@
 			.uni-drawer__mask {
 				display: block;
 				opacity: 1;
+				z-index: 997;
 			}
 		}
 

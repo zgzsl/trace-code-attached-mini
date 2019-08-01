@@ -98,6 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -113,7 +114,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+var _default =
+{
+  data: function data() {
+    return {
+      zscode: '' };
 
+  },
+
+  methods: {
+    createdClick: function createdClick() {
+      this.scode();
+    },
+    confirm: function confirm() {
+      this.$common.get("/trace-api/trace/changeOutCode?outCode=" + this.zscode).then(function (res) {
+        console.log(res);
+        if (Number(res.data.code) === 200) {
+          uni.showToast({
+            title: res.data.message,
+            duration: 2000 });
+
+          setTimeout(function () {
+            uni.navigateBack({
+              delta: 1 });
+
+          }, 1500);
+        } else {
+          uni.showToast({
+            title: res.data.message,
+            duration: 2000,
+            icon: "none" });
+
+        }
+      });
+    },
+    scode: function scode() {var _this = this;
+      uni.scanCode({
+        success: function success(res) {
+          _this.$common.tip("扫码成功", "success");
+          _this.zscode = res.result;
+        } });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

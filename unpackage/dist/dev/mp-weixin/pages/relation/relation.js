@@ -98,6 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -120,7 +121,90 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+var _default =
+{
+  data: function data() {
+    return {
+      outCode: '',
+      chlidCodeArr: [] };
 
+  },
+  created: function created() {
+
+  },
+  methods: {
+    createdClick: function createdClick() {var _this = this;
+      uni.scanCode({
+        success: function success(res) {
+          _this.$common.tip("扫码成功", "success");
+          _this.outCode = res.result;
+        } });
+
+    },
+    confirm: function confirm() {
+      if (!this.outCode) {
+        this.$common.tip("外码不能为空", "none");
+        return;
+      }
+      if (this.chlidCodeArr.length === 0) {
+        this.$common.tip("子码不能为空", "none");
+        return;
+      }
+
+      var param = {
+        outCode: this.outCode,
+        subCodeList: this.chlidCodeArr };
+
+      this.$common.post("/trace-api/trace/relationOutCode", param).then(function (res) {
+        console.log("relationOutCode", res);
+        if (Number(res.data.code) === 200) {
+
+          uni.showToast({
+            title: res.data.data,
+            duration: 2000 });
+
+          setTimeout(function () {
+            uni.navigateBack({
+              delta: 1 });
+
+          }, 1500);
+        } else {
+
+          uni.showToast({
+            title: res.data.data,
+            duration: 2000,
+            icon: "none" });
+
+        }
+      });
+    },
+    deleteCode: function deleteCode(index) {var _this2 = this;
+      uni.showModal({
+        title: '提示',
+        content: '此操作将删除此子码编号',
+        success: function success(res) {
+          if (res.confirm) {
+            _this2.chlidCodeArr.splice(index, 1);
+            _this2.$common.tip("删除成功", "success");
+          }
+        } });
+
+
+    },
+    relation: function relation() {var _this3 = this;
+      uni.scanCode({
+        success: function success(res) {
+          _this3.$common.tip("扫码成功", "success");
+          _this3.chlidCodeArr.push(res.result);
+        } });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

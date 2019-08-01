@@ -1,5 +1,5 @@
 .print {
-  padding-bottom: 80px;
+  padding-bottom: 120rpx;
   padding-top: 15px;
 }
 .print ::-webkit-scrollbar {
@@ -10,6 +10,30 @@
   width: 100%;
   white-space: nowrap;
   padding: 15px;
+}
+.print .scroll-Y .nothing {
+  text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.print .scroll-Y .nothing .nogood {
+  width: 400rpx;
+  height: 400rpx;
+  margin: 20% auto 0;
+}
+.print .scroll-Y .nothing .nogood image {
+  width: 100%;
+  height: 100%;
+}
+.print .scroll-Y .nothing text {
+  font-size: 14px;
 }
 .print .scroll-Y .scroll_item {
   margin-bottom: 15px;
@@ -34,10 +58,12 @@
   background: -webkit-linear-gradient(right, #f53647, #fd973c);
   background: -o-linear-gradient(right, #f53647, #fd973c);
   background: linear-gradient(to left, #f53647, #fd973c);
-  line-height: 3;
+  line-height: 2;
   -webkit-border-radius: 49px;
           border-radius: 49px;
   margin: 10px 15px;
+  padding: 5px 0;
+  font-size: 13px;
 }
 .print .code_step {
   font-size: 12px;
@@ -52,8 +78,31 @@
   background: #fff !important;
   color: black !important;
 }
+.print .one_step .uni-list_one .item {
+  justify-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 28rpx;
+  padding: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid #ccc;
+}
+.print .one_step .uni-list_one .item .right {
+  color: #CCCCCC;
+}
 .print .one_step .list {
   padding: 0 15px;
+}
+.print .one_step .list .zsNot {
+  text-align: center;
+  font-size: 28rpx;
+  padding: 10px;
+  color: #CCCCCC;
 }
 .print .one_step .list .list_item {
   padding: 5px;
@@ -66,11 +115,20 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   border-bottom: 1px solid #ccc;
-  font-size: 14px;
+  font-size: 24rpx;
   -webkit-box-align: center;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+}
+.print .one_step .list .list_item radio {
+  width: 40px;
+}
+.print .one_step .list .list_item text {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 .print .one_step .list .list_item .img {
   width: 30px;
@@ -82,6 +140,12 @@
 }
 .print .scend_step .goodList {
   padding: 0 15px;
+}
+.print .scend_step .goodList .zsNot {
+  text-align: center;
+  font-size: 28rpx;
+  padding: 10px;
+  color: #CCCCCC;
 }
 .print .scend_step .goodList .item {
   border: 1px solid #CCCCCC;

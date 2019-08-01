@@ -24,6 +24,10 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.uni-list-btn {
+  position: absolute;
+  right: 56rpx;
+}
 .uni-list-cell {
   font-size: 32rpx;
   position: relative;
@@ -171,7 +175,7 @@
   height: 0px;
 }
 .uni-list-cell__extra {
-  width: 35% !important;
+  width: 60% !important;
 }
 .uni-badge-success {
   background: #fff !important;

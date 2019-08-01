@@ -98,31 +98,46 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniList = function uniList() {return __webpack_require__.e(/*! import() | components/uni-list/uni-list */ "components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/components/uni-list/uni-list.vue */ "../../../../project/pengkai/mini-scode/components/uni-list/uni-list.vue"));};var uniListItem = function uniListItem() {return __webpack_require__.e(/*! import() | components/uni-list-item/uni-list-item */ "components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/components/uni-list-item/uni-list-item.vue */ "../../../../project/pengkai/mini-scode/components/uni-list-item/uni-list-item.vue"));};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
+  components: {
+    uniList: uniList,
+    uniListItem: uniListItem },
+
   data: function data() {
     return {
-      menuList: [{
-        src: '../../static/images/prink.png',
-        name: "打印外码",
-        desc: "此功能需连接打印机",
-        router: '../print/print' },
-
+      menuList: [
+      // {
+      // 	src: '../../static/images/prink.png',
+      // 	name: "打印外码",
+      // 	desc: "此功能需连接打印机",
+      // 	router: '../print/print'
+      // },
       {
         src: '../../static/images/code.png',
         name: "内码变成外码",
@@ -143,10 +158,30 @@ var _default =
 
 
   },
-  onLoad: function onLoad() {
-
+  onShow: function onShow() {
+    this.isLogin();
   },
   methods: {
+    select: function select(val) {
+
+    },
+    isLogin: function isLogin() {
+
+      //判断缓存中是否登录过，直接登录
+      try {
+        var value = uni.getStorageSync('setUserData');
+        console.log(value);
+        if (!value) {
+          //有登录信息
+          console.log("已登录用户：", value);
+          uni.redirectTo({
+            url: '../login/login' });
+
+        }
+      } catch (e) {
+        // error
+      }
+    },
     router: function router(_router) {
       uni.navigateTo({
         url: _router });

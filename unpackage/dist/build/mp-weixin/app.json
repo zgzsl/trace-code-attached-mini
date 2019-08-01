@@ -1,8 +1,14 @@
 {
   "pages": [
-    "pages/print/print",
+    "pages/login/login",
+    "pages/codeChange/codeChange",
     "pages/index/index",
-    "pages/login/login"
+    "pages/print/print",
+    "pages/insideCode/insideCode",
+    "pages/outsideCode/outsideCode",
+    "pages/relation/relation",
+    "pages/deliverGoods/deliverGoods",
+    "pages/deliverFinish/deliverFinish"
   ],
   "subPackages": [],
   "window": {
@@ -11,6 +17,5 @@
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }

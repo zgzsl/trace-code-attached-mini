@@ -41,6 +41,7 @@
     -webkit-transform: translatex(100%);
         -ms-transform: translatex(100%);
             transform: translatex(100%);
+    z-index: 998;
 }
 .uni-drawer.uni-drawer--visible {
     visibility: visible;
@@ -53,6 +54,7 @@
 .uni-drawer.uni-drawer--visible .uni-drawer__mask {
       display: block;
       opacity: 1;
+      z-index: 997;
 }
 .uni-drawer__mask {
     display: block;

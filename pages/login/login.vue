@@ -3,14 +3,14 @@
 		<view class="content">
 			<!-- 头部logo -->
 			<view class="header">
-				<image src="../../static/logo.png"></image>
+				<image src="../../static/logo.png" mode="widthFix"></image>
 			</view>
 			<!-- 主体表单 -->
 			<view class="main">
 				<wInput v-model="phoneData" type="text" maxlength="11" placeholder="商家账号"></wInput>
-				<wInput v-model="passData" type="password" isShowPass="true" maxlength="11" placeholder="登陆密码"></wInput>
+				<wInput v-model="passData" type="password" isShowPass="true" maxlength="11" placeholder="商家密码"></wInput>
 			</view>
-			<wButton text="登 录"    :bgColor="bgColor"   :rotate="isRotate" @click.native="startLogin()"></wButton>
+			<wButton text="登 录" :bgColor="bgColor" :rotate="isRotate" @click.native="startLogin()"></wButton>
 
 		</view>
 	</view>
@@ -28,7 +28,7 @@
 				phoneData: '', //用户/电话
 				passData: '', //密码
 				isRotate: false, //是否加载旋转
-				bgColor:'#A82127'
+				bgColor: '#A82127'
 			};
 		},
 		components: {
@@ -36,103 +36,72 @@
 			wButton,
 		},
 		mounted() {
-			_this = this;
-			//this.isLogin();
+			// this.isLogin();
 		},
 		methods: {
-			isLogin() {
-				//判断缓存中是否登录过，直接登录
-				// try {
-				// 	const value = uni.getStorageSync('setUserData');
-				// 	if (value) {
-				// 		//有登录信息
-				// 		console.log("已登录用户：",value);
-				// 		_this.$store.dispatch("setUserData",value); //存入状态
-				// 		uni.reLaunch({
-				// 			url: '../../../pages/index',
-				// 		});
-				// 	}
-				// } catch (e) {
-				// 	// error
-				// }
-			},
+			
 			startLogin() {
 				//登录
 				if (this.isRotate) {
 					//判断是否加载中，避免重复点击请求
 					return false;
 				}
-				// if (this.phoneData.length == "") {
-				// 	uni.showToast({
-				// 		icon: 'none',
-				// 		position: 'bottom',
-				// 		title: '请输入用户名'
-				// 	});
-				// 	return;
-				// }
-				// if (this.passData.length < 5) {
-				// 	uni.showToast({
-				// 		icon: 'none',
-				// 		position: 'bottom',
-				// 		title: '请输入密码'
-				// 	});
-				// 	return;
-				// }
+				if (this.phoneData.length == "") {
+					uni.showToast({
+						icon: 'none',
+						position: 'bottom',
+						title: '请输入商家账号'
+					});
+					return;
+				}
+				if (this.passData.length == "") {
+					uni.showToast({
+						icon: 'none',
+						position: 'bottom',
+						title: '请输入商家密码'
+					});
+					return;
+				}
 
-				console.log("登录成功")
-
-				_this.isRotate = true
+				this.isRotate = true
 				setTimeout(function() {
-					_this.isRotate = false
+					this.isRotate = false
 				}, 3000)
-					// uni.showToast({
-					// 		icon: 'success',
-					// 		position: 'bottom',
-					// 		title: '登录成功'
-					// 	});
-				uni.navigateTo({
-					url:'../index/index'
+				// uni.showToast({
+				// 		icon: 'success',
+				// 		position: 'bottom',
+				// 		title: '登录成功'
+				// 	});
+				let param = {
+					"accountName": this.$common.trim(this.phoneData),
+					"password":  this.$common.trim(this.passData)
+				}
+				uni.showLoading({
+					title: '登录中'
+				});
+
+				this.$common.post(this.$common.goLogin, param).then((res) => {
+					if (Number(res.data.statusCode) === 200) {
+						uni.setStorageSync('setUserData', res.data.data);
+						setTimeout(() => {
+							this.$common.success("登陆成功")
+						}, 1000)
+
+						setTimeout(() => {
+							this.isRotate = false
+							uni.redirectTo({
+								url: '../index/index'
+							})
+						}, 1000)
+						
+					} else {
+						this.$common.showToast(res.data.statusMsg,"none" )
+						this.isRotate = false
+					}
+					uni.hideLoading();
+				}).catch(err => {
+					uni.hideLoading();
 				})
-				// uni.showLoading({
-				// 	title: '登录中'
-				// });
-				// getLogin()
-				// .then(res => {
-				// 	//console.log(res)
-				// 	//简单验证下登录（不安全）
-				// 	if(_this.phoneData==res.data.username && _this.passData==res.data.password){
-				// 		let userdata={
-				// 			"username":res.data.username,
-				// 			"nickname":res.data.nickname,
-				// 			"accesstoken":res.data.accesstoken,
-				// 		} //保存用户信息和accesstoken
-				// 		_this.$store.dispatch("setUserData",userdata); //存入状态
-				// 		try {
-				// 			uni.setStorageSync('setUserData', userdata); //存入缓存
-				// 		} catch (e) {
-				// 			// error
-				// 		}
-				// 		uni.showToast({
-				// 			icon: 'success',
-				// 			position: 'bottom',
-				// 			title: '登录成功'
-				// 		});
-				// 		uni.reLaunch({
-				// 			url: '../../../pages/index',
-				// 		});
-				// 	}else{
-				// 		_this.passData=""
-				// 		uni.showToast({
-				// 			icon: 'error',
-				// 			position: 'bottom',
-				// 			title: '账号或密码错误，账号admin密码admin'
-				// 		});
-				// 	}
-				// 	uni.hideLoading();
-				// }).catch(err => {
-				// 	uni.hideLoading();
-				// })
-				
 
 			}
 		}

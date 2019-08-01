@@ -31,12 +31,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  overflow: hidden;
-  visibility: hidden;
   z-index: 998;
   height: 100%;
 }
 .uni-drawer.uni-drawer--right .uni-drawer__content {
+    position: absolute;
     left: auto;
     right: 0;
     -webkit-transform: translatex(100%);
@@ -73,7 +72,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 61.8%;
+    width: 80%;
     height: 100%;
     background: #ffffff;
     -webkit-transition: all 0.3s ease-out;

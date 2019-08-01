@@ -1,1 +1,1 @@
-<view class="deliverFinish"><view class="context"><view class="context_item"><view class="title">代理商：</view><picker class="picker" mode="selector" value="{{index}}" range="{{arr}}" data-event-opts="{{[['change',[['bindPickerChange',['$event']]]]]}}" bindchange="__e">{{''+arr[index]+''}}</picker></view><view class="context_item"><view class="title">输入自定义商家：</view><input type="text" placeholder="直接输入商家名称" value=""/></view></view><view class="btn_box"><button class="btn" type="primary">完成</button></view></view>
+<view class="_div"></view>

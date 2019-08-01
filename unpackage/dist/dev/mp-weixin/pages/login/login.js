@@ -136,103 +136,72 @@ var _default =
     wButton: wButton },
 
   mounted: function mounted() {
-    _this = this;
-    //this.isLogin();
+    // this.isLogin();
   },
   methods: {
-    isLogin: function isLogin() {
-      //判断缓存中是否登录过，直接登录
-      // try {
-      // 	const value = uni.getStorageSync('setUserData');
-      // 	if (value) {
-      // 		//有登录信息
-      // 		console.log("已登录用户：",value);
-      // 		_this.$store.dispatch("setUserData",value); //存入状态
-      // 		uni.reLaunch({
-      // 			url: '../../../pages/index',
-      // 		});
-      // 	}
-      // } catch (e) {
-      // 	// error
-      // }
-    },
-    startLogin: function startLogin() {
+
+    startLogin: function startLogin() {var _this2 = this;
       //登录
       if (this.isRotate) {
         //判断是否加载中，避免重复点击请求
         return false;
       }
-      // if (this.phoneData.length == "") {
-      // 	uni.showToast({
-      // 		icon: 'none',
-      // 		position: 'bottom',
-      // 		title: '请输入用户名'
-      // 	});
-      // 	return;
-      // }
-      // if (this.passData.length < 5) {
-      // 	uni.showToast({
-      // 		icon: 'none',
-      // 		position: 'bottom',
-      // 		title: '请输入密码'
-      // 	});
-      // 	return;
-      // }
+      if (this.phoneData.length == "") {
+        uni.showToast({
+          icon: 'none',
+          position: 'bottom',
+          title: '请输入商家账号' });
 
-      console.log("登录成功");
+        return;
+      }
+      if (this.passData.length == "") {
+        uni.showToast({
+          icon: 'none',
+          position: 'bottom',
+          title: '请输入商家密码' });
 
-      _this.isRotate = true;
+        return;
+      }
+
+      this.isRotate = true;
       setTimeout(function () {
-        _this.isRotate = false;
+        this.isRotate = false;
       }, 3000);
       // uni.showToast({
       // 		icon: 'success',
       // 		position: 'bottom',
       // 		title: '登录成功'
       // 	});
-      uni.navigateTo({
-        url: '../index/index' });
+      var param = {
+        "accountName": this.$common.trim(this.phoneData),
+        "password": this.$common.trim(this.passData) };
 
-      // uni.showLoading({
-      // 	title: '登录中'
-      // });
-      // getLogin()
-      // .then(res => {
-      // 	//console.log(res)
-      // 	//简单验证下登录（不安全）
-      // 	if(_this.phoneData==res.data.username && _this.passData==res.data.password){
-      // 		let userdata={
-      // 			"username":res.data.username,
-      // 			"nickname":res.data.nickname,
-      // 			"accesstoken":res.data.accesstoken,
-      // 		} //保存用户信息和accesstoken
-      // 		_this.$store.dispatch("setUserData",userdata); //存入状态
-      // 		try {
-      // 			uni.setStorageSync('setUserData', userdata); //存入缓存
-      // 		} catch (e) {
-      // 			// error
-      // 		}
-      // 		uni.showToast({
-      // 			icon: 'success',
-      // 			position: 'bottom',
-      // 			title: '登录成功'
-      // 		});
-      // 		uni.reLaunch({
-      // 			url: '../../../pages/index',
-      // 		});
-      // 	}else{
-      // 		_this.passData=""
-      // 		uni.showToast({
-      // 			icon: 'error',
-      // 			position: 'bottom',
-      // 			title: '账号或密码错误，账号admin密码admin'
-      // 		});
-      // 	}
-      // 	uni.hideLoading();
-      // }).catch(err => {
-      // 	uni.hideLoading();
-      // })
+      uni.showLoading({
+        title: '登录中' });
 
+
+      this.$common.post(this.$common.goLogin, param).then(function (res) {
+        if (Number(res.data.statusCode) === 200) {
+          uni.setStorageSync('setUserData', res.data.data);
+          setTimeout(function () {
+            _this2.$common.success("登陆成功");
+          }, 1000);
+
+          setTimeout(function () {
+            _this2.isRotate = false;
+            uni.redirectTo({
+              url: '../index/index' });
+
+          }, 1000);
+
+        } else {
+          _this2.$common.showToast(res.data.statusMsg, "none");
+          _this2.isRotate = false;
+        }
+        uni.hideLoading();
+      }).catch(function (err) {
+        uni.hideLoading();
+      });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))

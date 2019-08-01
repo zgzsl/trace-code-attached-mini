@@ -197,6 +197,7 @@
 				.uni-steps-item-title-container {
 					transform: none;
 					margin-left: 0;
+					
 				}
 			}
 

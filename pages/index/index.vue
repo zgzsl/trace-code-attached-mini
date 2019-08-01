@@ -1,28 +1,43 @@
 <template>
 	<view class="container">
 		<view class="box">
-			<view class="item" v-for="(item,index) in menuList" :key="index" @tap="router(item.router)">
+			<!-- <view class="item" v-for="(item,index) in menuList" :key="index" @tap="router(item.router)">
 				<view class="item_header">
 					<image :src="item.src" mode=""></image>
 				</view>
 				<view class="item_body">{{item.name}}</view>
 				<view class="item_bottom">{{item.desc}}</view>
-			</view>
+			</view> -->
+
+			<uni-list>
+				<uni-list-item v-for="(item,index) in menuList" :key="index"
+				 :router="item.router" @select='router' :title="item.name" :note="item.desc" show-badge="true"  :show-arrow="false">
+				 
+				</uni-list-item>
+
+			</uni-list>
 		</view>
 
 	</view>
 </template>
 
 <script>
+	import uniList from '@/components/uni-list/uni-list.vue'
+	import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
 	export default {
+		components: {
+			uniList,
+			uniListItem
+		},
 		data() {
 			return {
-				menuList: [{
-						src: '../../static/images/prink.png',
-						name: "打印外码",
-						desc: "此功能需连接打印机",
-						router: '../print/print'
-					},
+				menuList: [
+					// {
+					// 	src: '../../static/images/prink.png',
+					// 	name: "打印外码",
+					// 	desc: "此功能需连接打印机",
+					// 	router: '../print/print'
+					// },
 					{
 						src: '../../static/images/code.png',
 						name: "内码变成外码",
@@ -43,10 +58,30 @@
 				]
 			}
 		},
-		onLoad() {
-
+		onShow() {
+			this.isLogin()
 		},
 		methods: {
+			select(val){
+				
+			},
+			isLogin() {
+
+				//判断缓存中是否登录过，直接登录
+				try {
+					const value = uni.getStorageSync('setUserData');
+					console.log(value)
+					if (!value) {
+						//有登录信息
+						console.log("已登录用户：", value);
+						uni.redirectTo({
+							url: '../login/login'
+						})
+					}
+				} catch (e) {
+					// error
+				}
+			},
 			router(router) {
 				uni.navigateTo({
 					url: router
@@ -58,39 +93,8 @@
 
 <style lang="less">
 	.container {
-
-		.box {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-between;
-			padding: 10px;
-
-			.item {
-				border-radius: 10px;
-				width: 48%;
-				height: 212upx;
-				background: red;
-				margin: 5px 0;
-				background: linear-gradient(to left, #f53647, #fd973c);
-				font-size: 12px;
-				display: flex;
-				align-items: center;
-				flex-direction: column;
-				justify-content: center;
-				color: rgba(255, 255, 255, 1);
-
-				.item_header {
-					width: 88upx;
-					height: 88upx;
-
-					image {
-						width: 100%;
-						height: 100%;
-					}
-				}
-			}
+		.uni-list-cell__extra{
+			flex: 0.5 !important;
 		}
-
-
 	}
 </style>

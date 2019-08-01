@@ -11,10 +11,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.0",
-	"appid": "wx0294fa09fd871908",
+	"appid": "wx2b15995a2f4a7e31",
 	"projectname": "mini-scode",
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -33,47 +31,40 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
-					"name": "index",
-					"pathName": "pages/index/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "index",
-					"pathName": "pages/insideCode/insideCode",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "ouside",
-					"pathName": "pages/outsideCode/outsideCode",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "relation",
+					"name": "guanlian",
 					"pathName": "pages/relation/relation",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "deliverGoods",
+					"name": "inside",
+					"pathName": "pages/insideCode/insideCode",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "outside",
+					"pathName": "pages/outsideCode/outsideCode",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "fa",
 					"pathName": "pages/deliverGoods/deliverGoods",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "deliverFinish",
-					"pathName": "pages/deliverFinish/deliverFinish",
+					"name": "login",
+					"pathName": "pages/login/login",
 					"scene": null
 				}
 			]
