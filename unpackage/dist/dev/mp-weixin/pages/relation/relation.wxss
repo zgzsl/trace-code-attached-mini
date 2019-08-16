@@ -21,12 +21,12 @@
   display: -ms-flexbox;
   display: flex;
   color: #ffffff;
-  padding: 10px 2px;
+  padding: 20rpx 8rpx;
   background: -webkit-gradient(linear, right top, left top, from(#f53647), to(#fd973c));
   background: -webkit-linear-gradient(right, #f53647, #fd973c);
   background: -o-linear-gradient(right, #f53647, #fd973c);
   background: linear-gradient(to left, #f53647, #fd973c);
-  font-size: 30rpx;
+  font-size: 26rpx;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
@@ -71,6 +71,17 @@
       -ms-flex-pack: distribute;
           justify-content: space-around;
 }
+.relation .outbtn button {
+  background: -webkit-gradient(linear, right top, left top, from(#f53647), to(#fd973c));
+  background: -webkit-linear-gradient(right, #f53647, #fd973c);
+  background: -o-linear-gradient(right, #f53647, #fd973c);
+  background: linear-gradient(to left, #f53647, #fd973c);
+  color: #FFFFFF;
+  font-size: 30rpx;
+  padding: 2px 5px;
+  -webkit-border-radius: 49rpx;
+          border-radius: 49rpx;
+}
 .btn_box {
   display: -webkit-box;
   display: -webkit-flex;
@@ -91,9 +102,10 @@
   background: -webkit-linear-gradient(right, #f53647, #fd973c);
   background: -o-linear-gradient(right, #f53647, #fd973c);
   background: linear-gradient(to left, #f53647, #fd973c);
-  line-height: 3;
-  -webkit-border-radius: 49px;
-          border-radius: 49px;
-  margin: 10px 15px;
+  -webkit-border-radius: 49rpx;
+          border-radius: 49rpx;
+  margin: 10rpx 15rpx;
+  padding: 8px;
+  font-size: 26rpx;
 }
 

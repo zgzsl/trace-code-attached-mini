@@ -98,30 +98,40 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var error = function error() {return __webpack_require__.e(/*! import() | components/scodeError */ "components/scodeError").then(__webpack_require__.bind(null, /*! ../../components/scodeError.vue */ "../../../../project/pengkai/mini-scode/components/scodeError.vue"));};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
+  components: {
+    error: error },
+
   data: function data() {
     return {
+      type: 'scode',
+      text: '扫码错误',
+      showError: false,
       zscode: '' };
 
   },
@@ -155,8 +165,33 @@ var _default =
     scode: function scode() {var _this = this;
       uni.scanCode({
         success: function success(res) {
-          _this.$common.tip("扫码成功", "success");
-          _this.zscode = res.result;
+          var that = _this;
+          if (res.result && res.result.indexOf("SID") > 0) {
+            var sid = res.result.split("SID=")[1];
+            _this.$common.get("/trace-api/trace/getSubCodeById?sid=" + Number(sid)).then(function (res) {
+              console.log(res);
+              if (Number(res.data.code) === 200) {
+                if (res.data.data.isLeaf === 'Y') {
+                  that.$common.showToast("扫码成功", "success");
+                  that.showError = false;
+                  that.zscode = res.data.data.traceSubCodeNumber || "";
+                } else {
+
+                  _this.showError = true;
+                  _this.text = "此码不是内码,内码获取失败";
+                  _this.type = 'scode';
+                }
+
+              } else {
+                that.showError = false;
+                that.$common.showToast(res.data.message, 'none');
+              }
+            });
+          } else {
+            _this.showError = true;
+            _this.text = "内码获取失败";
+            _this.type = 'scode';
+          }
         } });
 
     } } };exports.default = _default;

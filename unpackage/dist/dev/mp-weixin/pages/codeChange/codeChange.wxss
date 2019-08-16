@@ -17,14 +17,15 @@
   -webkit-border-radius: 50px;
           border-radius: 50px;
   text-align: center;
-  padding: 10px;
+  padding: 5px;
+  font-size: 26rpx;
   background: -webkit-gradient(linear, right top, left top, from(#f53647), to(#fd973c));
   background: -webkit-linear-gradient(right, #f53647, #fd973c);
   background: -o-linear-gradient(right, #f53647, #fd973c);
   background: linear-gradient(to left, #f53647, #fd973c);
 }
 .item text:first-child {
-  font-size: 18px;
+  font-size: 28rpx;
 }
 .item:last-child {
   margin-bottom: 10px;
@@ -40,7 +41,8 @@
   -webkit-border-radius: 50px;
           border-radius: 50px;
   text-align: center;
-  padding: 10px;
+  padding: 5px;
+  font-size: 26rpx;
   background: -webkit-gradient(linear, left top, right top, from(#f53647), to(#fd973c));
   background: -webkit-linear-gradient(left, #f53647, #fd973c);
   background: -o-linear-gradient(left, #f53647, #fd973c);

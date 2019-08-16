@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "发货",
-  "usingComponents": {}
+  "usingComponents": {
+    "error": "/components/scodeError"
+  }
 }

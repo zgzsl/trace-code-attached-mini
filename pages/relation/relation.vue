@@ -1,58 +1,89 @@
 <template>
 	<view class="relation">
-		<view class="out" v-if="outCode">
-			<view class="context">
-				<view class="header">
-					<view class="left"><text>外码编号:</text><text>{{outCode||""}}</text></view>
-					<view class="btn" @tap="relation">关联子码</view>
+		<view class="right" v-if="!showError">
+			<view class="out" v-if="outCode">
+				<view class="context">
+					<view class="header">
+						<view class="left"><text>外码编号:</text><text>{{outCode||""}}</text></view>
+						<view class="btn" @tap="relation">关联子码</view>
+					</view>
+					<view class="content">
+						<view class="item" v-for="(item,index) in chlidCodeArr" v-if="chlidCodeArr.length>0" :key="index">
+							<view style="font-size: 26rpx;">子码编号:</view><text style="font-size: 26rpx;">{{item}}</text>
+							<icon type="cancel" size="26" @tap="deleteCode(index)" />
+						</view>
+
+						<view class="item" style="color: rgba(128,128,128,1);" v-if="chlidCodeArr.length===0">
+							暂无关联的子码
+						</view>
+					</view>
 				</view>
-				<view class="content">
-					<view class="item" v-for="(item,index) in chlidCodeArr" v-if="chlidCodeArr.length>0" :key="index">
-						<text>子码编号：</text><text>{{item}}</text>
-						<icon type="cancel" size="26" @tap="deleteCode(index)" />
-					</view>
-					<view class="item" style="color: rgba(128,128,128,1);" v-if="chlidCodeArr.length===0">
-						暂无关联的子码
-					</view>
+				<view class="btn_box">
+					<button type="primary" class="btn" @tap="confirm">完成</button>
 				</view>
 			</view>
-			<view class="btn_box">
-				<button type="primary" class="btn" @tap="confirm">完成</button>
+			<view class="outbtn" v-if="!outCode">
+				<button @tap="createdClick">扫一扫获取外码</button>
 			</view>
 		</view>
-		<view class="outbtn" v-if="!outCode">
-			<button  style="background:linear-gradient(to left, #f53647, #fd973c);color: #FFFFFF;" @tap="createdClick">扫一扫获取外码</button>
-		</view>
+		<error :text="text" v-if="showError" :type="type" @relation='relation' @createdClick='createdClick'></error>
 	</view>
 </template>
 
 <script>
+	import error from '../../components/scodeError.vue'
 	export default {
 		data() {
 			return {
-				outCode: '',
-				chlidCodeArr: []
+				text: '扫码错误',
+				showError: false,
+				outCode: "",
+				chlidCodeArr: [],
+				type: ''
 			}
 		},
-		created() {
-			
+		components: {
+			error
 		},
 		methods: {
-			createdClick(){
+
+			createdClick() {
 				uni.scanCode({
 					success: (res) => {
-						this.$common.tip("扫码成功", "success")
-						this.outCode = res.result
+						let that = this
+						if (res.result && res.result.indexOf("SID") > 0) {
+							let sid = res.result.split("SID=")[1]
+							this.$common.get("/trace-api/trace/getSubCodeById?sid=" + sid).then((res) => {
+								if (Number(res.data.code) === 200) {
+									if(res.data.data.isLeaf==='N'){
+										that.$common.showToast("扫码成功", "success")
+										that.showError = false
+										that.outCode=res.data.data.traceSubCodeNumber ||""
+									}else{						
+										this.showError = true
+										this.text = "此码不是外码,外码获取失败"
+										this.type = 'createdClick'
+									}
+								} else {
+									that.$common.showToast(res.data.message, 'none')
+								}
+								
+							})
+						} else {
+							this.showError = true
+							this.text = "外获取失败"
+							this.type = 'createdClick'
+						}
 					}
 				});
 			},
 			confirm() {
 				if (!this.outCode) {
-					this.$common.tip("外码不能为空", "none")
+					this.$common.showToast("外码不能为空", 'none')
 					return;
 				}
 				if (this.chlidCodeArr.length === 0) {
-					this.$common.tip("子码不能为空", "none")
+					this.$common.showToast("子码不能为空", 'none')
 					return;
 				}
 
@@ -63,20 +94,19 @@
 				this.$common.post("/trace-api/trace/relationOutCode", param).then((res) => {
 					console.log("relationOutCode", res)
 					if (Number(res.data.code) === 200) {
-
 						uni.showToast({
-							title: res.data.data,
+							title: res.data.message,
 							duration: 2000
 						});
-						setTimeout(()=>{
+						setTimeout(() => {
 							uni.navigateBack({
 								delta: 1
 							});
-						},1500)
+						}, 1500)
 					} else {
 
 						uni.showToast({
-							title: res.data.data,
+							title: res.data.message,
 							duration: 2000,
 							icon: "none"
 						});
@@ -90,7 +120,7 @@
 					success: (res) => {
 						if (res.confirm) {
 							this.chlidCodeArr.splice(index, 1);
-							this.$common.tip("删除成功", "success")
+							this.$common.showToast("删除成功", "success")
 						}
 					}
 				});
@@ -99,8 +129,24 @@
 			relation() {
 				uni.scanCode({
 					success: (res) => {
-						this.$common.tip("扫码成功", "success")
-						this.chlidCodeArr.push(res.result)
+						let that = this
+						if (res.result && res.result.indexOf("SID") > 0) {
+							let sid = res.result.split("SID=")[1]
+							this.$common.get("/trace-api/trace/getSubCodeById?sid=" + sid).then((res) => {
+
+								if (Number(res.data.code) === 200) {
+									that.$common.showToast("扫码成功", "success")
+									that.showError = false
+									that.chlidCodeArr.push(res.data.data.traceSubCodeNumber)
+								} else {
+									that.$common.showToast(res.data.message, 'none')
+								}
+							})
+						} else {
+							this.showError = true
+							this.text = "子码获取失败"
+							this.type = 'relation'
+						}
 					}
 				});
 			}
@@ -124,9 +170,9 @@
 				align-items: center;
 				display: flex;
 				color: rgba(255, 255, 255, 1);
-				padding: 10px 2px;
+				padding: 20rpx 8rpx;
 				background: linear-gradient(to left, #f53647, #fd973c);
-				font-size: 30rpx;
+				font-size: 26rpx;
 				justify-content: space-between;
 
 				.left {
@@ -162,6 +208,16 @@
 			}
 		}
 
+		.outbtn {
+			button{
+				background: linear-gradient(to left, #f53647, #fd973c);
+				color: #FFFFFF;
+				font-size: 30rpx;
+				padding:2px 5px;
+				border-radius: 49rpx;
+			}
+		}
+
 	}
 
 	.btn_box {
@@ -175,9 +231,11 @@
 			flex: 1;
 			color: #fff;
 			background: linear-gradient(to left, #f53647, #fd973c);
-			line-height: 3;
-			border-radius: 49px;
-			margin: 10px 15px;
+			// line-height: 3;
+			border-radius: 49rpx;
+			margin: 10rpx 15rpx;
+			padding: 8px;
+			font-size: 26rpx;
 		}
 
 	}

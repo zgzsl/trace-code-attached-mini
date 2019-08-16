@@ -25,14 +25,16 @@
 		bottom: 0;
 		left: 0;
 		width: 100%;
-
+		
 		.btn {
 			flex: 1;
 			color: #fff;
 			background: linear-gradient(to left, #f53647, #fd973c);
-			line-height: 2;
-			border-radius: 49px;
-			margin: 10px 15px;
+			// line-height: 3;
+			border-radius: 49rpx;
+			margin: 10rpx 15rpx;
+			padding: 5px;
+			font-size:28rpx;
 		}
 
 	}

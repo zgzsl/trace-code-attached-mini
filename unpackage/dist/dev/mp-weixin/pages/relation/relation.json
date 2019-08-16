@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "关联子码",
-  "usingComponents": {}
+  "usingComponents": {
+    "error": "/components/scodeError"
+  }
 }

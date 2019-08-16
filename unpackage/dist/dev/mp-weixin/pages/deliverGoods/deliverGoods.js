@@ -98,69 +98,93 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var error = function error() {return __webpack_require__.e(/*! import() | components/scodeError */ "components/scodeError").then(__webpack_require__.bind(null, /*! ../../components/scodeError.vue */ "../../../../project/pengkai/mini-scode/components/scodeError.vue"));};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
+  components: {
+    error: error },
+
   data: function data() {
     return {
+      type: 'scanCode',
+      text: '扫码错误',
+      showError: false,
       current: 0,
       codeArr: [],
       arr: ['中国', '美国', '巴西', '日本'],
       index: 0,
       active: 0,
       List: [],
-      sellerName: "" };
+      sellerName: "",
+      count: 0 };
 
   },
+  watch: {
+    "codeArr": {
+      handler: function handler(value) {
+        var count = 0;var _iteratorNormalCompletion = true;var _didIteratorError = false;var _iteratorError = undefined;try {
+          for (var _iterator = this.codeArr[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {var item = _step.value;
+            count += item.count;
+          }} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return != null) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}
+        this.count = count;
+      },
+      deep: true } },
+
+
+
   methods: {
     radioChange: function radioChange(evt) {
       console.log(evt);
@@ -175,6 +199,7 @@ var _default =
       }
     },
     nextConfirm: function nextConfirm() {var _this = this;
+      var sellName = "";
       if (this.codeArr.length === 0) {
         this.$common.showToast("外码或内码不能为空", 'none');
         return;
@@ -184,16 +209,26 @@ var _default =
           this.$common.showToast("请输入商家名称", 'none');
           return;
         }
+        sellName = this.sellerName;
       } else {
         if (!this.List[Number(this.index)].agentName) {
+
           this.$common.showToast("请选择代理商", 'none');
           return;
+        } else {
+          sellName = this.List[Number(this.index)].agentName;
         }
       }
+      console.log(this.current);
+      var arr = [];var _iteratorNormalCompletion2 = true;var _didIteratorError2 = false;var _iteratorError2 = undefined;try {
+        for (var _iterator2 = this.codeArr[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {var item = _step2.value;
+          arr.push(item.traceSubCodeNumber);
+        }} catch (err) {_didIteratorError2 = true;_iteratorError2 = err;} finally {try {if (!_iteratorNormalCompletion2 && _iterator2.return != null) {_iterator2.return();}} finally {if (_didIteratorError2) {throw _iteratorError2;}}}
       var param = {
-        codeNumber: this.codeArr,
-        bussName: this.sellerName };
+        codeNumber: arr,
+        bussName: sellName };
 
+      console.log(param);
       this.$common.post('/trace-api/trace/deliverGoods', param).then(function (res) {
         console.log(res);
         if (Number(res.data.code) === 200) {
@@ -216,7 +251,9 @@ var _default =
     },
     bindPickerChange: function bindPickerChange(e) {
       console.log('picker发送选择改变，携带值为', this.List[Number(e.target.value)]);
-      this.index = e.target.agentName;
+      console.log(Number(e.target.value));
+      this.index = Number(e.target.value);
+
     },
     jump: function jump() {
       this.active = 1;
@@ -228,7 +265,7 @@ var _default =
         success: function success(res) {
           if (res.confirm) {
             _this3.codeArr.splice(index, 1);
-            _this3.$common.tip("删除成功", "success");
+            _this3.$common.showToast("删除成功", "success");
           }
         } });
 
@@ -237,8 +274,27 @@ var _default =
     scanCode: function scanCode() {var _this4 = this;
       uni.scanCode({
         success: function success(res) {
-          _this4.$common.tip("扫码成功", "success");
-          _this4.codeArr.push(res.result);
+          var that = _this4;
+          if (res.result && res.result.indexOf("SID") > 0) {
+            var sid = res.result.split("SID=")[1];
+            _this4.$common.get("/trace-api/trace/getSubCodeById?sid=" + sid).then(function (res) {
+              if (Number(res.data.code) === 200) {
+                that.$common.showToast("扫码成功", "success");
+                that.showError = false;
+                that.codeArr.push({
+                  count: res.data.data.count,
+                  traceSubCodeNumber: res.data.data.traceSubCodeNumber });
+
+              } else {
+                that.showError = false;
+                that.$common.showToast(res.data.message, 'none');
+              }
+            });
+          } else {
+            _this4.showError = true;
+            _this4.text = "关联子码获取失败";
+            _this4.type = 'scanCode';
+          }
         } });
 
     } },

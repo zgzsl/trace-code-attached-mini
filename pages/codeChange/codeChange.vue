@@ -5,57 +5,62 @@
 			<text>只需扫一扫即可</text>
 		</view>
 		<view class="item" @tap="Jump(1)">
-			<text>单独替换内码为外码</text>
+			<text>批量替换内码为外码</text>
 			<text>需输入对应的内码编码段</text>
 		</view>
 	</view>
 </template>
 
 <script>
-	export default{
-		methods:{
-			Jump(type){
-				if(type){
-					
+	export default {
+		methods: {
+			Jump(type) {
+				if (type) {
+
 					uni.navigateTo({
-						url:'../outsideCode/outsideCode'
+						url: '../outsideCode/outsideCode'
 					})
-				}else{
+				} else {
 					uni.navigateTo({
-						url:'../insideCode/insideCode'
+						url: '../insideCode/insideCode'
 					})
 				}
-				
+
 			}
 		}
 	}
 </script>
 
 <style lang="less">
-	.codeChange{
-		padding:15px 15px;
+	.codeChange {
+		padding: 15px 15px;
 		color: #fff;
 		font-size: 13px;
 	}
-	.item{
+
+	.item {
 		margin-bottom: 10px;
 		display: flex;
 		flex-direction: column;
 		border-radius: 50px;
 		text-align: center;
-		padding: 10px;
+		padding: 5px;
+		font-size: 26rpx;
 		background: linear-gradient(to left, #f53647, #fd973c);
-		text:first-child{
-			font-size: 18px;
+
+		text:first-child {
+			font-size: 28rpx;
 		}
 	}
-		.item:last-child{
+
+	.item:last-child {
 		margin-bottom: 10px;
 		display: flex;
 		flex-direction: column;
 		border-radius: 50px;
 		text-align: center;
-		padding: 10px;
+		padding: 5px;
+		font-size: 26rpx;
 		background: linear-gradient(to right, #f53647, #fd973c);
 	}
 </style>

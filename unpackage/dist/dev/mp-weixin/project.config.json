@@ -13,6 +13,8 @@
 	"libVersion": "2.7.0",
 	"appid": "wx2b15995a2f4a7e31",
 	"projectname": "mini-scode",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -31,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 5,
 			"list": [
 				{
 					"id": -1,
@@ -65,6 +67,13 @@
 					"id": -1,
 					"name": "login",
 					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "index",
+					"pathName": "pages/index/index",
 					"scene": null
 				}
 			]

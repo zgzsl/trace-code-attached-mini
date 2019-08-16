@@ -77,7 +77,6 @@
 				}
 				if (!this.info.inCodeEnd) {
 
-
 					this.$common.showToast("请输入内码结束编号", 'none')
 					return;
 				}
@@ -152,21 +151,21 @@
 		padding: 15px 15px 0;
 	}
 
-	.btn_box {
-		display: flex;
-		position: fixed;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-
-		.btn {
-			flex: 1;
-			color: #fff;
-			background: linear-gradient(to left, #f53647, #fd973c);
-			line-height: 3;
-			border-radius: 49px;
-			margin: 10px 15px;
-		}
-
-	}
+// 	.btn_box {
+// 		display: flex;
+// 		position: fixed;
+// 		bottom: 0;
+// 		left: 0;
+// 		width: 100%;
+// 
+// 		.btn {
+// 			flex: 1;
+// 			color: #fff;
+// 			background: linear-gradient(to left, #f53647, #fd973c);
+// 			line-height: 3;
+// 			border-radius: 49px;
+// 			margin: 10px 15px;
+// 		}
+// 
+// 	}
 </style>

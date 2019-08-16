@@ -98,61 +98,92 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var error = function error() {return __webpack_require__.e(/*! import() | components/scodeError */ "components/scodeError").then(__webpack_require__.bind(null, /*! ../../components/scodeError.vue */ "../../../../project/pengkai/mini-scode/components/scodeError.vue"));};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
   data: function data() {
     return {
-      outCode: '',
-      chlidCodeArr: [] };
+      text: '扫码错误',
+      showError: false,
+      outCode: "",
+      chlidCodeArr: [],
+      type: '' };
 
   },
-  created: function created() {
+  components: {
+    error: error },
 
-  },
   methods: {
+
     createdClick: function createdClick() {var _this = this;
       uni.scanCode({
         success: function success(res) {
-          _this.$common.tip("扫码成功", "success");
-          _this.outCode = res.result;
+          var that = _this;
+          if (res.result && res.result.indexOf("SID") > 0) {
+            var sid = res.result.split("SID=")[1];
+            _this.$common.get("/trace-api/trace/getSubCodeById?sid=" + sid).then(function (res) {
+              if (Number(res.data.code) === 200) {
+                if (res.data.data.isLeaf === 'N') {
+                  that.$common.showToast("扫码成功", "success");
+                  that.showError = false;
+                  that.outCode = res.data.data.traceSubCodeNumber || "";
+                } else {
+                  _this.showError = true;
+                  _this.text = "此码不是外码,外码获取失败";
+                  _this.type = 'createdClick';
+                }
+              } else {
+                that.$common.showToast(res.data.message, 'none');
+              }
+
+            });
+          } else {
+            _this.showError = true;
+            _this.text = "外获取失败";
+            _this.type = 'createdClick';
+          }
         } });
 
     },
     confirm: function confirm() {
       if (!this.outCode) {
-        this.$common.tip("外码不能为空", "none");
+        this.$common.showToast("外码不能为空", 'none');
         return;
       }
       if (this.chlidCodeArr.length === 0) {
-        this.$common.tip("子码不能为空", "none");
+        this.$common.showToast("子码不能为空", 'none');
         return;
       }
 
@@ -163,9 +194,8 @@ var _default =
       this.$common.post("/trace-api/trace/relationOutCode", param).then(function (res) {
         console.log("relationOutCode", res);
         if (Number(res.data.code) === 200) {
-
           uni.showToast({
-            title: res.data.data,
+            title: res.data.message,
             duration: 2000 });
 
           setTimeout(function () {
@@ -176,7 +206,7 @@ var _default =
         } else {
 
           uni.showToast({
-            title: res.data.data,
+            title: res.data.message,
             duration: 2000,
             icon: "none" });
 
@@ -190,7 +220,7 @@ var _default =
         success: function success(res) {
           if (res.confirm) {
             _this2.chlidCodeArr.splice(index, 1);
-            _this2.$common.tip("删除成功", "success");
+            _this2.$common.showToast("删除成功", "success");
           }
         } });
 
@@ -199,8 +229,24 @@ var _default =
     relation: function relation() {var _this3 = this;
       uni.scanCode({
         success: function success(res) {
-          _this3.$common.tip("扫码成功", "success");
-          _this3.chlidCodeArr.push(res.result);
+          var that = _this3;
+          if (res.result && res.result.indexOf("SID") > 0) {
+            var sid = res.result.split("SID=")[1];
+            _this3.$common.get("/trace-api/trace/getSubCodeById?sid=" + sid).then(function (res) {
+
+              if (Number(res.data.code) === 200) {
+                that.$common.showToast("扫码成功", "success");
+                that.showError = false;
+                that.chlidCodeArr.push(res.data.data.traceSubCodeNumber);
+              } else {
+                that.$common.showToast(res.data.message, 'none');
+              }
+            });
+          } else {
+            _this3.showError = true;
+            _this3.text = "子码获取失败";
+            _this3.type = 'relation';
+          }
         } });
 
     } } };exports.default = _default;

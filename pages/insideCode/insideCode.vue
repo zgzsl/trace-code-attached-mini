@@ -1,27 +1,37 @@
 <template>
 	<view class="insideCode">
-		<view class="in" v-if="zscode">
-			<view class="setting_insideCode">
-				<view class="item">
-					<view class="name">内码编号：</view>
-					<text>{{zscode|| ""}}</text>
+		<view class="inside" v-if="!showError">
+				<view class="in" v-if="zscode">
+				<view class="setting_insideCode">
+					<view class="item">
+						<view class="name">内码编号：</view>
+						<text>{{zscode|| ""}}</text>
+					</view>
+				</view>
+				<view class="btn_box">
+					<button type="primary" class="btn" @tap='scode'>重新扫一扫</button>
+					<button type="primary" class="btn" @tap="confirm">确定变更</button>
 				</view>
 			</view>
-			<view class="btn_box">
-				<button type="primary" class="btn" @tap='scode'>重新扫一扫</button>
-				<button type="primary" class="btn" @tap="confirm">确定变更</button>
+			<view class="out" v-if="!zscode">
+				<button @tap="createdClick">扫一扫获取内部编码</button>
 			</view>
 		</view>
-		<view class="out" v-if="!zscode">
-			<button style="background:linear-gradient(to left, #f53647, #fd973c);color: #FFFFFF;" @tap="createdClick">扫一扫获取内部编码</button>
-		</view>
+		<error :text="text" v-if="showError" :type="type" @scode='scode'></error>
 	</view>
 </template>
 
 <script>
+import error from '../../components/scodeError.vue'
 	export default {
+		components: {
+			error
+		},
 		data() {
 			return {
+				type: 'scode',
+				text: '扫码错误',
+				showError: false,
 				zscode: '',
 			}
 		},
@@ -55,8 +65,33 @@
 			scode() {
 				uni.scanCode({
 					success: (res) => {
-						this.$common.tip("扫码成功", "success")
-						this.zscode = res.result
+						let that = this
+						if (res.result && res.result.indexOf("SID") > 0) {
+							let sid = res.result.split("SID=")[1]
+							this.$common.get("/trace-api/trace/getSubCodeById?sid="+Number(sid) ).then((res) => {
+								console.log(res)
+								if (Number(res.data.code) === 200) {
+									if(res.data.data.isLeaf==='Y'){
+										that.$common.showToast("扫码成功", "success")
+										that.showError = false
+										that.zscode=res.data.data.traceSubCodeNumber ||""
+									}else{
+								
+										this.showError = true
+										this.text = "此码不是内码,内码获取失败"
+										this.type = 'scode'
+									}
+									
+								} else {
+									that.showError = false
+									that.$common.showToast(res.data.message, 'none')
+								}
+							})
+						} else {
+							this.showError = true
+							this.text = "内码获取失败"
+							this.type = 'scode'
+						}
 					}
 				});
 			}
@@ -67,7 +102,15 @@
 <style lang="less">
 	.insideCode {
 		padding: 15px 15px 0;
-
+		.out{
+			button{
+				background: linear-gradient(to left, #f53647, #fd973c);
+				color: #FFFFFF;
+				font-size: 30rpx;
+				padding:2px 5px;
+				border-radius: 49rpx;
+			}
+		}
 		.btn_box {
 			display: flex;
 			position: fixed;

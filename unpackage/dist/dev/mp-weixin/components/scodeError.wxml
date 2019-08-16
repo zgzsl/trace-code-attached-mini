@@ -1,0 +1,1 @@
+<view class="error"><view class="icon"><image src="../static/images/error.png" mode="widthFix"></image></view><view class="text">{{''+text+''}}</view><button class="btn" type="primary" data-event-opts="{{[['tap',[['childMethod',['$event']]]]]}}" bindtap="__e">重新扫一扫</button></view>
