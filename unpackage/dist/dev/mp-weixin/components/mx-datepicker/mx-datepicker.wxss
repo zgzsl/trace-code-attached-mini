@@ -36,8 +36,7 @@
 }
 .picker-btn.data-v-4db165bb {
     padding: 10rpx 20rpx;
-    -webkit-border-radius: 12rpx;
-            border-radius: 12rpx;
+    border-radius: 12rpx;
     color: #666;
 }
 .picker-btn-active.data-v-4db165bb {
@@ -71,8 +70,7 @@
             transform: translateY(-50%);
     -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
-    -webkit-border-radius: 12rpx;
-            border-radius: 12rpx;
+    border-radius: 12rpx;
 }
 .picker-modal-header.data-v-4db165bb {
       text-align: center;
@@ -88,8 +86,7 @@
         line-height: 50rpx;
         width: 50rpx;
         height: 50rpx;
-        -webkit-border-radius: 50rpx;
-                border-radius: 50rpx;
+        border-radius: 50rpx;
         text-align: center;
         margin: 10rpx;
         background: #fff;
@@ -179,15 +176,13 @@
         width: 100%;
 }
 .picker-calendar-view-bgbegin.data-v-4db165bb {
-        -webkit-border-radius: 90rpx 0 0 90rpx;
-                border-radius: 90rpx 0 0 90rpx;
+        border-radius: 90rpx 0 0 90rpx;
         top: 10%;
         left: 10%;
         width: 90%;
 }
 .picker-calendar-view-bgend.data-v-4db165bb {
-        -webkit-border-radius: 0 90rpx 90rpx 0;
-                border-radius: 0 90rpx 90rpx 0;
+        border-radius: 0 90rpx 90rpx 0;
         top: 10%;
         left: 0%;
         width: 90%;
@@ -197,8 +192,7 @@
         top: 5%;
         width: 90%;
         height: 90%;
-        -webkit-border-radius: 90rpx;
-                border-radius: 90rpx;
+        border-radius: 90rpx;
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -217,8 +211,7 @@
         top: 10%;
         width: 12rpx;
         height: 12rpx;
-        -webkit-border-radius: 12rpx;
-                border-radius: 12rpx;
+        border-radius: 12rpx;
 }
 .picker-calendar-view-tips.data-v-4db165bb {
         bottom: 100%;
@@ -228,8 +221,7 @@
                 transform: translateX(-50%);
         background: #4E4B46;
         color: #fff;
-        -webkit-border-radius: 12rpx;
-                border-radius: 12rpx;
+        border-radius: 12rpx;
         padding: 10rpx 20rpx;
         font-size: 24rpx;
         width: -webkit-max-content;

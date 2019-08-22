@@ -39,7 +39,7 @@
 			// this.isLogin();
 		},
 		methods: {
-			
+
 			startLogin() {
 				//登录
 				if (this.isRotate) {
@@ -74,7 +74,7 @@
 				// 	});
 				let param = {
 					"accountName": this.$common.trim(this.phoneData),
-					"password":  this.$common.trim(this.passData)
+					"password": this.$common.trim(this.passData)
 				}
 				uni.showLoading({
 					title: '登录中'
@@ -93,12 +93,16 @@
 								url: '../index/index'
 							})
 						}, 1000)
-						
+
 					} else {
-						this.$common.showToast(res.data.statusMsg,"none" )
+						this.$common.showToast(res.data.statusMsg, "none")
 						this.isRotate = false
+						
 					}
-					uni.hideLoading();
+					setTimeout(() => {
+						uni.hideLoading();
+					},1500)
+
 				}).catch(err => {
 					uni.hideLoading();
 				})

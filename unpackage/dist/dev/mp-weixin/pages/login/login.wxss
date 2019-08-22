@@ -956,8 +956,7 @@
 	height:161rpx;
 	-webkit-box-shadow:0rpx 0rpx 60rpx 0rpx rgba(0,0,0,0.1);
 	        box-shadow:0rpx 0rpx 60rpx 0rpx rgba(0,0,0,0.1);
-	-webkit-border-radius:50%;
-	        border-radius:50%;
+	border-radius:50%;
 	background-color: #FFFFFF; 
 	margin-top: 128rpx;
 	margin-bottom: 72rpx;
@@ -967,8 +966,7 @@
 .header image{
 	width:161rpx;
 	height:161rpx;
-	-webkit-border-radius:50%;
-	        border-radius:50%;
+	border-radius:50%;
 }
 
 /* 主体 */

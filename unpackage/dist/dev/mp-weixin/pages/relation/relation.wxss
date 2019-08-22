@@ -4,8 +4,7 @@
 .relation .context {
   overflow-y: hidden;
   border: 1px solid #ccc;
-  -webkit-border-radius: 10px;
-          border-radius: 10px;
+  border-radius: 10px;
 }
 .relation .context .header {
   -webkit-box-pack: center;
@@ -23,7 +22,6 @@
   color: #ffffff;
   padding: 20rpx 8rpx;
   background: -webkit-gradient(linear, right top, left top, from(#f53647), to(#fd973c));
-  background: -webkit-linear-gradient(right, #f53647, #fd973c);
   background: -o-linear-gradient(right, #f53647, #fd973c);
   background: linear-gradient(to left, #f53647, #fd973c);
   font-size: 26rpx;
@@ -40,8 +38,7 @@
 }
 .relation .context .header .btn {
   color: #F53747;
-  -webkit-border-radius: 5px;
-          border-radius: 5px;
+  border-radius: 5px;
   border: 1px solid #fff;
   padding: 10rpx;
   font-size: 24rpx;
@@ -50,7 +47,6 @@
 }
 .relation .context .content {
   overflow-y: scroll;
-  height: -webkit-calc(100vh - 400rpx);
   height: calc(100vh - 400rpx);
   font-size: 14px;
   background: #f2f2f2;
@@ -73,14 +69,12 @@
 }
 .relation .outbtn button {
   background: -webkit-gradient(linear, right top, left top, from(#f53647), to(#fd973c));
-  background: -webkit-linear-gradient(right, #f53647, #fd973c);
   background: -o-linear-gradient(right, #f53647, #fd973c);
   background: linear-gradient(to left, #f53647, #fd973c);
   color: #FFFFFF;
   font-size: 30rpx;
   padding: 2px 5px;
-  -webkit-border-radius: 49rpx;
-          border-radius: 49rpx;
+  border-radius: 49rpx;
 }
 .btn_box {
   display: -webkit-box;
@@ -99,11 +93,9 @@
           flex: 1;
   color: #fff;
   background: -webkit-gradient(linear, right top, left top, from(#f53647), to(#fd973c));
-  background: -webkit-linear-gradient(right, #f53647, #fd973c);
   background: -o-linear-gradient(right, #f53647, #fd973c);
   background: linear-gradient(to left, #f53647, #fd973c);
-  -webkit-border-radius: 49rpx;
-          border-radius: 49rpx;
+  border-radius: 49rpx;
   margin: 10rpx 15rpx;
   padding: 8px;
   font-size: 26rpx;

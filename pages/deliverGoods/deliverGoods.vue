@@ -145,8 +145,9 @@
 			},
 			getList() {
 				let merchantId = uni.getStorageSync("setUserData").merchant.merchantId
-				this.$common.get("/agent/merchantAgent/list/page?merchantId=" + merchantId + "&pageNum=1&pageSize=10000").then((res) => {
-					this.List = res.data.data.data || []
+				this.$common.get("/agent/merchantAgent/normal?merchantId=" + merchantId).then((res) => {
+					console.log(res)
+					this.List = res.data.data || []
 				})
 			},
 			bindPickerChange(e) {
@@ -179,12 +180,38 @@
 							let sid = res.result.split("SID=")[1]
 							this.$common.get("/trace-api/trace/getSubCodeById?sid=" + sid).then((res) => {
 								if (Number(res.data.code) === 200) {
-									that.$common.showToast("扫码成功", "success")
+									console.log("发货对象",res)
 									that.showError = false
-									that.codeArr.push({
-										count: res.data.data.count,
-										traceSubCodeNumber: res.data.data.traceSubCodeNumber
-									})
+									if(Number(res.data.data.isEnable)>0){
+										if (that.codeArr.length > 0) {
+											let codes = []
+											for (let item of that.codeArr) {
+												codes.push(item.traceSubCodeNumber)
+											}
+											if (codes.indexOf(res.data.data.traceSubCodeNumber) > -1) {
+												that.$common.showToast("子码编号已存在", "none")
+											} else {
+												that.$common.showToast("扫码成功", "success")
+												that.codeArr.push({
+													count: res.data.data.count,
+													traceSubCodeNumber: res.data.data.traceSubCodeNumber
+												})
+											}
+											console.log(codes)
+										} else {
+											that.$common.showToast("扫码成功", "success")
+											that.codeArr.push({
+												count: res.data.data.count,
+												traceSubCodeNumber: res.data.data.traceSubCodeNumber
+											})
+										}
+									}else{
+										that.$common.showToast("此编码已发货", "none")
+									}
+									
+									
+
+									console.log(that.codeArr)
 								} else {
 									that.showError = false
 									that.$common.showToast(res.data.message, 'none')

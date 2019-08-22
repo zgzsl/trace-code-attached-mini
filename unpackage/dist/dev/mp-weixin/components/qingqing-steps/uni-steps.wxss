@@ -18,8 +18,7 @@
   height: 80px;
   border: 1px solid #ccc;
   margin: 10px auto;
-  -webkit-border-radius: 10px;
-          border-radius: 10px;
+  border-radius: 10px;
 }
 .uni-steps-items {
   position: relative;
@@ -178,8 +177,7 @@
   width: 5px;
   height: 5px;
   background-color: #999;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
 }
 .uni-steps-item-line {
   background-color: #ebedf0;

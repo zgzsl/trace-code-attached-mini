@@ -8,8 +8,7 @@
   margin: 10px 10px;
 }
 .outSide_item .context .context_item {
-  -webkit-border-radius: 10px;
-          border-radius: 10px;
+  border-radius: 10px;
   border: 1px solid #ccc;
   display: -webkit-box;
   display: -webkit-flex;

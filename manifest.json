@@ -90,7 +90,7 @@
         },
         "title" : "追溯链商城",
         "template" : "template.html",
-        "domain" : "https://zs-beta.cntracechain.com",
+        // "domain" : "https://zs-beta.cntracechain.com",
         // "domain" : "https://mall-beta.cntracechain.com",
         "sdkConfigs" : {
             "maps" : {

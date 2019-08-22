@@ -55,12 +55,10 @@
           flex: 1;
   color: #fff;
   background: -webkit-gradient(linear, right top, left top, from(#f53647), to(#fd973c));
-  background: -webkit-linear-gradient(right, #f53647, #fd973c);
   background: -o-linear-gradient(right, #f53647, #fd973c);
   background: linear-gradient(to left, #f53647, #fd973c);
   line-height: 2;
-  -webkit-border-radius: 49px;
-          border-radius: 49px;
+  border-radius: 49px;
   margin: 10px 15px;
   padding: 5px 0;
   font-size: 13px;
@@ -149,8 +147,7 @@
 }
 .print .scend_step .goodList .item {
   border: 1px solid #CCCCCC;
-  -webkit-border-radius: 10px;
-          border-radius: 10px;
+  border-radius: 10px;
   overflow: hidden;
   margin: 15px 0;
 }
@@ -177,8 +174,7 @@
 }
 .print .scend_step .goodList .item_botom {
   font-size: 13px;
-  -webkit-border-radius: 10px;
-          border-radius: 10px;
+  border-radius: 10px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -219,8 +215,7 @@
 }
 .print .setting_number_methods_input {
   border: 1px solid #cccccc;
-  -webkit-border-radius: 20px;
-          border-radius: 20px;
+  border-radius: 20px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -256,11 +251,9 @@
   display: -ms-flexbox;
   display: flex;
   border: 1px solid #F53B47;
-  width: -webkit-calc(100vw - 80rpx);
   width: calc(100vw - 80rpx);
   margin: 0 auto 0;
-  -webkit-border-radius: 50px;
-          border-radius: 50px;
+  border-radius: 50px;
   overflow: hidden;
 }
 .print_header .item {
@@ -275,7 +268,6 @@
 .print_header .item.active {
   color: #fff;
   background: -webkit-gradient(linear, right top, left top, from(#f53647), to(#fd973c));
-  background: -webkit-linear-gradient(right, #f53647, #fd973c);
   background: -o-linear-gradient(right, #f53647, #fd973c);
   background: linear-gradient(to left, #f53647, #fd973c);
 }
