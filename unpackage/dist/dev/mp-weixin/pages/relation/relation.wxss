@@ -45,14 +45,38 @@
   color: #000;
   background: #fff;
 }
-.relation .context .content {
+.relation .context .content2 {
+  width: calc(100vw - 30px);
   overflow-y: scroll;
   height: calc(100vh - 400rpx);
   font-size: 14px;
   background: #f2f2f2;
   margin: 10px;
 }
-.relation .context .content .item {
+.relation .context .content2 .item {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 2px;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+}
+.relation .context .content1 {
+  width: calc(100vw -60px);
+  overflow: scroll;
+  height: calc(100vh - 400rpx);
+  font-size: 14px;
+  background: #f2f2f2;
+  margin: 10px;
+}
+.relation .context .content1 .item {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;

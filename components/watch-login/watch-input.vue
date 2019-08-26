@@ -43,8 +43,7 @@
 			placeholder: String, //框内提示
 			maxlength: {
 				//最大长度
-				type: [Number,String],
-				default: 20,
+				type: [Number,String]
 			},
 			isShowPass:{
 				//是否显示密码图标（二选一）

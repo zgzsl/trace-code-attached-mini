@@ -7,16 +7,13 @@
 						<view class="left"><text>外码编号:</text><text>{{outCode||""}}</text></view>
 						<view class="btn" @tap="relation">关联子码</view>
 					</view>
-					<view class="content">
-						<view class="item" v-for="(item,index) in chlidCodeArr" v-if="chlidCodeArr.length>0" :key="index">
-							<view style="font-size: 26rpx;">子码编号:</view><text style="font-size: 26rpx;">{{item}}</text>
-							<icon type="cancel" size="26" @tap="deleteCode(index)" />
-						</view>
 
-						<view class="item" style="color: rgba(128,128,128,1);" v-if="chlidCodeArr.length===0">
-							暂无关联的子码
-						</view>
+					<view class="content1">
+						<mix-tree :list="list" @treeItemClick="treeItemClick" @deleteCode="deleteCode"></mix-tree>
 					</view>
+					<!-- 	<view class="content2" >
+						
+					</view> -->
 				</view>
 				<view class="btn_box">
 					<button type="primary" class="btn" @tap="confirm">完成</button>
@@ -31,22 +28,50 @@
 </template>
 
 <script>
+	import mixTree from '@/components/mix-tree/mix-tree';
 	import error from '../../components/scodeError.vue'
 	export default {
 		data() {
 			return {
+
 				text: '扫码错误',
 				showError: false,
 				outCode: "",
 				chlidCodeArr: [],
-				type: ''
+				type: '',
+				alonecode: "",
+				list: [],
+				flag: true,
+				firstData: [],
+				count: 0
+
 			}
 		},
 		components: {
-			error
+			error,
+			mixTree
 		},
+		// onLoad() {
+		// 	this.list = [{
+		// 		"id": 1152,
+		// 		"traceIndex": 7,
+		// 		"traceCodeNumber": "zs1566444062298000575418592",
+		// 		"traceSubCodeNumber": "042615664440623250007",
+		// 		"traceGoodId": 17621,
+		// 		"traceStallId": -1,
+		// 		"parentId": null,
+		// 		"isLeaf": "N",
+		// 		"nodeLevel": 3,
+		// 		"scanCount": 0,
+		// 		"children": [],
+		// 		"name": "042615664440623250007"
+		// 	}]
+		// },
 		methods: {
+			//点击最后一级时触发该事件
+			treeItemClick(item) {
 
+			},
 			createdClick() {
 				uni.scanCode({
 					success: (res) => {
@@ -55,11 +80,12 @@
 							let sid = res.result.split("SID=")[1]
 							this.$common.get("/trace-api/trace/getSubCodeById?sid=" + sid).then((res) => {
 								if (Number(res.data.code) === 200) {
-									if(res.data.data.isLeaf==='N'){
+									if (res.data.data.isLeaf === 'N') {
 										that.$common.showToast("扫码成功", "success")
 										that.showError = false
-										that.outCode=res.data.data.traceSubCodeNumber ||""
-									}else{						
+										that.outCode = res.data.data.traceSubCodeNumber || ""
+										this.getTree()
+									} else {
 										this.showError = true
 										this.text = "此码不是外码,外码获取失败"
 										this.type = 'createdClick'
@@ -67,7 +93,7 @@
 								} else {
 									that.$common.showToast(res.data.message, 'none')
 								}
-								
+
 							})
 						} else {
 							this.showError = true
@@ -82,7 +108,7 @@
 					this.$common.showToast("外码不能为空", 'none')
 					return;
 				}
-				if (this.chlidCodeArr.length === 0) {
+				if (this.chlidCodeArr.length === 0&&this.list.length===0) {
 					this.$common.showToast("子码不能为空", 'none')
 					return;
 				}
@@ -113,18 +139,55 @@
 					}
 				})
 			},
-			deleteCode(index) {
+			deleteCode(item) {
+				console.log(item)
 				uni.showModal({
 					title: '提示',
 					content: '此操作将删除此子码编号',
 					success: (res) => {
 						if (res.confirm) {
-							this.chlidCodeArr.splice(index, 1);
-							this.$common.showToast("删除成功", "success")
+							this.$common.post('/trace-api/trace/deleteCode/' + item.id).then((res) => {
+								if (Number(res.data.code) === 200) {
+									this.$common.showToast("删除成功", "success")
+
+
+									if (this.chlidCodeArr.indexOf(String(item.name)) > -1) {
+										let index = 0
+										for (let i in this.chlidCodeArr) {
+
+											if (String(this.chlidCodeArr[i]) === String(item.name)) {
+
+												index = i
+												break;
+											}
+										}
+
+										let newArr = this.chlidCodeArr
+										let newArr2 = newArr.splice(index, 1)
+
+									}
+									this.getTree()
+
+								} else {
+									this.$common.showToast(res.data.message, "none")
+								}
+							})
+
 						}
 					}
 				});
 
+			},
+			iterator(list, sucode) {
+
+				for (let index in list) {
+					if (String(list[index].traceSubCodeNumber) === String(sucode)) {
+						this.count++;
+					}
+					if (list[index].children !== null) {
+						list[index].children = this.iterator(list[index].children, sucode)
+					}
+				}
 			},
 			relation() {
 				uni.scanCode({
@@ -133,11 +196,32 @@
 						if (res.result && res.result.indexOf("SID") > 0) {
 							let sid = res.result.split("SID=")[1]
 							this.$common.get("/trace-api/trace/getSubCodeById?sid=" + sid).then((res) => {
-
+								this.count = 0
 								if (Number(res.data.code) === 200) {
-									that.$common.showToast("扫码成功", "success")
-									that.showError = false
-									that.chlidCodeArr.push(res.data.data.traceSubCodeNumber)
+									if (this.chlidCodeArr.indexOf(res.data.data.traceSubCodeNumber) > -1) {
+										this.$common.showToast("编码已存在", "none")
+									} else {
+										if (res.data.data.traceSubCodeNumber === this.outCode) {
+											this.$common.showToast("不能关联本身", "none")
+										} else {
+
+											this.iterator(this.list, res.data.data.traceSubCodeNumber)
+											console.log("this.count ", this.count)
+											if (this.count > 0) {
+												this.$common.showToast("编码已存在", "none")
+												setTimeout(() => {
+													this.getTree()
+												}, 800)
+												return false
+											} else {
+												this.chlidCodeArr.push(res.data.data.traceSubCodeNumber)
+												this.getTree()
+											}
+
+
+										}
+
+									}
 								} else {
 									that.$common.showToast(res.data.message, 'none')
 								}
@@ -149,6 +233,18 @@
 						}
 					}
 				});
+			},
+			getTree() {
+				this.$common.post("/trace-api/trace/getTreeListCode", {
+					subCodeList: this.chlidCodeArr,
+					outCode: this.outCode,
+				}).then((res) => {
+
+					this.list = res.data.data
+
+					// this.$common.showToast("操作成功", "success")
+
+				})
 			}
 		}
 
@@ -190,7 +286,8 @@
 				}
 			}
 
-			.content {
+			.content2 {
+				width: calc(100vw - 30px);
 				overflow-y: scroll;
 				height: calc(100vh - 400rpx);
 				font-size: 14px;
@@ -206,14 +303,35 @@
 
 				}
 			}
+
+			.content1 {
+				// display: flex;
+				width: calc(100vw -60px);
+				overflow: scroll;
+				height: calc(100vh - 400rpx);
+				font-size: 14px;
+				background: rgba(242, 242, 242, 1);
+				margin: 10px;
+				// padding
+				// justify-content:center;
+
+				.item {
+					position: relative;
+					display: flex;
+					align-items: center;
+					padding: 10px 2px;
+					justify-content: space-around;
+
+				}
+			}
 		}
 
 		.outbtn {
-			button{
+			button {
 				background: linear-gradient(to left, #f53647, #fd973c);
 				color: #FFFFFF;
 				font-size: 30rpx;
-				padding:2px 5px;
+				padding: 2px 5px;
 				border-radius: 49rpx;
 			}
 		}

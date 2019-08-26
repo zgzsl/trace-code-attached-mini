@@ -1,0 +1,1 @@
+<view class="vue-tree-list _ul"><block wx:for="{{treeData}}" wx:for-item="item" wx:for-index="idx" wx:key="idx"><tree-item vue-id="{{'1-'+idx}}" ids="{{ids}}" ids-with-parent="{{idsWithParent}}" model="{{item}}" options="{{termOptions}}" depth="{{0}}" state="{{state}}" data-event-opts="{{[['^handle',[['handle']]]]}}" bind:handle="__e" bind:__l="__l"></tree-item></block></view>

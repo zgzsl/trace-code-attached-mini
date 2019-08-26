@@ -37,8 +37,8 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "deliverGoods",
-					"pathName": "pages/deliverGoods/deliverGoods",
+					"name": "relation",
+					"pathName": "pages/relation/relation",
 					"scene": null
 				}
 			]
