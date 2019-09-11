@@ -1059,4 +1059,63 @@
 	margin-left: 15rpx;
 	margin-right: 15rpx;
 }
+.main-list {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 36rpx;
+  /* Input 高度 */
+  color: #333333;
+  padding: 32rpx;
+  margin-top: 24rpx;
+  margin-bottom: 24rpx;
+}
+.main-name {
+  padding-left: 18rpx;
+  font-size: 28rpx;
+}
+.img {
+  width: 32rpx;
+  height: 32rpx;
+  font-size: 32rpx;
+}
+.main-input {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: left;
+  font-size: 28rpx;
+  /* line-height: 100upx; */
+  padding-right: 10rpx;
+  margin-left: 20rpx;
+}
+.vercode {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 24rpx;
+  line-height: 100rpx;
+}
+.vercode-run {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+.oBorder {
+  border: none;
+  border-radius: 2.5rem;
+  -webkit-box-shadow: 0 0 60rpx 0 rgba(43, 86, 112, 0.1);
+  box-shadow: 0 0 60rpx 0 rgba(43, 86, 112, 0.1);
+}
 

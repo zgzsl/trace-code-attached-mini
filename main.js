@@ -4,8 +4,6 @@ import VueSteps from 'a-vue-steps'
 import 'a-vue-steps/dist/vue-steps.min.css'
 import common from './common/fetch.js'
 import store from './store'
-import Vuetree from 'vue-simple-tree'
-Vue.use(Vuetree)
 Vue.use(VueSteps)
 
 Vue.config.productionTip = false

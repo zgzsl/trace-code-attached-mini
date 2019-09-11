@@ -5,18 +5,19 @@
 				<view class="context">
 					<view class="header">
 						<view class="left"><text>外码编号:</text><text>{{outCode||""}}</text></view>
-						<view class="btn" @tap="relation">关联子码</view>
+						<view class="btn" @tap="relation" v-if="!deliverGoods">关联子码</view>
+						<view class="btn"  v-if="deliverGoods">已发货</view>
 					</view>
 
-					<view class="content1">
-						<mix-tree :list="list" @treeItemClick="treeItemClick" @deleteCode="deleteCode"></mix-tree>
+					<view class="content1" :class="{'contentMax':deliverGoods}">
+						<mix-tree :list="list" :deliverGoods="deliverGoods" @treeItemClick="treeItemClick" @deleteCode="deleteCode"></mix-tree>
 					</view>
 					<!-- 	<view class="content2" >
 						
 					</view> -->
 				</view>
 				<view class="btn_box">
-					<button type="primary" class="btn" @tap="confirm">完成</button>
+					<button type="primary" class="btn" @tap="confirm" v-if="!deliverGoods">完成</button>
 				</view>
 			</view>
 			<view class="outbtn" v-if="!outCode">
@@ -33,7 +34,7 @@
 	export default {
 		data() {
 			return {
-
+				deliverGoods: false,
 				text: '扫码错误',
 				showError: false,
 				outCode: "",
@@ -79,7 +80,13 @@
 						if (res.result && res.result.indexOf("SID") > 0) {
 							let sid = res.result.split("SID=")[1]
 							this.$common.get("/trace-api/trace/getSubCodeById?sid=" + sid).then((res) => {
+								
 								if (Number(res.data.code) === 200) {
+									if (Number(res.data.data.isEnable) > 0) {
+										this.deliverGoods = false
+									} else {
+										this.deliverGoods = true
+									}
 									if (res.data.data.isLeaf === 'N') {
 										that.$common.showToast("扫码成功", "success")
 										that.showError = false
@@ -108,7 +115,7 @@
 					this.$common.showToast("外码不能为空", 'none')
 					return;
 				}
-				if (this.chlidCodeArr.length === 0&&this.list.length===0) {
+				if (this.chlidCodeArr.length === 0 && this.list.length === 0) {
 					this.$common.showToast("子码不能为空", 'none')
 					return;
 				}
@@ -217,8 +224,6 @@
 												this.chlidCodeArr.push(res.data.data.traceSubCodeNumber)
 												this.getTree()
 											}
-
-
 										}
 
 									}
@@ -323,7 +328,11 @@
 					justify-content: space-around;
 
 				}
+				&.contentMax{
+					height: calc(100vh - 200rpx);
+				}
 			}
+			
 		}
 
 		.outbtn {

@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "tree-item": "/node-modules/_vue-simple-tree@2.3.2@vue-simple-tree/src/components/Item"
-  },
-  "component": true
-}

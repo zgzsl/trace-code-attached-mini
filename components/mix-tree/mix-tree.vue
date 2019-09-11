@@ -18,7 +18,7 @@
 				>	
 					<view>
 						<image class="mix-tree-icon" :src="item.lastRank ? treeParams.lastIcon : item.showChild ? treeParams.currentIcon : treeParams.defaultIcon"></image>{{item.name}}</view>
-					<icon type="cancel" size="20" @tap.stop="deleteCode(item)" />
+					<icon type="cancel" size="20" v-if="!deliverGoods" @tap.stop="deleteCode(item)" />
 				</view>
 			</block>
 			
@@ -43,6 +43,9 @@
 				default(){
 					return {}
 				}
+			},
+			deliverGoods:{
+				type: Boolean
 			}
 		},
 		data() {

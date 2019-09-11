@@ -1,6 +1,6 @@
 export default class common {
 	static goLogin = '/accountCenter/account/login/zs'
-	static host = "https://zs-beta.cntracechain.com"
+	static host = "https://zs.cntracechain.com"
 
 	static post(url, data) {
 		const value = uni.getStorageSync('setUserData');

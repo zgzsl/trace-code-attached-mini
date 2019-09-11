@@ -7,8 +7,12 @@
 			</view>
 			<!-- 主体表单 -->
 			<view class="main">
-				<wInput v-model="phoneData" type="text" placeholder="商家账号"></wInput>
-				<wInput v-model="passData" type="password" isShowPass="true"  placeholder="商家密码"></wInput>
+				<!-- <wInput  type="text" placeholder="商家账号"></wInput> -->
+				<view class="main-list main-list oBorder oBorder">
+					<input class="main-name" @input="inputText" type="text" v-model="phoneData" placeholder="商家账号" />
+				</view>
+
+				<wInput v-model="passData" type="password" isShowPass="true" placeholder="商家密码"></wInput>
 			</view>
 			<wButton text="登 录" :bgColor="bgColor" :rotate="isRotate" @click.native="startLogin()"></wButton>
 
@@ -39,7 +43,10 @@
 			// this.isLogin();
 		},
 		methods: {
-
+			inputText(e){
+	
+				this.phoneData=e.detail.value
+			},
 			startLogin() {
 				//登录
 				if (this.isRotate) {
@@ -97,11 +104,11 @@
 					} else {
 						this.$common.showToast(res.data.statusMsg, "none")
 						this.isRotate = false
-						
+
 					}
 					setTimeout(() => {
 						uni.hideLoading();
-					},1500)
+					}, 1500)
 
 				}).catch(err => {
 					uni.hideLoading();
@@ -112,7 +119,58 @@
 	}
 </script>
 
-<style>
+<style lang="less">
 	@import url("../../components/watch-login/css/icon.css");
 	@import url("./css/main.css");
+
+	.main-list {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		height: 36upx;
+		/* Input 高度 */
+		color: #333333;
+		padding: 32upx;
+		margin-top: 24upx;
+		margin-bottom: 24upx;
+	}
+
+	.main-name {
+		padding-left: 18upx;
+		font-size: 28upx;
+
+	}
+
+	.img {
+		width: 32upx;
+		height: 32upx;
+		font-size: 32upx;
+	}
+
+	.main-input {
+		flex: 1;
+		text-align: left;
+		font-size: 28upx;
+		/* line-height: 100upx; */
+		padding-right: 10upx;
+		margin-left: 20upx;
+	}
+
+	.vercode {
+		color: rgba(0, 0, 0, 0.7);
+		font-size: 24upx;
+		line-height: 100upx;
+	}
+
+	.vercode-run {
+		color: rgba(0, 0, 0, 0.4) !important;
+	}
+
+	.oBorder {
+		border: none;
+		border-radius: 2.5rem;
+		-webkit-box-shadow: 0 0 60upx 0 rgba(43, 86, 112, .1);
+		box-shadow: 0 0 60upx 0 rgba(43, 86, 112, .1);
+	}
 </style>

@@ -24,24 +24,13 @@
 			"current": -1,
 			"list": []
 		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
 		"game": {
 			"current": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
-			"list": [
-				{
-					"id": -1,
-					"name": "relation",
-					"pathName": "pages/relation/relation",
-					"scene": null
-				}
-			]
+			"current": -1,
+			"list": []
 		}
 	}
 }
