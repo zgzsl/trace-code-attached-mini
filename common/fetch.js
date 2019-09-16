@@ -1,5 +1,5 @@
 export default class common {
-	static goLogin = '/accountCenter/account/login/zs'
+	static goLogin = '/accountCenter/account/login/zs/mini'
 	static host = "https://zs.cntracechain.com"
 
 	static post(url, data) {

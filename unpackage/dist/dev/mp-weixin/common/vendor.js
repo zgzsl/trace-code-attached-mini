@@ -1793,7 +1793,7 @@ function normalizeComponent (
       var time = "".concat(year, "-").concat(mouth, "-").concat(day).concat(hourMinSe);
 
       return time;
-    } }]);return common;}();exports.default = common;_defineProperty(common, "goLogin", '/accountCenter/account/login/zs');_defineProperty(common, "host", "https://zs.cntracechain.com");
+    } }]);return common;}();exports.default = common;_defineProperty(common, "goLogin", '/accountCenter/account/login/zs/mini');_defineProperty(common, "host", "https://zs.cntracechain.com");
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
