@@ -91,6 +91,7 @@
 					this.$common.showToast("外码与内码比值为1", 'none')
 					return;
 				}
+			
 				this.$common.post("/trace-api/trace/changOutCodeBatch", this.info).then((res) => {
 					console.log(res)
 					if (Number(res.data.code) === 200) {

@@ -66,8 +66,8 @@ import error from '../../components/scodeError.vue'
 				uni.scanCode({
 					success: (res) => {
 						let that = this
-						if (res.result && res.result.indexOf("SID") > 0) {
-							let sid = res.result.split("SID=")[1]
+					if (res.result && res.result.indexOf("https://2641.cn/") > -1) {
+						let sid = res.result.split("https://2641.cn/")[1]
 							this.$common.get("/trace-api/trace/getSubCodeById?sid="+Number(sid) ).then((res) => {
 								console.log(res)
 								if (Number(res.data.code) === 200) {

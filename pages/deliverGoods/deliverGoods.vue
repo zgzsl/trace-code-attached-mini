@@ -35,6 +35,16 @@
 							<view class="title">输入自定义商家：</view>
 							<input type="text" v-model="sellerName" placeholder="直接输入商家名称" />
 						</view>
+					<!-- 	<view class="context_item">
+							
+							<view class="title">手机号码：</view>
+							<input type="text" v-model="phone" placeholder="输入手机号码" />
+						</view>
+						<view class="context_item">
+							
+							<view class="title">名称：</view>
+							<input type="text" v-model="sellerName" placeholder="输入名称" />
+						</view> -->
 					</radio-group>
 
 				</view>
@@ -69,7 +79,8 @@
 				active: 0,
 				List: [],
 				sellerName: "",
-				count: 0
+				count: 0,
+				phone:''
 			}
 		},
 		watch: {
@@ -90,6 +101,7 @@
 				console.log(evt)
 				this.current = Number(evt.detail.value)
 				console.log(this.current)
+				
 			},
 			next() {
 				if (this.codeArr.length > 0) {
@@ -175,9 +187,12 @@
 			scanCode() {
 				uni.scanCode({
 					success: (res) => {
+						console.log('res.result.indexOf("https://2641.cn/")',res.result.indexOf("https://2641.cn/"))
+							console.log('res.result',res.result)
 						let that = this
-						if (res.result && res.result.indexOf("SID") > 0) {
-							let sid = res.result.split("SID=")[1]
+						if (res.result && res.result.indexOf("https://2641.cn/") > -1) {
+							let sid = res.result.split("https://2641.cn/")[1]
+							console.log('sid',sid)
 							this.$common.get("/trace-api/trace/getSubCodeById?sid=" + sid).then((res) => {
 								if (Number(res.data.code) === 200) {
 									console.log("发货对象",res)
@@ -209,8 +224,7 @@
 										that.$common.showToast("此编码已发货", "none")
 									}
 									
-									
-
+						
 									console.log(that.codeArr)
 								} else {
 									that.showError = false

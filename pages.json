@@ -12,7 +12,24 @@
 				"navigationBarTitleText": "首页"
 			}
 		},
-
+		{
+			"path": "pages/sellerMessage/sellerMessage",
+			"style": {
+				"navigationBarTitleText": "个人信息"
+			}
+		},
+		{
+			"path": "pages/deliverSellerNode/deliverSellerNode",
+			"style": {
+				"navigationBarTitleText": "发货"
+			}
+		},
+		{
+			"path": "pages/getLocation/getLocation",
+			"style": {
+				"navigationBarTitleText": "定位"
+			}
+		},
 		{
 			"path": "pages/test/test",
 			"style": {
@@ -49,11 +66,6 @@
 			"path": "pages/deliverGoods/deliverGoods",
 			"style": {
 				"navigationBarTitleText": "发货"
-			}
-		}, {
-			"path": "pages/deliverFinish/deliverFinish",
-			"style": {
-				"navigationBarTitleText": "扫码发货"
 			}
 		}
 

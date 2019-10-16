@@ -31,7 +31,13 @@
 		},
 		data() {
 			return {
-				menuList: [
+				menuList: [],
+				type:0
+			}
+		},
+		onShow() {
+			if(this.type===0){
+				this.menuList=[
 					// {
 					// 	src: '../../static/images/prink.png',
 					// 	name: "打印外码",
@@ -55,10 +61,28 @@
 						desc: "扫码发货",
 						router: '../deliverGoods/deliverGoods'
 					}
+					// , {
+					// 	src: '../../static/images/logo1.png',
+					// 	name: "商户信息",
+					// 	desc: "此功能用于修改商户资料",
+					// 	router: '../sellerMessage/sellerMessage'
+					// }
+				]
+			}else{
+				this.menuList=[
+					{
+						src: '../../static/images/logo1.png',
+						name: "发货",
+						desc: "扫码发货",
+						router: '../deliverSellerNode/deliverSellerNode'
+					}, {
+						src: '../../static/images/logo1.png',
+						name: "商户信息",
+						desc: "此功能用于修改商户资料",
+						router: '../sellerMessage/sellerMessage'
+					}
 				]
 			}
-		},
-		onShow() {
 			this.isLogin()
 		},
 		methods: {

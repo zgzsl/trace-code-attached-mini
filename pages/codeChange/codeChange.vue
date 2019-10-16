@@ -14,9 +14,9 @@
 <script>
 	export default {
 		methods: {
+			//选择外码
 			Jump(type) {
 				if (type) {
-
 					uni.navigateTo({
 						url: '../outsideCode/outsideCode'
 					})
