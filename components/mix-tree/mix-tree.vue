@@ -2,26 +2,28 @@
 	<view class="content">
 		<view class="mix-tree-list">
 			<block v-for="(item, index) in treeList" :key="index" v-if="treeList.length>0">
-				<view 
-					class="mix-tree-item"
-					:style="[{
+				<view class="mix-tree-item" :style="[{
 							paddingLeft: item.rank*15 + 'px',
 							zIndex: item.rank*-1 +50
 						}]"
-					:class="{
+				 :class="{
 							border: treeParams.border === true,
 							show: item.show,
 							last: item.lastRank,
 							showchild: item.showChild
 						}"
-					@tap.stop="treeItemTap(item, index)"
-				>	
-					<view>
-						<image class="mix-tree-icon" :src="item.lastRank ? treeParams.lastIcon : item.showChild ? treeParams.currentIcon : treeParams.defaultIcon"></image>{{item.name}}</view>
+				 @tap.stop="treeItemTap(item, index)">
+					<view style="display: flex;flex-direction: row;">
+						<image class="mix-tree-icon" :src="item.lastRank ? treeParams.lastIcon : item.showChild ? treeParams.currentIcon : treeParams.defaultIcon"></image>
+						<view class="code-title" style="display: flex;flex-direction: column;">
+							<text>{{item.name}}</text> 
+							<text style="font-size: 12px;">sid:12</text>
+						</view>
+					</view>
 					<icon type="cancel" size="20" v-if="!deliverGoods" @tap.stop="deleteCode(item)" />
 				</view>
 			</block>
-			
+
 		</view>
 		<view class="item" v-if="treeList.length===0">
 			暂无编码
@@ -34,17 +36,17 @@
 		props: {
 			list: {
 				type: Array,
-				default(){
+				default () {
 					return [];
 				}
 			},
 			params: {
 				type: Object,
-				default(){
+				default () {
 					return {}
 				}
 			},
-			deliverGoods:{
+			deliverGoods: {
 				type: Boolean
 			}
 		},
@@ -60,63 +62,63 @@
 			}
 		},
 		watch: {
-			list(list){
-				
+			list(list) {
+
 				this.treeParams = Object.assign(this.treeParams, this.params);
-				
-				this.treeList=[]
+
+				this.treeList = []
 				this.renderTreeList(list);
 			}
 		},
 		methods: {
 			//扁平化树结构
-			renderTreeList(list=[], rank=0, parentId=[]){
-				
-				list.forEach(item=>{
+			renderTreeList(list = [], rank = 0, parentId = []) {
+
+				list.forEach(item => {
 					this.treeList.push({
 						id: item.id,
 						name: item.name,
-						parentId,  // 父级id数组
-						rank,  // 层级
-						showChild: false,  //子级是否显示
-						show: rank === 0  // 自身是否显示
+						parentId, // 父级id数组
+						rank, // 层级
+						showChild: false, //子级是否显示
+						show: rank === 0 // 自身是否显示
 					})
-					if(Array.isArray(item.children) && item.children.length > 0){
+					if (Array.isArray(item.children) && item.children.length > 0) {
 						let parents = [...parentId];
 						parents.push(item.id);
-						this.renderTreeList(item.children, rank+1, parents);
-					}else{
-						this.treeList[this.treeList.length-1].lastRank = true;
+						this.renderTreeList(item.children, rank + 1, parents);
+					} else {
+						this.treeList[this.treeList.length - 1].lastRank = true;
 					}
-					
+
 				})
 			},
-			deleteCode(item){
+			deleteCode(item) {
 				this.$emit('deleteCode', item);
 			},
 			// 点击
-			treeItemTap(item){
-				
+			treeItemTap(item) {
+
 				let list = this.treeList;
 				let id = item.id;
-				if(item.lastRank === true){
+				if (item.lastRank === true) {
 					//点击最后一级时触发事件
 					this.$emit('treeItemClick', item);
 					return;
 				}
 				item.showChild = !item.showChild;
-				list.forEach(childItem=>{
-					if(item.showChild === false){
+				list.forEach(childItem => {
+					if (item.showChild === false) {
 						//隐藏所有子级
-						if(!childItem.parentId.includes(id)){
+						if (!childItem.parentId.includes(id)) {
 							return;
 						}
-						if(childItem.lastRank !== true){
+						if (childItem.lastRank !== true) {
 							childItem.showChild = false;
 						}
 						childItem.show = false;
-					}else{
-						if(childItem.parentId[childItem.parentId.length-1] === id){
+					} else {
+						if (childItem.parentId[childItem.parentId.length - 1] === id) {
 							childItem.show = true;
 						}
 					}
@@ -127,14 +129,14 @@
 </script>
 
 <style>
-	
-	.mix-tree-list{
+	.mix-tree-list {
 		/* width: 100%; */
 		display: flex;
 		flex-direction: column;
 		/* padding-left: 30upx; */
 	}
-	.mix-tree-item{
+
+	.mix-tree-item {
 		/* width: 100%; */
 		display: flex;
 		align-items: center;
@@ -148,26 +150,31 @@
 		position: relative;
 		padding: 0 10px;
 	}
-	.mix-tree-item.border{
+
+	.mix-tree-item.border {
 		border-bottom: 1px solid #eee;
 	}
-	.mix-tree-item.show{
+
+	.mix-tree-item.show {
 		height: 80upx;
 		opacity: 1;
 	}
-	.mix-tree-icon{
+
+	.mix-tree-icon {
 		width: 26upx;
 		height: 26upx;
 		margin-right: 8upx;
 		opacity: .9;
 	}
-	
-	.mix-tree-item.showchild:before{
+
+	.mix-tree-item.showchild:before {
 		transform: rotate(90deg);
 	}
-	.mix-tree-item.last:before{
+
+	.mix-tree-item.last:before {
 		opacity: 0;
 	}
+
 	.item {
 		position: relative;
 		display: flex;

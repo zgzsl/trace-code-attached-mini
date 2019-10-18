@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "打印",
+  "usingComponents": {
+    "uni-steps": "/components/qingqing-steps/uni-steps",
+    "mx-date-picker": "/components/mx-datepicker/mx-datepicker",
+    "uni-list": "/components/uni-list/uni-list",
+    "uni-list-item": "/components/uni-list-item/uni-list-item",
+    "pengkai-draw": "/components/pengkai-draw"
+  }
+}

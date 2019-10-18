@@ -11,8 +11,16 @@
 				<view class="main-list main-list oBorder oBorder">
 					<input class="main-name" @input="inputText" type="text" v-model="phoneData" placeholder="商家账号" />
 				</view>
-
-				<wInput v-model="passData" type="password" isShowPass="true" placeholder="商家密码"></wInput>
+				<view class="main-list main-list oBorder oBorder">
+					<input class="main-name"   v-model="passData" 		:password="type==='password'&&!showPassword"  placeholder="商家密码" />
+					<image
+					
+						class="img cuIcon" 
+						:class="showPassword?'cuIcon-attention':'cuIcon-attentionforbid'" 
+						@tap="showPass"
+					></image>
+				</view>
+				<!-- <wInput v-model="passData" type="password" isShowPass="true" placeholder="商家密码"></wInput> -->
 			</view>
 			<wButton text="登 录" :bgColor="bgColor" :rotate="isRotate" @click.native="startLogin()"></wButton>
 
@@ -28,9 +36,11 @@
 	export default {
 		data() {
 			return {
+				type:'password',
+				showPassword:false,
 				//logo图片 base64
-				phoneData: '', //用户/电话
-				passData: '', //密码
+				phoneData: 'gaoyuan', //用户/电话
+				passData: 'zs123456', //密码
 				isRotate: false, //是否加载旋转
 				bgColor: '#A82127'
 			};
@@ -43,6 +53,9 @@
 			// this.isLogin();
 		},
 		methods: {
+			showPass(){
+				this.showPassword=!this.showPassword
+			},
 			inputText(e){
 	
 				this.phoneData=e.detail.value
@@ -122,7 +135,46 @@
 <style lang="less">
 	@import url("../../components/watch-login/css/icon.css");
 	@import url("./css/main.css");
-
+// @import url("./css/icon.css");
+	
+	.main-list{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		height: 36upx;   /* Input 高度 */
+		color: #333333;
+		padding: 32upx;
+		margin-top:24upx;
+		margin-bottom: 24upx;
+	}
+	.img{
+		width: 32upx;
+		height: 32upx;
+		font-size: 32upx;
+	}
+	.main-input{
+		flex: 1;
+		text-align: left;
+		font-size: 28upx;
+		/* line-height: 100upx; */
+		padding-right: 10upx;
+		margin-left: 20upx;
+	}
+	.vercode {
+		color: rgba(0,0,0,0.7);
+		font-size: 24upx;
+		line-height: 100upx;
+	}
+	.vercode-run {
+		color: rgba(0,0,0,0.4) !important;
+	}
+	.oBorder{
+	    border: none;
+	    border-radius: 2.5rem ;
+	    -webkit-box-shadow: 0 0 60upx 0 rgba(43,86,112,.1) ;
+	    box-shadow: 0 0 60upx 0 rgba(43,86,112,.1) ;
+	}
 	.main-list {
 		display: flex;
 		flex-direction: row;

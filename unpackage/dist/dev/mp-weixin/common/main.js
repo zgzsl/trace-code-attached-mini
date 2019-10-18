@@ -11,11 +11,12 @@
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 9));
 var _aVueSteps = _interopRequireDefault(__webpack_require__(/*! a-vue-steps */ 15));
-__webpack_require__(/*! a-vue-steps/dist/vue-steps.min.css */ 16);
-var _fetch = _interopRequireDefault(__webpack_require__(/*! ./common/fetch.js */ 17));
-var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+var _scanner = _interopRequireDefault(__webpack_require__(/*! scanner */ 16));
+__webpack_require__(/*! a-vue-steps/dist/vue-steps.min.css */ 17);
+var _fetch = _interopRequireDefault(__webpack_require__(/*! ./common/fetch.js */ 18));
+var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 _vue.default.use(_aVueSteps.default);
-
+_vue.default.use(_scanner.default);
 _vue.default.config.productionTip = false;
 
 _App.default.mpType = 'app';
