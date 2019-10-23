@@ -12,21 +12,25 @@
 					<view class="text_box">
 						<view class="top">{{item.name}}</view>
 						<view class="bottom">{{item.district}}{{item.address}}{{item.name}}</view>
-						
+
 					</view>
 				</view>
 			</view>
-		
 			<view class="search_box" v-if="dataArr.length===0&&keywords">
 				<view class="item" style="text-align: center;">
 					暂无查询结果
 				</view>
 			</view>
+			<view class="search_box" v-if="!keywords">
+				<view class="item" style="text-align: center;" v-if="!keywords">
+					温馨提醒：请输入具体地址，点击可更改用户信息
+				</view>
+			</view>
 		</view>
-		<view class="page-body" >
+		<view class="page-body">
 			<view class="page-section page-section-gap">
-				<map style="width: 100%; height: calc(100vh - 120upx);" :labels="labels" :show-location="true" :markers="markers" @markertap="makertap"
-				 :latitude="latitude" :longitude="longitude" scale="16">
+				<map style="width: 100%; height: calc(100vh - 750upx);" :labels="labels" :show-location="true" :markers="markers"
+				 @markertap="makertap" :latitude="latitude" :longitude="longitude" scale="16">
 				</map>
 
 			</view>
@@ -42,9 +46,10 @@
 	});
 	export default {
 		data() {
-			
+
 			return {
-				keywords:'',
+				keywords: '',
+				setUserData: {},
 				show: true,
 				markers: [],
 				latitude: 23.13,
@@ -52,24 +57,25 @@
 				city: '',
 				myAmapFunflag: '',
 				dataArr: [],
-				labels:[]
+				maskerClick: false,
+				labels: []
 			}
 		},
 		onLoad() {
 			uni.getLocation({
-			    type: 'gcj02',
-			    success:  (res) =>{
+				type: 'gcj02',
+				success: (res) => {
 					console.log(res)
-			        console.log('当前位置的经度：' + res.longitude);
-			        console.log('当前位置的纬度：' + res.latitude);
-					let markers=[]
+					console.log('当前位置的经度：' + res.longitude);
+					console.log('当前位置的纬度：' + res.latitude);
+					let markers = []
 					myAmapFun.getRegeo({
 						iconPath: '../../static/img/marker.png',
 						location: res.longitude + ',' + res.latitude, //经纬度
 						success: (data) => {
 							console.log(data)
 							// let markersData = data.markers;
-					
+
 							this.markers = [{
 								id: data[0].id,
 								latitude: data[0].latitude,
@@ -77,20 +83,20 @@
 								iconPath: data[0].iconPath,
 								width: 40,
 								height: 60,
-								label:{
-									content:data[0].name,
-									fontSize:16,
-									bgColor:'#fff',
-									textAlign:'right',
-									borderRadius:5,
-									padding:3,
-									color:'red',
-									width:200
+								label: {
+									content: data[0].name,
+									fontSize: 16,
+									bgColor: '#fff',
+									textAlign: 'left',
+									borderRadius: 5,
+									padding: 3,
+									color: 'red',
+									width: 200
 								}
 							}]
-					
+
 							this.latitude = data[0].latitude
-					
+
 							this.longitude = data[0].longitude
 							// that.showMarkerInfo(markersData, 0);
 						},
@@ -100,73 +106,72 @@
 							})
 						}
 					})
-					
-					
-			    }
+
+
+				}
 			});
 
 		},
 		methods: {
-			changeMarkerColor(data, i) {
-				console.log("data", data)
-				
-				
-				uni.showModal({
-					content: "确定更改地址?",
-					success: (res) => {
-						if (res.confirm) {
-							let that = this;
-							let markers = [];
-							let labels=[]
-							for (let j = 0; j < data.length; j++) {
-								if (j == i) {
-									data[j].iconPath = "../../static/img/marker_checked.png";
-								} else {
-									data[j].iconPath = "../../static/img/marker.png";
-								}
-								markers.push({
-									id: data[j].id,
-									latitude: data[j].latitude,
-									longitude: data[j].longitude,
-									iconPath: data[j].iconPath,
-									width: data[j].width,
-									height: data[j].height,
-									label:{
-										content:data[j].label.content,
-										fontSize:16,
-										bgColor:'#fff',
-										textAlign:'right',
-										borderRadius:5,
-										padding:3,
-										color:'red'
-									}
-								})
-							
-							}
-							this.latitude = data[0].latitude
-							
-							this.longitude = data[0].longitude
-							this.markers = markers
-							console.log("可以了")
-						}
-					}
-				})
-			},
 			makertap(e) {
 				let id = e.markerId;
 				let that = this;
 				// that.showMarkerInfo(this.markers,id);
 				that.changeMarkerColor(this.markers, id);
+			},
+			changeMarkerColor(data, i) {
+				if (!this.maskerClick) {
+					console.log(data)
 
-				console.log("1221")
+					uni.showModal({
+						content: "确定更改地址?",
+						success: (res) => {
+							if (res.confirm) {
+								let that = this;
+								let markers = [];
+								let labels = []
+
+								data[0].iconPath = "../../static/img/marker_checked.png";
+								this.setUserMessage(data[0].label.content)
+								this.maskerClick = true
+
+								console.log(data)
+								// data[j].iconPath = "../../static/img/marker_checked.png";
+								markers.push({
+									id: data[0].id,
+									latitude: data[0].latitude,
+									longitude: data[0].longitude,
+									iconPath: data[0].iconPath,
+									width: data[0].width,
+									height: data[0].height,
+									label: {
+										content: data[0].label.content || data[0].regeocodeData.formatted_address,
+										fontSize: 16,
+										bgColor: '#fff',
+										textAlign: 'right',
+										borderRadius: 5,
+										padding: 3,
+										color: 'red'
+									}
+								})
+
+
+								this.latitude = data[0].latitude
+
+								this.longitude = data[0].longitude
+								this.markers = markers
+								console.log("可以了")
+							}
+						}
+					})
+				}
 			},
 			selectAdress(item) {
-
-				console.log(item)
-				if(item.location.length===0){
+				this.maskerClick = false
+				if (item.location.length === 0) {
 					uni.showToast({
-						title:'请输入具体地址',
-						icon:'none'
+						title: '请输入具体地址',
+						icon: 'none'
 					})
 					return false
 				}
@@ -179,7 +184,7 @@
 					success: (data) => {
 						console.log(data)
 						// let markersData = data.markers;
-
+						this.maskerClick = true
 						this.markers = [{
 							id: data[0].id,
 							latitude: data[0].latitude,
@@ -187,14 +192,14 @@
 							iconPath: data[0].iconPath,
 							width: 40,
 							height: 60,
-							label:{
-								content:data[0].desc,
-								fontSize:16,
-								bgColor:'#fff',
-								textAlign:'right',
-								borderRadius:5,
-								padding:3,
-								color:'red'
+							label: {
+								content: data[0].regeocodeData.formatted_address,
+								fontSize: 16,
+								bgColor: '#fff',
+								textAlign: 'right',
+								borderRadius: 5,
+								padding: 3,
+								color: 'red'
 							}
 						}]
 
@@ -202,6 +207,41 @@
 
 						this.longitude = data[0].longitude
 						// that.showMarkerInfo(markersData, 0);
+
+
+						uni.showModal({
+							content: "确定更改地址?",
+							success: (res) => {
+								if (res.confirm) {
+									let that = this;
+									let markers = [];
+									let labels = []
+									data[0].iconPath = "../../static/img/marker_checked.png";
+									markers.push({
+										id: data[0].id,
+										latitude: data[0].latitude,
+										longitude: data[0].longitude,
+										iconPath: data[0].iconPath,
+										width: data[0].width,
+										height: data[0].height,
+										label: {
+											content: data[0].regeocodeData.formatted_address,
+											fontSize: 16,
+											bgColor: '#fff',
+											textAlign: 'right',
+											borderRadius: 5,
+											padding: 3,
+											color: 'red'
+										}
+									})
+									this.latitude = data[0].latitude
+									this.longitude = data[0].longitude
+									this.markers = markers
+									this.setUserMessage(data[0].regeocodeData.formatted_address)
+									console.log("可以了")
+								}
+							}
+						})
 					},
 					fail: function(info) {
 						uni.showModal({
@@ -212,16 +252,45 @@
 				console.log(this.myAmapFunflag)
 			},
 
-
+			//設置地址
+			setUserMessage(address) {
+				let tracePoint = ''
+				this.setUserData = uni.getStorageSync('setUserData');
+				console.log(this.setUserData)
+				if (this.setUserData.role.id === 9 || this.setUserData.role.id === 10 || this.setUserData.role.id === 11) {
+					if (this.setUserData.role.id === 9) {
+						tracePoint = this.setUserData.merchant.merchantName
+					} else {
+						tracePoint = this.setUserData.distributeNode.tracePoint
+					}
+				} else {
+					tracePoint = this.setUserData.merchant.merchantName
+				}
+				this.$common.post('/accountCenter/account/updateNode', {
+					"location": address,
+					"tracePoint":tracePoint
+				}).then((res) => {
+					
+					if (res.data.statusCode === 200) {
+						this.$common.showToast('修改成功', 'success')
+						uni.setStorageSync('setUserData', res.data.data);
+						setTimeout(() => {
+							uni.navigateBack({
+								url: -1
+							})
+						}, 2000)
+					} else {
+						this.$common.showToast(res.data.statusMsg, 'none')
+					}
+				})
+			},
 			bindInput(e) {
 				if (!e.detail.value) {
-					console.log("212121")
 					this.dataArr = []
 					return false
 				}
-				
+				console.log(e)
 				this.myAmapFunflag = myAmapFun
-				console.log(this)
 				let that = this
 				myAmapFun.getInputtips({
 					keywords: e.detail.value,
@@ -248,28 +317,32 @@
 
 <style lang="less" scoped>
 	.getLocation {
-		// height: 100vh;
-
-		// position: relative;
+		height: 100vh;
+		position: relative;
 	}
 
 	.search_list {
+		position: fixed;
+		bottom: 630upx;
+		left: 0;
 		height: 120upx;
 		width: 100%;
-		position: relative;
+		// position: relative;
 		z-index: 10;
-		background:rgba(255,255,255,1);
-		opacity:0.95;
-		border-radius:20px 20px 0px 0px;
-		.search_box {
+		background: rgba(255, 255, 255, 1);
+		opacity: 0.95;
+		border-radius: 20px 20px 0px 0px;
 
-			position: fixed;
+		.search_box {
+			z-index: 2000 !important;
+			position: relative;
 			left: 0;
-			top:110upx;
+			top: 0;
 			// background: rgb(245, 245, 245);
 			width: 100%;
-			background:rgba(255,255,255,1);
-			opacity:0.95;
+			background: rgba(255, 255, 255, 1);
+			opacity: 0.95;
+
 			.item {
 				// padding-left: ;
 				border-bottom: 1px solid #C0C0C0;
@@ -277,20 +350,23 @@
 				font-size: 24upx;
 				display: flex;
 				flex-direction: row;
-				align-items:center;
-				image{
+				align-items: center;
+
+				image {
 					width: 35upx;
 					height: 35upx;
 					margin: 0 15upx;
 					// position: absolute;
 					// left: 25upx;
 					// top: 20upx;
-					
+
 				}
+
 				.top {
 					font-size: 30upx;
 				}
-				.text_box{
+
+				.text_box {
 					display: flex;
 					flex-direction: column;
 				}
@@ -303,35 +379,38 @@
 
 			&.acitve_search_box {
 				min-height: 10px !important;
-				max-height: calc(100vh - 200upx) !important;
+				max-height: calc(800upx) !important;
 				overflow: scroll;
+
 			}
 		}
 
 		.search_input {
-			position: fixed;
+			position: relative;
 			left: 0;
 			top: 0;
 			width: calc(100% - 30upx);
 			height: 120upx;
-			
+
 			display: flex;
 			justify-content: center;
 			padding: 0 15upx;
 			align-items: center;
-			image{
+
+			image {
 				width: 35upx;
 				height: 35upx;
 				position: absolute;
 				left: 25upx;
-				
+
 			}
+
 			.input_box {
-				height:80upx;
+				height: 80upx;
 
 				padding-left: 50upx;
 				border-radius: 10px;
-				background:rgba(242,242,242,1);
+				background: rgba(242, 242, 242, 1);
 				// padding-left: 12upx;
 				font-size: 24upx;
 				flex: 1;

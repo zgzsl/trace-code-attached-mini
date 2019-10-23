@@ -162,53 +162,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   onShow: function onShow() {
     // console.log(Addaction)
-    if (this.type === 0) {
-      this.menuList = [
-      // {
-      // 	src: '../../static/images/prink.png',
-      // 	name: "打印外码",
-      // 	desc: "此功能需连接打印机",
-      // 	router: '../print/print'
-      // },
-      {
-        src: '../../static/images/code.png',
-        name: "内码变成外码",
-        desc: "功能适用于无接入打印机",
-        router: '../codeChange/codeChange' },
-
-      {
-        src: '../../static/images/link.png',
-        name: "关联编码",
-        desc: "关联子码",
-        router: '../relation/relation' },
-      {
-        src: '../../static/images/logo1.png',
-        name: "发货",
-        desc: "扫码发货",
-        router: '../deliverGoods/deliverGoods'
-
-        // , {
-        // 	src: '../../static/images/logo1.png',
-        // 	name: "商户信息",
-        // 	desc: "此功能用于修改商户资料",
-        // 	router: '../sellerMessage/sellerMessage'
-        // }
-      }];
-    } else {
-      this.menuList = [
-      {
-        src: '../../static/images/logo1.png',
-        name: "发货",
-        desc: "扫码发货",
-        router: '../deliverSellerNode/deliverSellerNode' },
-      {
-        src: '../../static/images/logo1.png',
-        name: "商户信息",
-        desc: "此功能用于修改商户资料",
-        router: '../sellerMessage/sellerMessage' }];
 
 
-    }
     this.isLogin();
   },
   methods: {
@@ -227,6 +182,64 @@ __webpack_require__.r(__webpack_exports__);
           uni.redirectTo({
             url: '../login/login' });
 
+        } else {
+          var setuserData = uni.getStorageSync('setUserData');
+          console.log(setuserData);
+          if (setuserData.role) {
+            if (setuserData.role.id === 8 || setuserData.role.id === 9) {
+              this.type = 0;
+            } else {
+              this.type = 1;
+            }
+            if (this.type === 0) {
+              this.menuList = [
+              // {
+              // 	src: '../../static/images/prink.png',
+              // 	name: "打印外码",
+              // 	desc: "此功能需连接打印机",
+              // 	router: '../print/print'
+              // },
+              {
+                src: '../../static/images/logo1.png',
+                name: "商户信息",
+                desc: "此功能用于修改商户资料",
+                router: '../sellerMessage/sellerMessage' },
+
+              {
+                src: '../../static/images/code.png',
+                name: "内码变成外码",
+                desc: "功能适用于无接入打印机",
+                router: '../codeChange/codeChange' },
+
+              {
+                src: '../../static/images/link.png',
+                name: "关联编码",
+                desc: "关联子码",
+                router: '../relation/relation' },
+              {
+                src: '../../static/images/logo1.png',
+                name: "发货",
+                desc: "扫码发货",
+                router: '../deliverGoods/deliverGoods' }];
+
+
+            } else {
+              this.menuList = [
+              {
+                src: '../../static/images/logo1.png',
+                name: "商户信息",
+                desc: "此功能用于修改商户资料",
+                router: '../sellerMessage/sellerMessage' },
+              {
+                src: '../../static/images/logo1.png',
+                name: "发货",
+                desc: "扫码发货",
+                router: '../deliverSellerNode/deliverSellerNode' }];
+
+            }
+          } else {
+            this.$common.showToast("用户信息获取失败", "none");
+          }
         }
       } catch (e) {
         // error

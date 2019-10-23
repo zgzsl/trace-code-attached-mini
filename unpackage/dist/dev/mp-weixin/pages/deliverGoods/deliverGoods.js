@@ -205,12 +205,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
 {
   components: {
     error: error },
 
   data: function data() {
     return {
+      sellerNameSelect: false,
+      userNameSelect: false,
       type: 'scanCode',
       text: '扫码错误',
       showError: false,
@@ -220,11 +227,16 @@ __webpack_require__.r(__webpack_exports__);
       index: 0,
       active: 0,
       List: [],
-      sellerName: "",
       count: 0,
-      phone: '',
       flag: '',
-      activity: '' };
+      orSearch: false,
+      activity: '',
+      otherMerchant: {
+        tracePointName: '',
+        personInCharge: '' },
+
+      info: {},
+      contactNumber: '' };
 
   },
   watch: {
@@ -236,12 +248,20 @@ __webpack_require__.r(__webpack_exports__);
           }} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return != null) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}
         this.count = count;
       },
-      deep: true } },
+      deep: true },
 
+    'contactNumber': function contactNumber(val) {
+      if (this.current === 1) {
+        if (val) {
+          this.getMoblieUserMess();
+        }
+      }
+    } },
 
 
   methods: {
-    onLoad: function onLoad() {
+    onShow: function onShow() {
+
 
 
 
@@ -334,158 +354,83 @@ __webpack_require__.r(__webpack_exports__);
 
 
     },
-    radioChange: function radioChange(evt) {
-      console.log(evt);
-      this.current = Number(evt.detail.value);
-      console.log(this.current);
+    getMoblieUserMess: function getMoblieUserMess() {var _this = this;
 
-    },
-    getzsCodeMumber: function getzsCodeMumber(sid) {
-      var that = this;
-      this.$common.get("/trace-api/trace/getSubCodeById?sid=" + sid).then(function (res) {
-        if (Number(res.data.code) === 200) {
-          console.log("发货对象", res);
-          that.showError = false;
-          if (Number(res.data.data.isEnable) > 0) {
-            if (that.codeArr.length > 0) {
-              var codes = [];var _iteratorNormalCompletion2 = true;var _didIteratorError2 = false;var _iteratorError2 = undefined;try {
-                for (var _iterator2 = that.codeArr[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {var item = _step2.value;
-                  codes.push(item.traceSubCodeNumber);
-                }} catch (err) {_didIteratorError2 = true;_iteratorError2 = err;} finally {try {if (!_iteratorNormalCompletion2 && _iterator2.return != null) {_iterator2.return();}} finally {if (_didIteratorError2) {throw _iteratorError2;}}}
-              if (codes.indexOf(res.data.data.traceSubCodeNumber) > -1) {
-                that.$common.showToast("子码编号已存在", "none");
-              } else {
-                that.$common.showToast("扫码成功", "success");
-                that.codeArr.push({
-                  count: res.data.data.count,
-                  traceSubCodeNumber: res.data.data.traceSubCodeNumber });
+      uni.showLoading({
+        mask: true,
+        title: '正在检索...' });
 
-              }
-              console.log(codes);
-            } else {
-              that.$common.showToast("扫码成功", "success");
-              that.codeArr.push({
-                count: res.data.data.count,
-                traceSubCodeNumber: res.data.data.traceSubCodeNumber });
 
-            }
+      this.$common.getNot('/trace-api/other/getNodeByMobile?mobile=' + this.contactNumber).then(function (res) {
+        console.log(typeof res.data.data);
+        if (res.data.code === 200) {
+          // this.
+          if (typeof res.data.data === 'number') {
+            _this.otherMerchant = {
+              tracePointName: '',
+              personInCharge: '' };
+
+            _this.sellerNameSelect = false,
+            _this.userNameSelect = false;
+            _this.orSearch = false;
+            _this.$common.showToast("暂无信息", 'none');
           } else {
-            that.$common.showToast("此编码已发货", "none");
+            _this.info = res.data.data;
+            _this.otherMerchant = {
+              tracePointName: res.data.data.tracePointName,
+              personInCharge: res.data.data.personInCharge };
+
+            _this.orSearch = true;
+            _this.contactNumber = res.data.data.contactNumber;
+            _this.sellerNameSelect = true,
+            _this.userNameSelect = true;
           }
-
-
-          console.log(that.codeArr);
+          console.log(_this.otherMerchant);
         } else {
-          that.showError = false;
-          that.$common.showToast(res.data.message, 'none');
+          _this.$common.showToast("信息获取失败", 'none');
         }
       });
     },
-    next: function next() {
-      if (this.codeArr.length > 0) {
-        this.active = 1;
+    radioChange: function radioChange(evt) {
+      console.log(evt.detail.value);
+      this.current = Number(evt.detail.value);
+      console.log(this.current === 1);
+      if (this.current === 1) {
+        this.contactNumber = '';
       } else {
-        this.$common.showToast("请添加货物", 'none');
+        this.contactNumber = this.List[this.index].mobile;
+        this.getMoblieUserMess();
       }
-    },
-    nextConfirm: function nextConfirm() {var _this = this;
-      var sellName = "";
-      if (this.codeArr.length === 0) {
-        this.$common.showToast("外码或内码不能为空", 'none');
-        return;
-      }
-      if (Number(this.current) === 1) {
-        if (!this.$common.trim(this.sellerName)) {
-          this.$common.showToast("请输入商家名称", 'none');
-          return;
-        }
-        sellName = this.sellerName;
-      } else {
-        if (!this.List[Number(this.index)].agentName) {
+      this.otherMerchant = {
+        tracePointName: "",
+        personInCharge: '' };
 
-          this.$common.showToast("请选择代理商", 'none');
-          return;
-        } else {
-          sellName = this.List[Number(this.index)].agentName;
-        }
-      }
+
       console.log(this.current);
-      var arr = [];var _iteratorNormalCompletion3 = true;var _didIteratorError3 = false;var _iteratorError3 = undefined;try {
-        for (var _iterator3 = this.codeArr[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {var item = _step3.value;
-          arr.push(item.traceSubCodeNumber);
-        }} catch (err) {_didIteratorError3 = true;_iteratorError3 = err;} finally {try {if (!_iteratorNormalCompletion3 && _iterator3.return != null) {_iterator3.return();}} finally {if (_didIteratorError3) {throw _iteratorError3;}}}
-      var param = {
-        codeNumber: arr,
-        bussName: sellName };
-
-      console.log(param);
-      this.$common.post('/trace-api/trace/deliverGoods', param).then(function (res) {
-        console.log(res);
-        if (Number(res.data.code) === 200) {
-          _this.$common.showToast(res.data.message, 'success');
-          setTimeout(function () {
-            uni.navigateBack({
-              delta: 1 });
-
-          }, 1500);
-        } else {
-          _this.$common.showToast(res.data.message, 'none');
-        }
-      });
-    },
-    getList: function getList() {var _this2 = this;
-      var merchantId = uni.getStorageSync("setUserData").merchant.merchantId;
-      this.$common.get("/agent/merchantAgent/normal?merchantId=" + merchantId).then(function (res) {
-        console.log(res);
-        _this2.List = res.data.data || [];
-      });
-    },
-    bindPickerChange: function bindPickerChange(e) {
-      console.log('picker发送选择改变，携带值为', this.List[Number(e.target.value)]);
-      console.log(Number(e.target.value));
-      this.index = Number(e.target.value);
 
     },
-    jump: function jump() {
-      this.active = 1;
-    },
-    deleteCode: function deleteCode(index) {var _this3 = this;
-      uni.showModal({
-        title: '提示',
-        content: '此操作将删除此编号',
-        success: function success(res) {
-          if (res.confirm) {
-            _this3.codeArr.splice(index, 1);
-            _this3.$common.showToast("删除成功", "success");
-          }
-        } });
+    getzsCodeMumber: function getzsCodeMumber(sid) {var _this2 = this;
+      var that = this;
 
-
-    },
-    scanCode: function scanCode() {var _this4 = this;
-      uni.scanCode({
-        success: function success(res) {
-          console.log('res.result.indexOf("https://2641.cn/")', res.result.indexOf("https://2641.cn/"));
-          console.log('res.result', res.result);
-          var that = _this4;
-          if (res.result && res.result.indexOf("https://2641.cn/") > -1) {
-            var sid = res.result.split("https://2641.cn/")[1];
-            console.log('sid', sid);
-            _this4.$common.get("/trace-api/trace/getSubCodeById?sid=" + sid).then(function (res) {
+      this.$common.get('/trace-api/other/isCurrentNodeNewest?sid=' + sid).then(function (res) {
+        if (res.data.code === 200) {
+          if (res.data.data) {
+            _this2.$common.get("/trace-api/trace/getSubCodeById?sid=" + sid).then(function (res) {
               if (Number(res.data.code) === 200) {
                 console.log("发货对象", res);
                 that.showError = false;
                 if (Number(res.data.data.isEnable) > 0) {
                   if (that.codeArr.length > 0) {
-                    var codes = [];var _iteratorNormalCompletion4 = true;var _didIteratorError4 = false;var _iteratorError4 = undefined;try {
-                      for (var _iterator4 = that.codeArr[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {var item = _step4.value;
+                    var codes = [];var _iteratorNormalCompletion2 = true;var _didIteratorError2 = false;var _iteratorError2 = undefined;try {
+                      for (var _iterator2 = that.codeArr[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {var item = _step2.value;
                         codes.push(item.traceSubCodeNumber);
-                      }} catch (err) {_didIteratorError4 = true;_iteratorError4 = err;} finally {try {if (!_iteratorNormalCompletion4 && _iterator4.return != null) {_iterator4.return();}} finally {if (_didIteratorError4) {throw _iteratorError4;}}}
+                      }} catch (err) {_didIteratorError2 = true;_iteratorError2 = err;} finally {try {if (!_iteratorNormalCompletion2 && _iterator2.return != null) {_iterator2.return();}} finally {if (_didIteratorError2) {throw _iteratorError2;}}}
                     if (codes.indexOf(res.data.data.traceSubCodeNumber) > -1) {
                       that.$common.showToast("子码编号已存在", "none");
                     } else {
                       that.$common.showToast("扫码成功", "success");
                       that.codeArr.push({
+                        traceSid: res.data.data.traceSid,
                         count: res.data.data.count,
                         traceSubCodeNumber: res.data.data.traceSubCodeNumber });
 
@@ -494,6 +439,7 @@ __webpack_require__.r(__webpack_exports__);
                   } else {
                     that.$common.showToast("扫码成功", "success");
                     that.codeArr.push({
+                      traceSid: res.data.data.traceSid,
                       count: res.data.data.count,
                       traceSubCodeNumber: res.data.data.traceSubCodeNumber });
 
@@ -510,15 +456,184 @@ __webpack_require__.r(__webpack_exports__);
               }
             });
           } else {
-            _this4.showError = true;
-            _this4.text = "关联子码获取失败";
-            _this4.type = 'scanCode';
+            that.$common.showToast('不属于该追溯码最新的流通节点', 'none');
+          }
+
+        } else {
+          that.$common.showToast(res.data.message, 'none');
+        }
+      });
+    },
+    next: function next() {
+      if (this.codeArr.length > 0) {
+        this.active = 1;
+      } else {
+        this.$common.showToast("请添加货物", 'none');
+      }
+    },
+    nextConfirm: function nextConfirm() {var _this3 = this;
+      if (this.codeArr.length === 0) {
+        this.$common.showToast("外码或内码不能为空", 'none');
+        return;
+      }
+      this.otherMerchant.contactNumber = this.contactNumber;
+
+      var arr = [];var _iteratorNormalCompletion3 = true;var _didIteratorError3 = false;var _iteratorError3 = undefined;try {
+        for (var _iterator3 = this.codeArr[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {var item = _step3.value;
+          arr.push(item.traceSubCodeNumber);
+        }} catch (err) {_didIteratorError3 = true;_iteratorError3 = err;} finally {try {if (!_iteratorNormalCompletion3 && _iterator3.return != null) {_iterator3.return();}} finally {if (_didIteratorError3) {throw _iteratorError3;}}}
+      var param = {
+        codeNumber: arr,
+        accountId: !this.orSearch ? -1 : this.info.accountId,
+        otherMerchant: this.otherMerchant,
+        mode: 2 };var _arr =
+
+      Object.values(this.otherMerchant);for (var _i = 0; _i < _arr.length; _i++) {var s = _arr[_i];
+        if (!s) {
+          this.$common.showToast("节点信息需填写完整", 'none');
+          return false;
+        }
+      }
+
+      console.log(param);
+
+
+      this.$common.post('/trace-api/trace/deliverGoods', param).then(function (res) {
+        console.log(res);
+        if (Number(res.data.code) === 200) {
+          _this3.$common.showToast(res.data.message, 'success');
+          setTimeout(function () {
+            uni.navigateBack({
+              delta: 1 });
+
+          }, 1500);
+        } else {
+          _this3.$common.showToast(res.data.message, 'none');
+        }
+      });
+    },
+    getList: function getList() {var _this4 = this;
+      var merchantId = uni.getStorageSync("setUserData").merchant.merchantId;
+      this.$common.get("/agent/merchantAgent/normal?merchantId=" + merchantId).then(function (res) {
+        console.log(res);
+        _this4.List = res.data.data || [];
+        // this.List[0].mobile
+        _this4.getOneData();
+
+
+      });
+    },
+    getOneData: function getOneData() {
+      if (this.current === 0) {
+        if (this.List.length > 0) {
+          this.contactNumber = this.List[0].mobile;
+          this.getMoblieUserMess();
+        }
+      }
+    },
+    bindPickerChange: function bindPickerChange(e) {
+
+      if (this.current === 0) {
+
+        console.log(Number(e.target.value));
+        if (this.List[Number(e.target.value)]) {
+          if (this.List[Number(e.target.value)].mobile) {
+            this.contactNumber = this.List[Number(e.target.value)].mobile;
+            this.getMoblieUserMess();
+          }
+        }
+      }
+
+      this.index = Number(e.target.value);
+
+    },
+    jump: function jump() {
+      this.active = 1;
+    },
+    deleteCode: function deleteCode(index) {var _this5 = this;
+      uni.showModal({
+        title: '提示',
+        content: '此操作将删除此编号',
+        success: function success(res) {
+          if (res.confirm) {
+            _this5.codeArr.splice(index, 1);
+            _this5.$common.showToast("删除成功", "success");
+          }
+        } });
+
+
+    },
+    scanCode: function scanCode() {var _this6 = this;
+      uni.scanCode({
+        success: function success(res) {
+          var that = _this6;
+          if (res.result && res.result.indexOf(that.$common.host_name) > -1) {
+            var sid = res.result.split(that.$common.host_name)[1];
+            console.log('sid', sid);
+
+            _this6.$common.get('/trace-api/other/isCurrentNodeNewest?sid=' + sid).then(function (res) {
+              console.log(res);
+              if (res.data.code === 200) {
+                if (res.data.data) {
+                  _this6.$common.get("/trace-api/trace/getSubCodeById?sid=" + sid).then(function (res) {
+                    if (Number(res.data.code) === 200) {
+                      console.log("发货对象", res);
+                      that.showError = false;
+                      if (Number(res.data.data.isEnable) > 0) {
+                        if (that.codeArr.length > 0) {
+                          var codes = [];var _iteratorNormalCompletion4 = true;var _didIteratorError4 = false;var _iteratorError4 = undefined;try {
+                            for (var _iterator4 = that.codeArr[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {var item = _step4.value;
+                              codes.push(item.traceSubCodeNumber);
+                            }} catch (err) {_didIteratorError4 = true;_iteratorError4 = err;} finally {try {if (!_iteratorNormalCompletion4 && _iterator4.return != null) {_iterator4.return();}} finally {if (_didIteratorError4) {throw _iteratorError4;}}}
+                          if (codes.indexOf(res.data.data.traceSubCodeNumber) > -1) {
+                            that.$common.showToast("子码编号已存在", "none");
+                          } else {
+                            that.$common.showToast("扫码成功", "success");
+                            that.codeArr.push({
+                              traceSid: res.data.data.traceSid,
+                              count: res.data.data.count,
+                              traceSubCodeNumber: res.data.data.traceSubCodeNumber });
+
+                          }
+                          console.log(codes);
+                        } else {
+                          that.$common.showToast("扫码成功", "success");
+                          that.codeArr.push({
+                            traceSid: res.data.data.traceSid,
+                            count: res.data.data.count,
+                            traceSubCodeNumber: res.data.data.traceSubCodeNumber });
+
+                        }
+                      } else {
+                        that.$common.showToast("此编码已发货", "none");
+                      }
+
+
+                      console.log(that.codeArr);
+                    } else {
+                      that.showError = false;
+                      that.$common.showToast(res.data.message, 'none');
+                    }
+                  });
+                } else {
+                  that.$common.showToast('不属于该追溯码最新的流通节点', 'none');
+                }
+
+              } else {
+                that.$common.showToast(res.data.message, 'none');
+              }
+            });
+
+          } else {
+            _this6.showError = true;
+            _this6.text = "关联子码获取失败";
+            _this6.type = 'scanCode';
           }
         } });
 
     } },
 
-  created: function created() {
+  onReady: function onReady() {
     this.getList();
     // this.scanCode()
   } };exports.default = _default;

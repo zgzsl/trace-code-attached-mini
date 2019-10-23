@@ -9,7 +9,7 @@
 			<view class="main">
 				<!-- <wInput  type="text" placeholder="商家账号"></wInput> -->
 				<view class="main-list main-list oBorder oBorder">
-					<input class="main-name" @input="inputText" type="text" v-model="phoneData" placeholder="商家账号" />
+					<input class="main-name" @input="inputText" type="text" v-model="phoneData" placeholder="商家账号或手机号码" />
 				</view>
 				<view class="main-list main-list oBorder oBorder">
 					<input class="main-name"   v-model="passData" 		:password="type==='password'&&!showPassword"  placeholder="商家密码" />
@@ -70,7 +70,7 @@
 					uni.showToast({
 						icon: 'none',
 						position: 'bottom',
-						title: '请输入商家账号'
+						title: '请输入商家账号或者手机号码'
 					});
 					return;
 				}

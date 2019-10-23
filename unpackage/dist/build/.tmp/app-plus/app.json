@@ -25,7 +25,7 @@
     "alwaysShowBeforeRender": true,
     "autoclose": false
   },
-  "appname": "mini-scode",
-  "compilerVersion": "2.3.3",
+  "appname": "赋码工具",
+  "compilerVersion": "2.3.6",
   "usingComponents": {}
 }

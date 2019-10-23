@@ -13,6 +13,8 @@
 	"libVersion": "2.7.0",
 	"appid": "wx2b15995a2f4a7e31",
 	"projectname": "赋码工具",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -46,8 +48,22 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/relation/relation",
-					"pathName": "pages/relation/relation",
+					"name": "pages/deliverGoods/deliverGoods",
+					"pathName": "pages/deliverGoods/deliverGoods",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/deliverSellerNode/deliverSellerNode",
+					"pathName": "pages/deliverSellerNode/deliverSellerNode",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/getLocation/getLocation",
+					"pathName": "pages/getLocation/getLocation",
 					"scene": null
 				}
 			]

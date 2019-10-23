@@ -184,6 +184,7 @@ var _default2 =
       list.forEach(function (item) {
         _this.treeList.push({
           id: item.id,
+          traceSid: item.traceSid,
           name: item.name,
           parentId: parentId, // 父级id数组
           rank: rank, // 层级

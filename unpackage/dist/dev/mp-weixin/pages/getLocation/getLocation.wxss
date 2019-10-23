@@ -1,16 +1,23 @@
+.getLocation.data-v-f8f75e0e {
+  height: 100vh;
+  position: relative;
+}
 .search_list.data-v-f8f75e0e {
+  position: fixed;
+  bottom: 630rpx;
+  left: 0;
   height: 120rpx;
   width: 100%;
-  position: relative;
   z-index: 10;
   background: #ffffff;
   opacity: 0.95;
   border-radius: 20px 20px 0px 0px;
 }
 .search_list .search_box.data-v-f8f75e0e {
-  position: fixed;
+  z-index: 2000 !important;
+  position: relative;
   left: 0;
-  top: 110rpx;
+  top: 0;
   width: 100%;
   background: #ffffff;
   opacity: 0.95;
@@ -57,11 +64,11 @@
 }
 .search_list .search_box.acitve_search_box.data-v-f8f75e0e {
   min-height: 10px !important;
-  max-height: calc(100vh - 200rpx) !important;
+  max-height: calc(800rpx) !important;
   overflow: scroll;
 }
 .search_list .search_input.data-v-f8f75e0e {
-  position: fixed;
+  position: relative;
   left: 0;
   top: 0;
   width: calc(100% - 30rpx);

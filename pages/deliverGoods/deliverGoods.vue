@@ -8,8 +8,9 @@
 						<view class="btn" @tap="scanCode">扫一扫</view>
 					</view>
 					<view class="content">
-						<view class="item" v-for="(item,index) in codeArr" v-if="codeArr.length>0" :key="index">
+						<view class="item" style="position: relative;" v-for="(item,index) in codeArr" v-if="codeArr.length>0" :key="index">
 							<text style="font-size: 26rpx;">子码编号：</text><text style="font-size: 26rpx;">{{item.traceSubCodeNumber||""}}</text>
+							<text style="position: absolute;left: 86upx;bottom: -5px;">sid : {{item.traceSid}}</text>
 							<icon type="cancel" size="26" @tap="deleteCode(index)" />
 						</view>
 						<view class="item" style="color: rgba(128,128,128,1);" v-if="codeArr.length===0">
@@ -26,25 +27,29 @@
 							<radio style="margin-left: 10px;" color='rgb(246, 64, 70)' value="0" :checked="0 === current" />
 							<view class="title">代理商：</view>
 							<picker class="picker" range-key="agentName" mode="selector" @change="bindPickerChange" :value="index" :range="List">
-								{{List[index].agentName}}
+								{{List[index].agentName || '暂无数据'}}
 							</picker>
 
 						</view>
 						<view class="context_item">
 							<radio style="margin-left: 10px;" color='rgb(246, 64, 70)' value="1" :checked="1 === current" />
-							<view class="title">输入自定义商家：</view>
-							<input type="text" v-model="sellerName" placeholder="直接输入商家名称" />
-						</view>
-						<!-- 	<view class="context_item">
-							
-							<view class="title">手机号码：</view>
-							<input type="text" v-model="phone" placeholder="输入手机号码" />
+							<view class="title">输入自定义商家</view>
 						</view>
 						<view class="context_item">
-							
-							<view class="title">名称：</view>
-							<input type="text" v-model="sellerName" placeholder="输入名称" />
-						</view> -->
+
+							<view class="title">手机号码：</view>
+							<input type="text" v-model="contactNumber" :disabled="current===0" placeholder="输入手机号码" />
+						</view>
+						<view class="context_item">
+
+							<view class="title">追溯点名称：</view>
+							<input type="text" v-model="otherMerchant.tracePointName" :disabled="sellerNameSelect" placeholder="输入追溯点名称" />
+						</view>
+						<view class="context_item">
+
+							<view class="title">负责人：</view>
+							<input type="text" v-model="otherMerchant.personInCharge" :disabled="userNameSelect" placeholder="输入负责人" />
+						</view>
 					</radio-group>
 
 				</view>
@@ -69,6 +74,8 @@
 		},
 		data() {
 			return {
+				sellerNameSelect: false,
+				userNameSelect: false,
 				type: 'scanCode',
 				text: '扫码错误',
 				showError: false,
@@ -78,11 +85,16 @@
 				index: 0,
 				active: 0,
 				List: [],
-				sellerName: "",
 				count: 0,
-				phone: '',
 				flag: '',
-				activity: ''
+				orSearch: false,
+				activity: '',
+				otherMerchant: {
+					tracePointName: '',
+					personInCharge: ''
+				},
+				info: {},
+				contactNumber: ''
 			}
 		},
 		watch: {
@@ -95,11 +107,18 @@
 					this.count = count
 				},
 				deep: true
+			},
+			'contactNumber'(val) {
+				if (this.current === 1) {
+					if (val) {
+						this.getMoblieUserMess()
+					}
+				}
 			}
 
 		},
 		methods: {
-			onLoad() {
+			onShow() {
 
 				// #ifdef APP-PLUS
 
@@ -137,17 +156,18 @@
 					let barcodeTypeBytes = intent.getByteExtra("barcodeType", (0 | 0));
 					let barcodeType = byteToString(barcodeTypeBytes);
 
-					if (barcode && barcode.indexOf("https://2641.cn/") > -1) {
-						let sid = barcode.split("https://2641.cn/")[1]
+					if (barcode && barcode.indexOf(that.$common.host_name) > -1) {
+						let sid = barcode.split(that.$common.host_name)[1]
 						that.getzsCodeMumber(sid)
 					} else {
-						this.showError = true
-						this.text = "关联子码获取失败"
-						this.type = 'scanCode'
+						that.showError = true
+						that.text = "关联子码获取失败"
+						that.type = 'scanCode'
 					}
 					//console.log(barcode);  
 					//main.unregisterReceiver(receiver);//取消监听  
 				}
+
 				function byteToString(arr) {
 					if (typeof arr === 'string') {
 						return arr;
@@ -181,60 +201,123 @@
 
 			},
 			onHide() {
-				 
+
 				// #ifdef APP-PLUS
-				this.activity.unregisterReceiver(this.flag);//取消监听  
+				this.activity.unregisterReceiver(this.flag); //取消监听  
 				// #endif
 			},
 			onUnload() {
-				 
+
 				// #ifdef APP-PLUS
-				this.activity.unregisterReceiver(this.flag);//取消监听  
+				this.activity.unregisterReceiver(this.flag); //取消监听  
 				// #endif
 			},
+			getMoblieUserMess() {
+				
+				uni.showLoading({
+					mask: true,
+					title: '正在检索...'
+				})
+
+				this.$common.getNot('/trace-api/other/getNodeByMobile?mobile=' + this.contactNumber).then((res) => {
+					console.log(typeof res.data.data)
+					if (res.data.code === 200) {
+						// this.
+						if (typeof res.data.data === 'number') {
+							this.otherMerchant = {
+								tracePointName: '',
+								personInCharge: ''
+							}
+							this.sellerNameSelect = false,
+								this.userNameSelect = false
+							this.orSearch = false
+							this.$common.showToast("暂无信息", 'none')
+						} else {
+							this.info = res.data.data
+							this.otherMerchant = {
+								tracePointName: res.data.data.tracePointName,
+								personInCharge: res.data.data.personInCharge
+							}
+							this.orSearch = true
+							this.contactNumber = res.data.data.contactNumber
+							this.sellerNameSelect = true,
+								this.userNameSelect = true
+						}
+						console.log(this.otherMerchant)
+					} else {
+						this.$common.showToast("信息获取失败", 'none')
+					}
+				})
+			},
 			radioChange(evt) {
-				console.log(evt)
+				console.log(evt.detail.value)
 				this.current = Number(evt.detail.value)
+				console.log(this.current === 1)
+				if (this.current === 1) {
+					this.contactNumber = ''
+				} else {
+					this.contactNumber = this.List[this.index].mobile
+					this.getMoblieUserMess()
+				}
+				this.otherMerchant = {
+					tracePointName: "",
+					personInCharge: ''
+				}
+
 				console.log(this.current)
 
 			},
 			getzsCodeMumber(sid) {
 				let that = this
-				this.$common.get("/trace-api/trace/getSubCodeById?sid=" + sid).then((res) => {
-					if (Number(res.data.code) === 200) {
-						console.log("发货对象", res)
-						that.showError = false
-						if (Number(res.data.data.isEnable) > 0) {
-							if (that.codeArr.length > 0) {
-								let codes = []
-								for (let item of that.codeArr) {
-									codes.push(item.traceSubCodeNumber)
-								}
-								if (codes.indexOf(res.data.data.traceSubCodeNumber) > -1) {
-									that.$common.showToast("子码编号已存在", "none")
+
+				this.$common.get('/trace-api/other/isCurrentNodeNewest?sid=' + sid).then((res) => {
+					if (res.data.code === 200) {
+						if (res.data.data) {
+							this.$common.get("/trace-api/trace/getSubCodeById?sid=" + sid).then((res) => {
+								if (Number(res.data.code) === 200) {
+									console.log("发货对象", res)
+									that.showError = false
+									if (Number(res.data.data.isEnable) > 0) {
+										if (that.codeArr.length > 0) {
+											let codes = []
+											for (let item of that.codeArr) {
+												codes.push(item.traceSubCodeNumber)
+											}
+											if (codes.indexOf(res.data.data.traceSubCodeNumber) > -1) {
+												that.$common.showToast("子码编号已存在", "none")
+											} else {
+												that.$common.showToast("扫码成功", "success")
+												that.codeArr.push({
+													traceSid: res.data.data.traceSid,
+													count: res.data.data.count,
+													traceSubCodeNumber: res.data.data.traceSubCodeNumber
+												})
+											}
+											console.log(codes)
+										} else {
+											that.$common.showToast("扫码成功", "success")
+											that.codeArr.push({
+												traceSid: res.data.data.traceSid,
+												count: res.data.data.count,
+												traceSubCodeNumber: res.data.data.traceSubCodeNumber
+											})
+										}
+									} else {
+										that.$common.showToast("此编码已发货", "none")
+									}
+
+
+									console.log(that.codeArr)
 								} else {
-									that.$common.showToast("扫码成功", "success")
-									that.codeArr.push({
-										count: res.data.data.count,
-										traceSubCodeNumber: res.data.data.traceSubCodeNumber
-									})
+									that.showError = false
+									that.$common.showToast(res.data.message, 'none')
 								}
-								console.log(codes)
-							} else {
-								that.$common.showToast("扫码成功", "success")
-								that.codeArr.push({
-									count: res.data.data.count,
-									traceSubCodeNumber: res.data.data.traceSubCodeNumber
-								})
-							}
+							})
 						} else {
-							that.$common.showToast("此编码已发货", "none")
+							that.$common.showToast('不属于该追溯码最新的流通节点', 'none')
 						}
 
-
-						console.log(that.codeArr)
 					} else {
-						that.showError = false
 						that.$common.showToast(res.data.message, 'none')
 					}
 				})
@@ -247,36 +330,32 @@
 				}
 			},
 			nextConfirm() {
-				let sellName = ""
 				if (this.codeArr.length === 0) {
 					this.$common.showToast("外码或内码不能为空", 'none')
 					return;
 				}
-				if (Number(this.current) === 1) {
-					if (!this.$common.trim(this.sellerName)) {
-						this.$common.showToast("请输入商家名称", 'none')
-						return;
-					}
-					sellName = this.sellerName
-				} else {
-					if (!this.List[Number(this.index)].agentName) {
+				this.otherMerchant.contactNumber = this.contactNumber
 
-						this.$common.showToast("请选择代理商", 'none')
-						return;
-					} else {
-						sellName = this.List[Number(this.index)].agentName
-					}
-				}
-				console.log(this.current)
 				let arr = []
 				for (let item of this.codeArr) {
 					arr.push(item.traceSubCodeNumber)
 				}
 				let param = {
 					codeNumber: arr,
-					bussName: sellName
+					accountId: !this.orSearch ? -1 : this.info.accountId,
+					otherMerchant: this.otherMerchant,
+					mode: 2
 				}
+				for (let s of Object.values(this.otherMerchant)) {
+					if (!s) {
+						this.$common.showToast("节点信息需填写完整", 'none')
+						return false
+					}
+				}
+
 				console.log(param)
+
+
 				this.$common.post('/trace-api/trace/deliverGoods', param).then((res) => {
 					console.log(res)
 					if (Number(res.data.code) === 200) {
@@ -296,13 +375,35 @@
 				this.$common.get("/agent/merchantAgent/normal?merchantId=" + merchantId).then((res) => {
 					console.log(res)
 					this.List = res.data.data || []
+					// this.List[0].mobile
+					this.getOneData()
+
+
 				})
 			},
+			getOneData() {
+				if (this.current === 0) {
+					if (this.List.length > 0) {
+						this.contactNumber = this.List[0].mobile
+						this.getMoblieUserMess()
+					}
+				}
+			},
 			bindPickerChange(e) {
-				console.log('picker发送选择改变，携带值为', this.List[Number(e.target.value)])
-				console.log(Number(e.target.value))
-				this.index = Number(e.target.value)
+				
+				if (this.current === 0) {
+			
+					console.log(Number(e.target.value))
+					if (this.List[Number(e.target.value)]) {
+						if (this.List[Number(e.target.value)].mobile) {
+							this.contactNumber = this.List[Number(e.target.value)].mobile
+							this.getMoblieUserMess()
+						}
+					}
+				}
 
+				this.index = Number(e.target.value)
+		
 			},
 			jump() {
 				this.active = 1
@@ -323,50 +424,64 @@
 			scanCode() {
 				uni.scanCode({
 					success: (res) => {
-						console.log('res.result.indexOf("https://2641.cn/")', res.result.indexOf("https://2641.cn/"))
-						console.log('res.result', res.result)
 						let that = this
-						if (res.result && res.result.indexOf("https://2641.cn/") > -1) {
-							let sid = res.result.split("https://2641.cn/")[1]
+						if (res.result && res.result.indexOf(that.$common.host_name) > -1) {
+							let sid = res.result.split(that.$common.host_name)[1]
 							console.log('sid', sid)
-							this.$common.get("/trace-api/trace/getSubCodeById?sid=" + sid).then((res) => {
-								if (Number(res.data.code) === 200) {
-									console.log("发货对象", res)
-									that.showError = false
-									if (Number(res.data.data.isEnable) > 0) {
-										if (that.codeArr.length > 0) {
-											let codes = []
-											for (let item of that.codeArr) {
-												codes.push(item.traceSubCodeNumber)
-											}
-											if (codes.indexOf(res.data.data.traceSubCodeNumber) > -1) {
-												that.$common.showToast("子码编号已存在", "none")
+
+							this.$common.get('/trace-api/other/isCurrentNodeNewest?sid=' + sid).then((res) => {
+								console.log(res)
+								if (res.data.code === 200) {
+									if (res.data.data) {
+										this.$common.get("/trace-api/trace/getSubCodeById?sid=" + sid).then((res) => {
+											if (Number(res.data.code) === 200) {
+												console.log("发货对象", res)
+												that.showError = false
+												if (Number(res.data.data.isEnable) > 0) {
+													if (that.codeArr.length > 0) {
+														let codes = []
+														for (let item of that.codeArr) {
+															codes.push(item.traceSubCodeNumber)
+														}
+														if (codes.indexOf(res.data.data.traceSubCodeNumber) > -1) {
+															that.$common.showToast("子码编号已存在", "none")
+														} else {
+															that.$common.showToast("扫码成功", "success")
+															that.codeArr.push({
+																traceSid: res.data.data.traceSid,
+																count: res.data.data.count,
+																traceSubCodeNumber: res.data.data.traceSubCodeNumber
+															})
+														}
+														console.log(codes)
+													} else {
+														that.$common.showToast("扫码成功", "success")
+														that.codeArr.push({
+															traceSid: res.data.data.traceSid,
+															count: res.data.data.count,
+															traceSubCodeNumber: res.data.data.traceSubCodeNumber
+														})
+													}
+												} else {
+													that.$common.showToast("此编码已发货", "none")
+												}
+
+
+												console.log(that.codeArr)
 											} else {
-												that.$common.showToast("扫码成功", "success")
-												that.codeArr.push({
-													count: res.data.data.count,
-													traceSubCodeNumber: res.data.data.traceSubCodeNumber
-												})
+												that.showError = false
+												that.$common.showToast(res.data.message, 'none')
 											}
-											console.log(codes)
-										} else {
-											that.$common.showToast("扫码成功", "success")
-											that.codeArr.push({
-												count: res.data.data.count,
-												traceSubCodeNumber: res.data.data.traceSubCodeNumber
-											})
-										}
+										})
 									} else {
-										that.$common.showToast("此编码已发货", "none")
+										that.$common.showToast('不属于该追溯码最新的流通节点', 'none')
 									}
 
-
-									console.log(that.codeArr)
 								} else {
-									that.showError = false
 									that.$common.showToast(res.data.message, 'none')
 								}
 							})
+
 						} else {
 							this.showError = true
 							this.text = "关联子码获取失败"
@@ -376,7 +491,7 @@
 				});
 			}
 		},
-		created() {
+		onReady() {
 			this.getList()
 			// this.scanCode()
 		}

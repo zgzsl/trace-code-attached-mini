@@ -1,5 +1,5 @@
 
-.mix-tree-list{
+.mix-tree-list {
 	/* width: 100%; */
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -12,7 +12,7 @@
 	        flex-direction: column;
 	/* padding-left: 30upx; */
 }
-.mix-tree-item{
+.mix-tree-item {
 	/* width: 100%; */
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -40,25 +40,25 @@
 	position: relative;
 	padding: 0 10px;
 }
-.mix-tree-item.border{
+.mix-tree-item.border {
 	border-bottom: 1px solid #eee;
 }
-.mix-tree-item.show{
+.mix-tree-item.show {
 	height: 80rpx;
 	opacity: 1;
 }
-.mix-tree-icon{
+.mix-tree-icon {
 	width: 26rpx;
 	height: 26rpx;
 	margin-right: 8rpx;
 	opacity: .9;
 }
-.mix-tree-item.showchild:before{
+.mix-tree-item.showchild:before {
 	-webkit-transform: rotate(90deg);
 	    -ms-transform: rotate(90deg);
 	        transform: rotate(90deg);
 }
-.mix-tree-item.last:before{
+.mix-tree-item.last:before {
 	opacity: 0;
 }
 .item {

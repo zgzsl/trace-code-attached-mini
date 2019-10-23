@@ -155,13 +155,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 {
   data: function data() {
     return {
       deliverGoods: false,
       text: '扫码错误',
       showError: false,
-      outCode: "11",
+      outCode: "",
       chlidCodeArr: [],
       type: '',
       alonecode: "",
@@ -349,8 +350,8 @@ __webpack_require__.r(__webpack_exports__);
       uni.scanCode({
         success: function success(res) {
           var that = _this3;
-          if (res.result && res.result.indexOf("https://2641.cn/") > -1) {
-            var sid = res.result.split("https://2641.cn/")[1];
+          if (res.result && res.result.indexOf(that.$common.host_name) > -1) {
+            var sid = res.result.split(that.$common.host_name)[1];
             _this3.$common.get("/trace-api/trace/getSubCodeById?sid=" + sid).then(function (res) {
 
               if (Number(res.data.code) === 200) {
@@ -472,8 +473,8 @@ __webpack_require__.r(__webpack_exports__);
       uni.scanCode({
         success: function success(res) {
           var that = _this5;
-          if (res.result && res.result.indexOf("https://2641.cn/") > -1) {
-            var sid = res.result.split("https://2641.cn/")[1];
+          if (res.result && res.result.indexOf(that.$common.host_name) > -1) {
+            var sid = res.result.split(that.$common.host_name)[1];
             _this5.$common.get("/trace-api/trace/getSubCodeById?sid=" + sid).then(function (res) {
               _this5.count = 0;
               if (Number(res.data.code) === 200) {
@@ -485,7 +486,6 @@ __webpack_require__.r(__webpack_exports__);
                   } else {
 
                     _this5.iterator(_this5.list, res.data.data.traceSubCodeNumber);
-                    console.log("this.count ", _this5.count);
                     if (_this5.count > 0) {
                       _this5.$common.showToast("编码已存在", "none");
                       setTimeout(function () {

@@ -22,6 +22,7 @@
 			</view>
 			<view class="outbtn" v-if="!outCode">
 				<button @tap="createdClick">扫一扫获取外码</button>
+				<view style="font-size: 26upx;margin: 15upx 0;">温馨提醒：如果机器是扫码枪，使用机器自带按钮或者点击屏幕按钮方可使用</view>
 			</view>
 		</view>
 		<error :text="text" v-if="showError" :type="type" @relation='relation' @createdClick='createdClick'></error>
@@ -37,7 +38,7 @@
 				deliverGoods: false,
 				text: '扫码错误',
 				showError: false,
-				outCode: "11",
+				outCode: "",
 				chlidCodeArr: [],
 				type: '',
 				alonecode: "",
@@ -91,8 +92,8 @@
 				let barcodeTypeBytes = intent.getByteExtra("barcodeType", (0 | 0));
 				let barcodeType = byteToString(barcodeTypeBytes);
 				
-				if (barcode && barcode.indexOf("https://2641.cn/") > -1) {
-					let sid = barcode.split("https://2641.cn/")[1]
+				if (barcode && barcode.indexOf(that.$common.host_name) > -1) {
+					let sid = barcode.split(that.$common.host_name)[1]
 					if(that.outCode){
 						that.getCodeZsNumberInside(sid)
 					}else{
@@ -225,8 +226,8 @@
 				uni.scanCode({
 					success: (res) => {
 						let that = this
-						if (res.result && res.result.indexOf("https://2641.cn/") > -1) {
-							let sid = res.result.split("https://2641.cn/")[1]
+						if (res.result && res.result.indexOf(that.$common.host_name) > -1) {
+							let sid = res.result.split(that.$common.host_name)[1]
 							this.$common.get("/trace-api/trace/getSubCodeById?sid=" + sid).then((res) => {
 
 								if (Number(res.data.code) === 200) {
@@ -348,8 +349,8 @@
 				uni.scanCode({
 					success: (res) => {
 						let that = this
-						if (res.result && res.result.indexOf("https://2641.cn/") > -1) {
-							let sid = res.result.split("https://2641.cn/")[1]
+						if (res.result && res.result.indexOf(that.$common.host_name) > -1) {
+							let sid = res.result.split(that.$common.host_name)[1]
 							this.$common.get("/trace-api/trace/getSubCodeById?sid=" + sid).then((res) => {
 								this.count = 0
 								if (Number(res.data.code) === 200) {
@@ -361,7 +362,6 @@
 										} else {
 
 											this.iterator(this.list, res.data.data.traceSubCodeNumber)
-											console.log("this.count ", this.count)
 											if (this.count > 0) {
 												this.$common.showToast("编码已存在", "none")
 												setTimeout(() => {

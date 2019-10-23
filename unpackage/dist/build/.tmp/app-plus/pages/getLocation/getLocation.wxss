@@ -1,21 +1,28 @@
-.search_list.data-v-20f1e326 {
+.getLocation.data-v-2026b55d {
+  height: 100vh;
+  position: relative;
+}
+.search_list.data-v-2026b55d {
+  position: fixed;
+  bottom: 630rpx;
+  left: 0;
   height: 120rpx;
   width: 100%;
-  position: relative;
   z-index: 10;
   background: #ffffff;
   opacity: 0.95;
   border-radius: 20px 20px 0px 0px;
 }
-.search_list .search_box.data-v-20f1e326 {
-  position: fixed;
+.search_list .search_box.data-v-2026b55d {
+  z-index: 2000 !important;
+  position: relative;
   left: 0;
-  top: 110rpx;
+  top: 0;
   width: 100%;
   background: #ffffff;
   opacity: 0.95;
 }
-.search_list .search_box .item.data-v-20f1e326 {
+.search_list .search_box .item.data-v-2026b55d {
   border-bottom: 1px solid #C0C0C0;
   padding: 15rpx 15rpx 15rpx 15rpx;
   font-size: 24rpx;
@@ -33,15 +40,15 @@
       -ms-flex-align: center;
           align-items: center;
 }
-.search_list .search_box .item image.data-v-20f1e326 {
+.search_list .search_box .item image.data-v-2026b55d {
   width: 35rpx;
   height: 35rpx;
   margin: 0 15rpx;
 }
-.search_list .search_box .item .top.data-v-20f1e326 {
+.search_list .search_box .item .top.data-v-2026b55d {
   font-size: 30rpx;
 }
-.search_list .search_box .item .text_box.data-v-20f1e326 {
+.search_list .search_box .item .text_box.data-v-2026b55d {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -52,16 +59,16 @@
       -ms-flex-direction: column;
           flex-direction: column;
 }
-.search_list .search_box .item.data-v-20f1e326:last-child {
+.search_list .search_box .item.data-v-2026b55d:last-child {
   border-bottom: none;
 }
-.search_list .search_box.acitve_search_box.data-v-20f1e326 {
+.search_list .search_box.acitve_search_box.data-v-2026b55d {
   min-height: 10px !important;
-  max-height: calc(100vh - 200rpx) !important;
+  max-height: calc(800rpx) !important;
   overflow: scroll;
 }
-.search_list .search_input.data-v-20f1e326 {
-  position: fixed;
+.search_list .search_input.data-v-2026b55d {
+  position: relative;
   left: 0;
   top: 0;
   width: calc(100% - 30rpx);
@@ -80,13 +87,13 @@
       -ms-flex-align: center;
           align-items: center;
 }
-.search_list .search_input image.data-v-20f1e326 {
+.search_list .search_input image.data-v-2026b55d {
   width: 35rpx;
   height: 35rpx;
   position: absolute;
   left: 25rpx;
 }
-.search_list .search_input .input_box.data-v-20f1e326 {
+.search_list .search_input .input_box.data-v-2026b55d {
   height: 80rpx;
   padding-left: 50rpx;
   border-radius: 10px;

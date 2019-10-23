@@ -147,6 +147,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 {
   components: {
     error: error },
@@ -162,10 +163,7 @@ __webpack_require__.r(__webpack_exports__);
       activity: '' };
 
   },
-  onLoad: function onLoad() {
-
-
-
+  onShow: function onShow() {
 
 
 
@@ -246,7 +244,9 @@ __webpack_require__.r(__webpack_exports__);
 
   },
   destroyed: function destroyed() {
-    this.activity.unregisterReceiver(this.flag); //取消监听  
+
+
+
   },
   onHide: function onHide() {
 
@@ -287,11 +287,12 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     scode: function scode() {var _this = this;
+      var that = this;
       uni.scanCode({
         success: function success(res) {
 
-          if (res.result && res.result.indexOf("https://2641.cn/") > -1) {
-            var sid = res.result.split("https://2641.cn/")[1];
+          if (res.result && res.result.indexOf(that.$common.host_name) > -1) {
+            var sid = res.result.split(that.$common.host_name)[1];
             _this.getCodeZsNumber(sid);
           } else {
             _this.showError = true;

@@ -159,18 +159,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 // getLocation(OBJECT)
 var _default = {
   data: function data() {
     return {
+      location: '',
       startName: '',
-      sellerName: '广东皮草批发部',
-      showPopupBottom: false };
+      tracePoint: '广东皮草批发部',
+      showPopupBottom: false,
+      setUserData: {},
+      editorOr: true };
 
   },
-  created: function created() {
-    this.startName = this.sellerName;
+  onShow: function onShow() {
+
+    this.setUserData = uni.getStorageSync('setUserData');
+    console.log(this.setUserData);
+    if (this.setUserData.role) {
+      if (this.setUserData.role.id === 9 || this.setUserData.role.id === 10 || this.setUserData.role.id === 11) {
+
+
+        if (this.setUserData.role.id === 9) {
+          this.location = this.setUserData.subMerchant.location;
+          this.tracePoint = this.setUserData.merchant.merchantName;
+          this.startName = this.tracePoint;
+
+        } else {
+          this.location = this.setUserData.distributeNode.location;
+          this.tracePoint = this.setUserData.distributeNode.tracePoint;
+          this.startName = this.tracePoint;
+        }
+        this.editorOr = false;
+      } else {
+        this.location = this.setUserData.merchant.merchantDetailSite;
+        this.tracePoint = this.setUserData.merchant.merchantName;
+        this.startName = this.tracePoint;
+        this.editorOr = true;
+      }
+    }
+
   },
   methods: {
 
@@ -181,16 +210,35 @@ var _default = {
     },
     changeName: function changeName(e) {
       this.showPopupBottom = true;
-
     },
-    blurChangeName: function blurChangeName() {
-      console.log(this.startName);
-      console.log(this.sellerName);
-      if (this.startName === this.sellerName) {
+    setUserMessage: function setUserMessage() {var _this = this;
+      this.$common.post('/accountCenter/account/updateNode', {
+        "location": this.location,
+        "tracePoint": this.tracePoint }).
+      then(function (res) {
 
-      } else {
+        if (res.data.statusCode === 200) {
+          _this.$common.showToast("修改成功", 'success');
+          uni.setStorageSync('setUserData', res.data.data);
+          _this.showPopupBottom = false;
+        } else {
+          _this.$common.showToast(res.data.statusMsg, 'none');
+        }
+      });
+    },
+    blurChangeName: function blurChangeName() {var _this2 = this;
+      if (this.startName !== this.tracePoint) {
         uni.showModal({
-          content: "asdsad" });
+          title: '此操作',
+          content: "确定要更改用户信息?",
+          success: function success(res) {
+            console.log(res.confirm);
+            if (res.confirm) {
+              _this2.startName = _this2.tracePoint;
+              _this2.setUserMessage();
+            }
+
+          } });
 
       }
 

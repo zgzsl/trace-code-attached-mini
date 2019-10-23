@@ -194,7 +194,7 @@ var _default =
         uni.showToast({
           icon: 'none',
           position: 'bottom',
-          title: '请输入商家账号' });
+          title: '请输入商家账号或者手机号码' });
 
         return;
       }

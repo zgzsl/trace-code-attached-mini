@@ -17,7 +17,7 @@
 						<image class="mix-tree-icon" :src="item.lastRank ? treeParams.lastIcon : item.showChild ? treeParams.currentIcon : treeParams.defaultIcon"></image>
 						<view class="code-title" style="display: flex;flex-direction: column;">
 							<text>{{item.name}}</text> 
-							<text style="font-size: 12px;">sid:12</text>
+							<text style="font-size: 12px;">sid:{{item.traceSid}}</text>
 						</view>
 					</view>
 					<icon type="cancel" size="20" v-if="!deliverGoods" @tap.stop="deleteCode(item)" />
@@ -77,6 +77,7 @@
 				list.forEach(item => {
 					this.treeList.push({
 						id: item.id,
+						traceSid:item.traceSid,
 						name: item.name,
 						parentId, // 父级id数组
 						rank, // 层级

@@ -169,6 +169,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 var amapFile = __webpack_require__(/*! ../../common/amap-wx.js */ 59);
 var myAmapFun = new amapFile.AMapWX({
@@ -179,6 +183,7 @@ var myAmapFun = new amapFile.AMapWX({
 
     return {
       keywords: '',
+      setUserData: {},
       show: true,
       markers: [],
       latitude: 23.13,
@@ -186,6 +191,7 @@ var myAmapFun = new amapFile.AMapWX({
       city: '',
       myAmapFunflag: '',
       dataArr: [],
+      maskerClick: false,
       labels: [] };
 
   },
@@ -215,7 +221,7 @@ var myAmapFun = new amapFile.AMapWX({
                 content: data[0].name,
                 fontSize: 16,
                 bgColor: '#fff',
-                textAlign: 'right',
+                textAlign: 'left',
                 borderRadius: 5,
                 padding: 3,
                 color: 'red',
@@ -241,32 +247,39 @@ var myAmapFun = new amapFile.AMapWX({
 
   },
   methods: {
+    makertap: function makertap(e) {
+      var id = e.markerId;
+      var that = this;
+      // that.showMarkerInfo(this.markers,id);
+      that.changeMarkerColor(this.markers, id);
+    },
     changeMarkerColor: function changeMarkerColor(data, i) {var _this2 = this;
-      console.log("data", data);
+      if (!this.maskerClick) {
+        console.log(data);
 
+        uni.showModal({
+          content: "确定更改地址?",
+          success: function success(res) {
+            if (res.confirm) {
+              var that = _this2;
+              var markers = [];
+              var labels = [];
 
-      uni.showModal({
-        content: "确定更改地址?",
-        success: function success(res) {
-          if (res.confirm) {
-            var that = _this2;
-            var markers = [];
-            var labels = [];
-            for (var j = 0; j < data.length; j++) {
-              if (j == i) {
-                data[j].iconPath = "../../static/img/marker_checked.png";
-              } else {
-                data[j].iconPath = "../../static/img/marker.png";
-              }
+              data[0].iconPath = "../../static/img/marker_checked.png";
+              _this2.setUserMessage(data[0].label.content);
+              _this2.maskerClick = true;
+
+              console.log(data);
+              // data[j].iconPath = "../../static/img/marker_checked.png";
               markers.push({
-                id: data[j].id,
-                latitude: data[j].latitude,
-                longitude: data[j].longitude,
-                iconPath: data[j].iconPath,
-                width: data[j].width,
-                height: data[j].height,
+                id: data[0].id,
+                latitude: data[0].latitude,
+                longitude: data[0].longitude,
+                iconPath: data[0].iconPath,
+                width: data[0].width,
+                height: data[0].height,
                 label: {
-                  content: data[j].label.content,
+                  content: data[0].label.content || data[0].regeocodeData.formatted_address,
                   fontSize: 16,
                   bgColor: '#fff',
                   textAlign: 'right',
@@ -276,27 +289,19 @@ var myAmapFun = new amapFile.AMapWX({
 
 
 
+
+              _this2.latitude = data[0].latitude;
+
+              _this2.longitude = data[0].longitude;
+              _this2.markers = markers;
+              console.log("可以了");
             }
-            _this2.latitude = data[0].latitude;
+          } });
 
-            _this2.longitude = data[0].longitude;
-            _this2.markers = markers;
-            console.log("可以了");
-          }
-        } });
-
-    },
-    makertap: function makertap(e) {
-      var id = e.markerId;
-      var that = this;
-      // that.showMarkerInfo(this.markers,id);
-      that.changeMarkerColor(this.markers, id);
-
-      console.log("1221");
+      }
     },
     selectAdress: function selectAdress(item) {var _this3 = this;
-
-      console.log(item);
+      this.maskerClick = false;
       if (item.location.length === 0) {
         uni.showToast({
           title: '请输入具体地址',
@@ -313,7 +318,7 @@ var myAmapFun = new amapFile.AMapWX({
         success: function success(data) {
           console.log(data);
           // let markersData = data.markers;
-
+          _this3.maskerClick = true;
           _this3.markers = [{
             id: data[0].id,
             latitude: data[0].latitude,
@@ -322,7 +327,7 @@ var myAmapFun = new amapFile.AMapWX({
             width: 40,
             height: 60,
             label: {
-              content: data[0].desc,
+              content: data[0].regeocodeData.formatted_address,
               fontSize: 16,
               bgColor: '#fff',
               textAlign: 'right',
@@ -336,6 +341,41 @@ var myAmapFun = new amapFile.AMapWX({
 
           _this3.longitude = data[0].longitude;
           // that.showMarkerInfo(markersData, 0);
+
+
+          uni.showModal({
+            content: "确定更改地址?",
+            success: function success(res) {
+              if (res.confirm) {
+                var that = _this3;
+                var markers = [];
+                var labels = [];
+                data[0].iconPath = "../../static/img/marker_checked.png";
+                markers.push({
+                  id: data[0].id,
+                  latitude: data[0].latitude,
+                  longitude: data[0].longitude,
+                  iconPath: data[0].iconPath,
+                  width: data[0].width,
+                  height: data[0].height,
+                  label: {
+                    content: data[0].regeocodeData.formatted_address,
+                    fontSize: 16,
+                    bgColor: '#fff',
+                    textAlign: 'right',
+                    borderRadius: 5,
+                    padding: 3,
+                    color: 'red' } });
+
+
+                _this3.latitude = data[0].latitude;
+                _this3.longitude = data[0].longitude;
+                _this3.markers = markers;
+                _this3.setUserMessage(data[0].regeocodeData.formatted_address);
+                console.log("可以了");
+              }
+            } });
+
         },
         fail: function fail(info) {
           uni.showModal({
@@ -346,16 +386,45 @@ var myAmapFun = new amapFile.AMapWX({
       console.log(this.myAmapFunflag);
     },
 
+    //設置地址
+    setUserMessage: function setUserMessage(address) {var _this4 = this;
+      var tracePoint = '';
+      this.setUserData = uni.getStorageSync('setUserData');
+      console.log(this.setUserData);
+      if (this.setUserData.role.id === 9 || this.setUserData.role.id === 10 || this.setUserData.role.id === 11) {
+        if (this.setUserData.role.id === 9) {
+          tracePoint = this.setUserData.merchant.merchantName;
+        } else {
+          tracePoint = this.setUserData.distributeNode.tracePoint;
+        }
+      } else {
+        tracePoint = this.setUserData.merchant.merchantName;
+      }
+      this.$common.post('/accountCenter/account/updateNode', {
+        "location": address,
+        "tracePoint": tracePoint }).
+      then(function (res) {
 
+        if (res.data.statusCode === 200) {
+          _this4.$common.showToast('修改成功', 'success');
+          uni.setStorageSync('setUserData', res.data.data);
+          setTimeout(function () {
+            uni.navigateBack({
+              url: -1 });
+
+          }, 2000);
+        } else {
+          _this4.$common.showToast(res.data.statusMsg, 'none');
+        }
+      });
+    },
     bindInput: function bindInput(e) {
       if (!e.detail.value) {
-        console.log("212121");
         this.dataArr = [];
         return false;
       }
-
+      console.log(e);
       this.myAmapFunflag = myAmapFun;
-      console.log(this);
       var that = this;
       myAmapFun.getInputtips({
         keywords: e.detail.value,

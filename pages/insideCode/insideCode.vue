@@ -15,6 +15,7 @@
 			</view>
 			<view class="out" v-if="!zscode">
 				<button @tap="createdClick">扫一扫获取内部编码</button>
+				<view style="font-size: 26upx;margin: 15upx 0;">温馨提醒：如果机器是扫码枪，使用机器自带按钮或者点击屏幕按钮方可使用</view>
 			</view>
 		</view>
 		<error :text="text" v-if="showError" :type="type" @scode='scode'></error>
@@ -38,12 +39,9 @@
 				activity:''
 			}
 		},
-		onLoad() {
+		onShow() {
 
 			// #ifdef APP-PLUS
-
-
-
 			this.title = "开始监听！";
 
 			let main = plus.android.runtimeMainActivity(); //获取activity  
@@ -81,8 +79,8 @@
 				let barcodeTypeBytes = intent.getByteExtra("barcodeType", (0 | 0));
 				let barcodeType = byteToString(barcodeTypeBytes);
 
-				if (barcode && barcode.indexOf("https://2641.cn/") > -1) {
-					let sid = barcode.split("https://2641.cn/")[1]
+				if (barcode && barcode.indexOf(that.$common.host_name) > -1) {
+					let sid = barcode.split(that.$common.host_name)[1]
 					that.getCodeZsNumber(sid)
 				} else {
 					that.showError = true
@@ -122,7 +120,9 @@
 
 		},
 		destroyed() {
+			// #ifdef APP-PLUS
 			this.activity.unregisterReceiver(this.flag);//取消监听  
+			// #endif
 		},
 		onHide() {
 			 
@@ -163,11 +163,12 @@
 				})
 			},
 			scode() {
+				let that =this
 				uni.scanCode({
 					success: (res) => {
 
-						if (res.result && res.result.indexOf("https://2641.cn/") > -1) {
-							let sid = res.result.split("https://2641.cn/")[1]
+						if (res.result && res.result.indexOf(that.$common.host_name) > -1) {
+							let sid = res.result.split(that.$common.host_name)[1]
 							this.getCodeZsNumber(sid)
 						} else {
 							this.showError = true
