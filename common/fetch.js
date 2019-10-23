@@ -1,7 +1,7 @@
 export default class common {
 	static goLogin = '/accountCenter/account/login/zs/mini'
-	static host = "https://zs.cntracechain.com"
-
+	static host = "https://zs-beta.cntracechain.com"
+	static host_name='https://2641.cn/'
 	static post(url, data) {
 		const value = uni.getStorageSync('setUserData');
 		common.showLoading()
@@ -65,6 +65,36 @@ export default class common {
 			});
 		})
 
+	}
+	static getNot(url) {
+
+		const value = uni.getStorageSync('setUserData');
+		return new Promise((resolve, reject) => {
+			uni.request({
+				url: common.host + url, //仅为示例，并非真实接口地址。
+				header: {
+					token: value.token
+				},
+				success: (res) => {
+					if (Number(res.data.code) === 401) {
+						common.jumplogin()
+					} else {
+						resolve(res)
+					}
+	
+					setTimeout(() => {
+						common.hideLoading()
+					}, 800)
+				},
+				fail: (err) => {
+					reject(err)
+					setTimeout(() => {
+						common.hideLoading()
+					}, 800)
+				}
+			});
+		})
+	
 	}
 	static jumplogin(){
 	uni.redirectTo({
