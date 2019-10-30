@@ -1,8 +1,8 @@
-.getLocation.data-v-2026b55d {
+.getLocation.data-v-4599f38c {
   height: 100vh;
   position: relative;
 }
-.search_list.data-v-2026b55d {
+.search_list.data-v-4599f38c {
   position: fixed;
   bottom: 630rpx;
   left: 0;
@@ -13,7 +13,7 @@
   opacity: 0.95;
   border-radius: 20px 20px 0px 0px;
 }
-.search_list .search_box.data-v-2026b55d {
+.search_list .search_box.data-v-4599f38c {
   z-index: 2000 !important;
   position: relative;
   left: 0;
@@ -22,7 +22,7 @@
   background: #ffffff;
   opacity: 0.95;
 }
-.search_list .search_box .item.data-v-2026b55d {
+.search_list .search_box .item.data-v-4599f38c {
   border-bottom: 1px solid #C0C0C0;
   padding: 15rpx 15rpx 15rpx 15rpx;
   font-size: 24rpx;
@@ -40,15 +40,15 @@
       -ms-flex-align: center;
           align-items: center;
 }
-.search_list .search_box .item image.data-v-2026b55d {
+.search_list .search_box .item image.data-v-4599f38c {
   width: 35rpx;
   height: 35rpx;
   margin: 0 15rpx;
 }
-.search_list .search_box .item .top.data-v-2026b55d {
+.search_list .search_box .item .top.data-v-4599f38c {
   font-size: 30rpx;
 }
-.search_list .search_box .item .text_box.data-v-2026b55d {
+.search_list .search_box .item .text_box.data-v-4599f38c {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -59,15 +59,15 @@
       -ms-flex-direction: column;
           flex-direction: column;
 }
-.search_list .search_box .item.data-v-2026b55d:last-child {
+.search_list .search_box .item.data-v-4599f38c:last-child {
   border-bottom: none;
 }
-.search_list .search_box.acitve_search_box.data-v-2026b55d {
+.search_list .search_box.acitve_search_box.data-v-4599f38c {
   min-height: 10px !important;
   max-height: calc(800rpx) !important;
   overflow: scroll;
 }
-.search_list .search_input.data-v-2026b55d {
+.search_list .search_input.data-v-4599f38c {
   position: relative;
   left: 0;
   top: 0;
@@ -87,13 +87,13 @@
       -ms-flex-align: center;
           align-items: center;
 }
-.search_list .search_input image.data-v-2026b55d {
+.search_list .search_input image.data-v-4599f38c {
   width: 35rpx;
   height: 35rpx;
   position: absolute;
   left: 25rpx;
 }
-.search_list .search_input .input_box.data-v-2026b55d {
+.search_list .search_input .input_box.data-v-4599f38c {
   height: 80rpx;
   padding-left: 50rpx;
   border-radius: 10px;

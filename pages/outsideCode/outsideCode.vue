@@ -139,6 +139,9 @@
 				padding: 10px 10px;
 				align-items: center;
 				margin: 10px 0;
+				.title{
+					font-size: 28upx;
+				}
 
 			}
 		}

@@ -293,7 +293,7 @@ __webpack_require__.r(__webpack_exports__);
 
           if (res.result && res.result.indexOf(that.$common.host_name) > -1) {
             var sid = res.result.split(that.$common.host_name)[1];
-            _this.getCodeZsNumber(sid);
+            that.getCodeZsNumber(sid);
           } else {
             _this.showError = true;
             _this.text = "内码获取失败";

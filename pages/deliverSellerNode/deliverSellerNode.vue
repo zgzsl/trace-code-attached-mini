@@ -483,7 +483,8 @@
 				margin: 10px 0;
 
 				.title {
-					padding: 20rpx 20rpx;
+					padding: 20rpx 10rpx;
+					font-size: 24upx;
 				}
 
 				.picker {

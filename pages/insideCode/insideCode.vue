@@ -35,8 +35,8 @@
 				text: '扫码错误',
 				showError: false,
 				zscode: '',
-				flag:'',
-				activity:''
+				flag: '',
+				activity: ''
 			}
 		},
 		onShow() {
@@ -45,12 +45,12 @@
 			this.title = "开始监听！";
 
 			let main = plus.android.runtimeMainActivity(); //获取activity  
-			this.activity=main
+			this.activity = main
 			let context = plus.android.importClass('android.content.Context'); //上下文  
 			let receiver = plus.android.implements('io.dcloud.feature.internal.reflect.BroadcastReceiver', {
 				onReceive: doReceive
 			});
-			this.flag=receiver
+			this.flag = receiver
 			let IntentFilter = plus.android.importClass('android.content.IntentFilter');
 			let Intent = plus.android.importClass('android.content.Intent');
 			let filter = new IntentFilter();
@@ -121,19 +121,19 @@
 		},
 		destroyed() {
 			// #ifdef APP-PLUS
-			this.activity.unregisterReceiver(this.flag);//取消监听  
+			this.activity.unregisterReceiver(this.flag); //取消监听  
 			// #endif
 		},
 		onHide() {
-			 
+
 			// #ifdef APP-PLUS
-			this.activity.unregisterReceiver(this.flag);//取消监听  
+			this.activity.unregisterReceiver(this.flag); //取消监听  
 			// #endif
 		},
 		onUnload() {
-			 
+
 			// #ifdef APP-PLUS
-			this.activity.unregisterReceiver(this.flag);//取消监听  
+			this.activity.unregisterReceiver(this.flag); //取消监听  
 			// #endif
 		},
 		methods: {
@@ -163,13 +163,13 @@
 				})
 			},
 			scode() {
-				let that =this
+				let that = this
 				uni.scanCode({
 					success: (res) => {
 
 						if (res.result && res.result.indexOf(that.$common.host_name) > -1) {
 							let sid = res.result.split(that.$common.host_name)[1]
-							this.getCodeZsNumber(sid)
+							that.getCodeZsNumber(sid)
 						} else {
 							this.showError = true
 							this.text = "内码获取失败"

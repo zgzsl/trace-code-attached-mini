@@ -252,9 +252,13 @@ __webpack_require__.r(__webpack_exports__);
 
     'contactNumber': function contactNumber(val) {
       if (this.current === 1) {
-        if (val) {
-          this.getMoblieUserMess();
+        console.log(val);
+        if (val.length > 10) {
+          if (val) {
+            this.getMoblieUserMess();
+          }
         }
+
       }
     } },
 

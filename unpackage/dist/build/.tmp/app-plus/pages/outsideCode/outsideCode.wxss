@@ -22,6 +22,9 @@
           align-items: center;
   margin: 10px 0;
 }
+.outSide_item .context .context_item .title {
+  font-size: 28rpx;
+}
 .text {
   font-size: 14px;
   font-family: PingFang-SC-Medium;

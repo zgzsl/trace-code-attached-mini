@@ -163,8 +163,8 @@ var _default =
       type: 'password',
       showPassword: false,
       //logo图片 base64
-      phoneData: 'gaoyuan', //用户/电话
-      passData: 'zs123456', //密码
+      phoneData: '', //用户/电话
+      passData: '', //密码
       isRotate: false, //是否加载旋转
       bgColor: '#A82127' };
 

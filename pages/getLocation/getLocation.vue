@@ -268,9 +268,9 @@
 				}
 				this.$common.post('/accountCenter/account/updateNode', {
 					"location": address,
-					"tracePoint":tracePoint
+					"tracePoint": tracePoint
 				}).then((res) => {
-					
+
 					if (res.data.statusCode === 200) {
 						this.$common.showToast('修改成功', 'success')
 						uni.setStorageSync('setUserData', res.data.data);
@@ -289,7 +289,7 @@
 					this.dataArr = []
 					return false
 				}
-				console.log(e)
+
 				this.myAmapFunflag = myAmapFun
 				let that = this
 				myAmapFun.getInputtips({

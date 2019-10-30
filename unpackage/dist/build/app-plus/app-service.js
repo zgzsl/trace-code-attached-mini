@@ -1251,13 +1251,16 @@ Z(z[5])
 Z([[2,'>'],[[6],[[7],[3,'codeArr']],[3,'length']],[1,0]])
 Z([[2,'==='],[[6],[[7],[3,'codeArr']],[3,'length']],[1,0]])
 Z([[2,'==='],[[6],[[7],[3,'$root']],[3,'m1']],[1,1]])
+Z([3,'__e'])
+Z([[4],[[5],[[4],[[5],[[5],[1,'change']],[[4],[[5],[[4],[[5],[[5],[1,'radioChange']],[[4],[[5],[1,'$event']]]]]]]]]]])
+Z([[2,'==='],[1,1],[[7],[3,'current']]])
 Z([3,'btn_box'])
 Z([[2,'==='],[[7],[3,'active']],[1,1]])
 Z([[2,'==='],[[7],[3,'active']],[1,0]])
-Z(z[13])
+Z(z[16])
 Z([[7],[3,'showError']])
 Z([3,'__l'])
-Z([3,'__e'])
+Z(z[12])
 Z([[4],[[5],[[4],[[5],[[5],[1,'^scanCode']],[[4],[[5],[[4],[[5],[1,'scanCode']]]]]]]]])
 Z([[7],[3,'text']])
 Z([[7],[3,'type']])
@@ -1269,9 +1272,9 @@ if( __WXML_GLOBAL__.ops_cached.$gwx_15)return __WXML_GLOBAL__.ops_cached.$gwx_15
 __WXML_GLOBAL__.ops_cached.$gwx_15=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'__e'])
-Z([3,'getLocation data-v-2026b55d'])
+Z([3,'getLocation data-v-4599f38c'])
 Z([[4],[[5],[[4],[[5],[[5],[1,'tap']],[[4],[[5],[[4],[[5],[[5],[1,'e0']],[[4],[[5],[1,'$event']]]]]]]]]]])
-Z([3,'search_list data-v-2026b55d'])
+Z([3,'search_list data-v-4599f38c'])
 Z([[2,'&&'],[[2,'>'],[[6],[[7],[3,'dataArr']],[3,'length']],[1,0]],[[7],[3,'show']]])
 Z([[2,'&&'],[[2,'==='],[[6],[[7],[3,'dataArr']],[3,'length']],[1,0]],[[7],[3,'keywords']]])
 Z([[2,'!'],[[7],[3,'keywords']]])
@@ -1866,34 +1869,41 @@ _(tYC,b1C)
 var eZC=_v()
 _(aXC,eZC)
 if(_oz(z,11,e,s,gg)){eZC.wxVkey=1
-}
-var o0C=_n('view')
-_rz(z,o0C,'class',12,e,s,gg)
+var o0C=_mz(z,'radio-group',['bindchange',12,'data-event-opts',1],[],e,s,gg)
 var lAD=_v()
 _(o0C,lAD)
-if(_oz(z,13,e,s,gg)){lAD.wxVkey=1
-}
-var aBD=_v()
-_(o0C,aBD)
-if(_oz(z,14,e,s,gg)){aBD.wxVkey=1
-}
-var tCD=_v()
-_(o0C,tCD)
-if(_oz(z,15,e,s,gg)){tCD.wxVkey=1
+if(_oz(z,14,e,s,gg)){lAD.wxVkey=1
 }
 lAD.wxXCkey=1
-aBD.wxXCkey=1
+_(eZC,o0C)
+}
+var aBD=_n('view')
+_rz(z,aBD,'class',15,e,s,gg)
+var tCD=_v()
+_(aBD,tCD)
+if(_oz(z,16,e,s,gg)){tCD.wxVkey=1
+}
+var eDD=_v()
+_(aBD,eDD)
+if(_oz(z,17,e,s,gg)){eDD.wxVkey=1
+}
+var bED=_v()
+_(aBD,bED)
+if(_oz(z,18,e,s,gg)){bED.wxVkey=1
+}
 tCD.wxXCkey=1
-_(aXC,o0C)
+eDD.wxXCkey=1
+bED.wxXCkey=1
+_(aXC,aBD)
 tYC.wxXCkey=1
 eZC.wxXCkey=1
 _(oVC,aXC)
 }
 var lWC=_v()
 _(cUC,lWC)
-if(_oz(z,16,e,s,gg)){lWC.wxVkey=1
-var eDD=_mz(z,'error',['bind:__l',17,'bind:scanCode',1,'data-event-opts',2,'text',3,'type',4,'vueId',5],[],e,s,gg)
-_(lWC,eDD)
+if(_oz(z,19,e,s,gg)){lWC.wxVkey=1
+var oFD=_mz(z,'error',['bind:__l',20,'bind:scanCode',1,'data-event-opts',2,'text',3,'type',4,'vueId',5],[],e,s,gg)
+_(lWC,oFD)
 }
 oVC.wxXCkey=1
 lWC.wxXCkey=1
@@ -1905,91 +1915,91 @@ e_[x[13]]={f:m13,j:[],i:[],ti:[],ic:[]}
 d_[x[14]]={}
 var m14=function(e,s,r,gg){
 var z=gz$gwx_15()
-var oFD=_mz(z,'view',['bindtap',0,'class',1,'data-event-opts',1],[],e,s,gg)
-var xGD=_n('view')
-_rz(z,xGD,'class',3,e,s,gg)
-var oHD=_v()
-_(xGD,oHD)
-if(_oz(z,4,e,s,gg)){oHD.wxVkey=1
-}
-var fID=_v()
-_(xGD,fID)
-if(_oz(z,5,e,s,gg)){fID.wxVkey=1
-}
+var oHD=_mz(z,'view',['bindtap',0,'class',1,'data-event-opts',1],[],e,s,gg)
+var fID=_n('view')
+_rz(z,fID,'class',3,e,s,gg)
 var cJD=_v()
-_(xGD,cJD)
-if(_oz(z,6,e,s,gg)){cJD.wxVkey=1
+_(fID,cJD)
+if(_oz(z,4,e,s,gg)){cJD.wxVkey=1
+}
 var hKD=_v()
-_(cJD,hKD)
-if(_oz(z,7,e,s,gg)){hKD.wxVkey=1
+_(fID,hKD)
+if(_oz(z,5,e,s,gg)){hKD.wxVkey=1
 }
-hKD.wxXCkey=1
+var oLD=_v()
+_(fID,oLD)
+if(_oz(z,6,e,s,gg)){oLD.wxVkey=1
+var cMD=_v()
+_(oLD,cMD)
+if(_oz(z,7,e,s,gg)){cMD.wxVkey=1
 }
-oHD.wxXCkey=1
-fID.wxXCkey=1
+cMD.wxXCkey=1
+}
 cJD.wxXCkey=1
-_(oFD,xGD)
-_(r,oFD)
+hKD.wxXCkey=1
+oLD.wxXCkey=1
+_(oHD,fID)
+_(r,oHD)
 return r
 }
 e_[x[14]]={f:m14,j:[],i:[],ti:[],ic:[]}
 d_[x[15]]={}
 var m15=function(e,s,r,gg){
 var z=gz$gwx_16()
-var cMD=_mz(z,'uni-list',['bind:__l',0,'vueId',1,'vueSlots',1],[],e,s,gg)
-var oND=_v()
-_(cMD,oND)
-var lOD=function(tQD,aPD,eRD,gg){
-var oTD=_mz(z,'uni-list-item',['bind:__l',7,'bind:select',1,'data-event-opts',2,'note',3,'router',4,'showArrow',5,'showBadge',6,'title',7,'vueId',8],[],tQD,aPD,gg)
-_(eRD,oTD)
-return eRD
+var lOD=_mz(z,'uni-list',['bind:__l',0,'vueId',1,'vueSlots',1],[],e,s,gg)
+var aPD=_v()
+_(lOD,aPD)
+var tQD=function(bSD,eRD,oTD,gg){
+var oVD=_mz(z,'uni-list-item',['bind:__l',7,'bind:select',1,'data-event-opts',2,'note',3,'router',4,'showArrow',5,'showBadge',6,'title',7,'vueId',8],[],bSD,eRD,gg)
+_(oTD,oVD)
+return oTD
 }
-oND.wxXCkey=4
-_2z(z,5,lOD,e,s,gg,oND,'item','index','index')
-_(r,cMD)
+aPD.wxXCkey=4
+_2z(z,5,tQD,e,s,gg,aPD,'item','index','index')
+_(r,lOD)
 return r
 }
 e_[x[15]]={f:m15,j:[],i:[],ti:[],ic:[]}
 d_[x[16]]={}
 var m16=function(e,s,r,gg){
 var z=gz$gwx_17()
-var oVD=_n('view')
-_rz(z,oVD,'class',0,e,s,gg)
-var fWD=_v()
-_(oVD,fWD)
-if(_oz(z,1,e,s,gg)){fWD.wxVkey=1
-var hYD=_n('view')
-_rz(z,hYD,'class',2,e,s,gg)
-var oZD=_v()
-_(hYD,oZD)
-if(_oz(z,3,e,s,gg)){oZD.wxVkey=1
+var cXD=_n('view')
+_rz(z,cXD,'class',0,e,s,gg)
+var hYD=_v()
+_(cXD,hYD)
+if(_oz(z,1,e,s,gg)){hYD.wxVkey=1
+var c1D=_n('view')
+_rz(z,c1D,'class',2,e,s,gg)
+var o2D=_v()
+_(c1D,o2D)
+if(_oz(z,3,e,s,gg)){o2D.wxVkey=1
 }
-var c1D=_v()
+var l3D=_v()
+_(c1D,l3D)
+if(_oz(z,4,e,s,gg)){l3D.wxVkey=1
+}
+o2D.wxXCkey=1
+l3D.wxXCkey=1
 _(hYD,c1D)
-if(_oz(z,4,e,s,gg)){c1D.wxVkey=1
 }
+var oZD=_v()
+_(cXD,oZD)
+if(_oz(z,5,e,s,gg)){oZD.wxVkey=1
+var a4D=_mz(z,'error',['bind:__l',6,'bind:scode',1,'data-event-opts',2,'text',3,'type',4,'vueId',5],[],e,s,gg)
+_(oZD,a4D)
+}
+hYD.wxXCkey=1
 oZD.wxXCkey=1
-c1D.wxXCkey=1
-_(fWD,hYD)
-}
-var cXD=_v()
-_(oVD,cXD)
-if(_oz(z,5,e,s,gg)){cXD.wxVkey=1
-var o2D=_mz(z,'error',['bind:__l',6,'bind:scode',1,'data-event-opts',2,'text',3,'type',4,'vueId',5],[],e,s,gg)
-_(cXD,o2D)
-}
-fWD.wxXCkey=1
-cXD.wxXCkey=1
-cXD.wxXCkey=3
-_(r,oVD)
+oZD.wxXCkey=3
+_(r,cXD)
 return r
 }
 e_[x[16]]={f:m16,j:[],i:[],ti:[],ic:[]}
 d_[x[17]]={}
 var m17=function(e,s,r,gg){
 var z=gz$gwx_18()
-var a4D=_mz(z,'w-button',['bgColor',0,'bind:__l',1,'bindtap',1,'data-event-opts',2,'rotate',3,'text',4,'vueId',5],[],e,s,gg)
-_(r,a4D)
+var e6D=_mz(z,'w-button',['bgColor',0,'bind:__l',1,'bindtap',1,'data-event-opts',2,'rotate',3,'text',4,'vueId',5],[],e,s,gg)
+_(r,e6D)
 return r
 }
 e_[x[17]]={f:m17,j:[],i:[],ti:[],ic:[]}
@@ -2002,223 +2012,223 @@ e_[x[18]]={f:m18,j:[],i:[],ti:[],ic:[]}
 d_[x[19]]={}
 var m19=function(e,s,r,gg){
 var z=gz$gwx_20()
-var b7D=_n('view')
-_rz(z,b7D,'class',0,e,s,gg)
-var o8D=_v()
-_(b7D,o8D)
-if(_oz(z,1,e,s,gg)){o8D.wxVkey=1
-var cBE=_n('view')
-_rz(z,cBE,'class',2,e,s,gg)
-var oFE=_mz(z,'uni-steps',['active',3,'activeColor',1,'bind:__l',2,'direction',3,'options',4,'vueId',5],[],e,s,gg)
-_(cBE,oFE)
-var hCE=_v()
-_(cBE,hCE)
-if(_oz(z,9,e,s,gg)){hCE.wxVkey=1
-var lGE=_n('view')
-_rz(z,lGE,'class',10,e,s,gg)
-var aHE=_mz(z,'uni-list',['bind:__l',11,'class',1,'vueId',2,'vueSlots',3],[],e,s,gg)
-_(lGE,aHE)
+var x9D=_n('view')
+_rz(z,x9D,'class',0,e,s,gg)
+var o0D=_v()
+_(x9D,o0D)
+if(_oz(z,1,e,s,gg)){o0D.wxVkey=1
+var oDE=_n('view')
+_rz(z,oDE,'class',2,e,s,gg)
+var aHE=_mz(z,'uni-steps',['active',3,'activeColor',1,'bind:__l',2,'direction',3,'options',4,'vueId',5],[],e,s,gg)
+_(oDE,aHE)
+var cEE=_v()
+_(oDE,cEE)
+if(_oz(z,9,e,s,gg)){cEE.wxVkey=1
 var tIE=_n('view')
-_rz(z,tIE,'class',15,e,s,gg)
-var bKE=_mz(z,'radio-group',['bindchange',16,'data-event-opts',1],[],e,s,gg)
-var oLE=_v()
-_(bKE,oLE)
-var xME=function(fOE,oNE,cPE,gg){
-var oRE=_v()
-_(cPE,oRE)
-if(_oz(z,22,fOE,oNE,gg)){oRE.wxVkey=1
-}
-oRE.wxXCkey=1
-return cPE
-}
-oLE.wxXCkey=2
-_2z(z,20,xME,e,s,gg,oLE,'item','index','index')
-_(tIE,bKE)
-var eJE=_v()
+_rz(z,tIE,'class',10,e,s,gg)
+var eJE=_mz(z,'uni-list',['bind:__l',11,'class',1,'vueId',2,'vueSlots',3],[],e,s,gg)
 _(tIE,eJE)
-if(_oz(z,23,e,s,gg)){eJE.wxVkey=1
-}
-eJE.wxXCkey=1
-_(lGE,tIE)
-_(hCE,lGE)
-}
-var oDE=_v()
-_(cBE,oDE)
-if(_oz(z,24,e,s,gg)){oDE.wxVkey=1
-var cSE=_n('view')
-_rz(z,cSE,'class',25,e,s,gg)
-var lUE=_v()
-_(cSE,lUE)
-var aVE=function(eXE,tWE,bYE,gg){
-var x1E=_v()
-_(bYE,x1E)
-if(_oz(z,30,eXE,tWE,gg)){x1E.wxVkey=1
-}
-x1E.wxXCkey=1
-return bYE
-}
-lUE.wxXCkey=2
-_2z(z,28,aVE,e,s,gg,lUE,'item','index','index')
+var bKE=_n('view')
+_rz(z,bKE,'class',15,e,s,gg)
+var xME=_mz(z,'radio-group',['bindchange',16,'data-event-opts',1],[],e,s,gg)
+var oNE=_v()
+_(xME,oNE)
+var fOE=function(hQE,cPE,oRE,gg){
 var oTE=_v()
-_(cSE,oTE)
-if(_oz(z,31,e,s,gg)){oTE.wxVkey=1
+_(oRE,oTE)
+if(_oz(z,22,hQE,cPE,gg)){oTE.wxVkey=1
 }
 oTE.wxXCkey=1
-_(oDE,cSE)
+return oRE
 }
-var cEE=_v()
-_(cBE,cEE)
-if(_oz(z,32,e,s,gg)){cEE.wxVkey=1
+oNE.wxXCkey=2
+_2z(z,20,fOE,e,s,gg,oNE,'item','index','index')
+_(bKE,xME)
+var oLE=_v()
+_(bKE,oLE)
+if(_oz(z,23,e,s,gg)){oLE.wxVkey=1
 }
-hCE.wxXCkey=1
-hCE.wxXCkey=3
-oDE.wxXCkey=1
-cEE.wxXCkey=1
-_(o8D,cBE)
+oLE.wxXCkey=1
+_(tIE,bKE)
+_(cEE,tIE)
 }
-var x9D=_v()
-_(b7D,x9D)
-if(_oz(z,33,e,s,gg)){x9D.wxVkey=1
-var o2E=_n('view')
-_rz(z,o2E,'class',34,e,s,gg)
+var oFE=_v()
+_(oDE,oFE)
+if(_oz(z,24,e,s,gg)){oFE.wxVkey=1
+var lUE=_n('view')
+_rz(z,lUE,'class',25,e,s,gg)
+var tWE=_v()
+_(lUE,tWE)
+var eXE=function(oZE,bYE,x1E,gg){
 var f3E=_v()
-_(o2E,f3E)
-if(_oz(z,35,e,s,gg)){f3E.wxVkey=1
-}
-var c4E=_v()
-_(o2E,c4E)
-if(_oz(z,36,e,s,gg)){c4E.wxVkey=1
-}
-var h5E=_v()
-_(o2E,h5E)
-if(_oz(z,37,e,s,gg)){h5E.wxVkey=1
+_(x1E,f3E)
+if(_oz(z,30,oZE,bYE,gg)){f3E.wxVkey=1
 }
 f3E.wxXCkey=1
-c4E.wxXCkey=1
-h5E.wxXCkey=1
-_(x9D,o2E)
+return x1E
 }
-var o0D=_v()
-_(b7D,o0D)
-if(_oz(z,38,e,s,gg)){o0D.wxVkey=1
+tWE.wxXCkey=2
+_2z(z,28,eXE,e,s,gg,tWE,'item','index','index')
+var aVE=_v()
+_(lUE,aVE)
+if(_oz(z,31,e,s,gg)){aVE.wxVkey=1
+}
+aVE.wxXCkey=1
+_(oFE,lUE)
+}
+var lGE=_v()
+_(oDE,lGE)
+if(_oz(z,32,e,s,gg)){lGE.wxVkey=1
+}
+cEE.wxXCkey=1
+cEE.wxXCkey=3
+oFE.wxXCkey=1
+lGE.wxXCkey=1
+_(o0D,oDE)
 }
 var fAE=_v()
-_(b7D,fAE)
-if(_oz(z,39,e,s,gg)){fAE.wxVkey=1
+_(x9D,fAE)
+if(_oz(z,33,e,s,gg)){fAE.wxVkey=1
+var c4E=_n('view')
+_rz(z,c4E,'class',34,e,s,gg)
+var h5E=_v()
+_(c4E,h5E)
+if(_oz(z,35,e,s,gg)){h5E.wxVkey=1
 }
-var o6E=_mz(z,'mx-date-picker',['bind:__l',40,'bind:cancel',1,'bind:confirm',2,'data-event-opts',3,'show',4,'showSeconds',5,'showTips',6,'type',7,'value',8,'vueId',9],[],e,s,gg)
-_(b7D,o6E)
-var c7E=_mz(z,'mx-date-picker',['bind:__l',50,'bind:cancel',1,'bind:confirm',2,'data-event-opts',3,'show',4,'showSeconds',5,'showTips',6,'type',7,'value',8,'vueId',9],[],e,s,gg)
-_(b7D,c7E)
-var o8E=_mz(z,'pengkai-draw',['bind:__l',60,'bind:close',1,'catchtouchmove',2,'data-event-opts',3,'mode',4,'visible',5,'vueId',6,'vueSlots',7],[],e,s,gg)
-var l9E=_mz(z,'scroll-view',['bindscrolltolower',68,'class',1,'data-event-opts',2,'lowerThreshold',3,'scrollY',4],[],e,s,gg)
-var tAF=_v()
-_(l9E,tAF)
-var eBF=function(oDF,bCF,xEF,gg){
-var fGF=_v()
-_(xEF,fGF)
-if(_oz(z,77,oDF,bCF,gg)){fGF.wxVkey=1
+var o6E=_v()
+_(c4E,o6E)
+if(_oz(z,36,e,s,gg)){o6E.wxVkey=1
 }
-fGF.wxXCkey=1
-return xEF
+var c7E=_v()
+_(c4E,c7E)
+if(_oz(z,37,e,s,gg)){c7E.wxVkey=1
 }
-tAF.wxXCkey=2
-_2z(z,75,eBF,e,s,gg,tAF,'item','index','index')
-var a0E=_v()
-_(l9E,a0E)
-if(_oz(z,78,e,s,gg)){a0E.wxVkey=1
+h5E.wxXCkey=1
+o6E.wxXCkey=1
+c7E.wxXCkey=1
+_(fAE,c4E)
 }
-a0E.wxXCkey=1
-_(o8E,l9E)
-_(b7D,o8E)
-o8D.wxXCkey=1
-o8D.wxXCkey=3
-x9D.wxXCkey=1
+var cBE=_v()
+_(x9D,cBE)
+if(_oz(z,38,e,s,gg)){cBE.wxVkey=1
+}
+var hCE=_v()
+_(x9D,hCE)
+if(_oz(z,39,e,s,gg)){hCE.wxVkey=1
+}
+var o8E=_mz(z,'mx-date-picker',['bind:__l',40,'bind:cancel',1,'bind:confirm',2,'data-event-opts',3,'show',4,'showSeconds',5,'showTips',6,'type',7,'value',8,'vueId',9],[],e,s,gg)
+_(x9D,o8E)
+var l9E=_mz(z,'mx-date-picker',['bind:__l',50,'bind:cancel',1,'bind:confirm',2,'data-event-opts',3,'show',4,'showSeconds',5,'showTips',6,'type',7,'value',8,'vueId',9],[],e,s,gg)
+_(x9D,l9E)
+var a0E=_mz(z,'pengkai-draw',['bind:__l',60,'bind:close',1,'catchtouchmove',2,'data-event-opts',3,'mode',4,'visible',5,'vueId',6,'vueSlots',7],[],e,s,gg)
+var tAF=_mz(z,'scroll-view',['bindscrolltolower',68,'class',1,'data-event-opts',2,'lowerThreshold',3,'scrollY',4],[],e,s,gg)
+var bCF=_v()
+_(tAF,bCF)
+var oDF=function(oFF,xEF,fGF,gg){
+var hIF=_v()
+_(fGF,hIF)
+if(_oz(z,77,oFF,xEF,gg)){hIF.wxVkey=1
+}
+hIF.wxXCkey=1
+return fGF
+}
+bCF.wxXCkey=2
+_2z(z,75,oDF,e,s,gg,bCF,'item','index','index')
+var eBF=_v()
+_(tAF,eBF)
+if(_oz(z,78,e,s,gg)){eBF.wxVkey=1
+}
+eBF.wxXCkey=1
+_(a0E,tAF)
+_(x9D,a0E)
 o0D.wxXCkey=1
+o0D.wxXCkey=3
 fAE.wxXCkey=1
-_(r,b7D)
+cBE.wxXCkey=1
+hCE.wxXCkey=1
+_(r,x9D)
 return r
 }
 e_[x[19]]={f:m19,j:[],i:[],ti:[],ic:[]}
 d_[x[20]]={}
 var m20=function(e,s,r,gg){
 var z=gz$gwx_21()
-var hIF=_n('view')
-_rz(z,hIF,'class',0,e,s,gg)
-var oJF=_v()
-_(hIF,oJF)
-if(_oz(z,1,e,s,gg)){oJF.wxVkey=1
-var oLF=_n('view')
-_rz(z,oLF,'class',2,e,s,gg)
-var lMF=_v()
-_(oLF,lMF)
-if(_oz(z,3,e,s,gg)){lMF.wxVkey=1
-var tOF=_n('view')
-_rz(z,tOF,'class',4,e,s,gg)
+var cKF=_n('view')
+_rz(z,cKF,'class',0,e,s,gg)
+var oLF=_v()
+_(cKF,oLF)
+if(_oz(z,1,e,s,gg)){oLF.wxVkey=1
+var aNF=_n('view')
+_rz(z,aNF,'class',2,e,s,gg)
+var tOF=_v()
+_(aNF,tOF)
+if(_oz(z,3,e,s,gg)){tOF.wxVkey=1
 var bQF=_n('view')
-_rz(z,bQF,'class',5,e,s,gg)
-var oRF=_n('view')
-_rz(z,oRF,'class',6,e,s,gg)
-var xSF=_v()
-_(oRF,xSF)
-if(_oz(z,7,e,s,gg)){xSF.wxVkey=1
+_rz(z,bQF,'class',4,e,s,gg)
+var xSF=_n('view')
+_rz(z,xSF,'class',5,e,s,gg)
+var oTF=_n('view')
+_rz(z,oTF,'class',6,e,s,gg)
+var fUF=_v()
+_(oTF,fUF)
+if(_oz(z,7,e,s,gg)){fUF.wxVkey=1
 }
-var oTF=_v()
-_(oRF,oTF)
-if(_oz(z,8,e,s,gg)){oTF.wxVkey=1
+var cVF=_v()
+_(oTF,cVF)
+if(_oz(z,8,e,s,gg)){cVF.wxVkey=1
 }
-xSF.wxXCkey=1
-oTF.wxXCkey=1
+fUF.wxXCkey=1
+cVF.wxXCkey=1
+_(xSF,oTF)
+var hWF=_mz(z,'mix-tree',['bind:__l',9,'bind:deleteCode',1,'bind:treeItemClick',2,'data-event-opts',3,'deliverGoods',4,'list',5,'vueId',6],[],e,s,gg)
+_(xSF,hWF)
+_(bQF,xSF)
+var oRF=_v()
 _(bQF,oRF)
-var fUF=_mz(z,'mix-tree',['bind:__l',9,'bind:deleteCode',1,'bind:treeItemClick',2,'data-event-opts',3,'deliverGoods',4,'list',5,'vueId',6],[],e,s,gg)
-_(bQF,fUF)
+if(_oz(z,16,e,s,gg)){oRF.wxVkey=1
+}
+oRF.wxXCkey=1
 _(tOF,bQF)
+}
 var ePF=_v()
-_(tOF,ePF)
-if(_oz(z,16,e,s,gg)){ePF.wxVkey=1
+_(aNF,ePF)
+if(_oz(z,17,e,s,gg)){ePF.wxVkey=1
 }
+tOF.wxXCkey=1
+tOF.wxXCkey=3
 ePF.wxXCkey=1
-_(lMF,tOF)
-}
-var aNF=_v()
 _(oLF,aNF)
-if(_oz(z,17,e,s,gg)){aNF.wxVkey=1
 }
+var lMF=_v()
+_(cKF,lMF)
+if(_oz(z,18,e,s,gg)){lMF.wxVkey=1
+var oXF=_mz(z,'error',['bind:__l',19,'bind:createdClick',1,'bind:relation',2,'data-event-opts',3,'text',4,'type',5,'vueId',6],[],e,s,gg)
+_(lMF,oXF)
+}
+oLF.wxXCkey=1
+oLF.wxXCkey=3
 lMF.wxXCkey=1
 lMF.wxXCkey=3
-aNF.wxXCkey=1
-_(oJF,oLF)
-}
-var cKF=_v()
-_(hIF,cKF)
-if(_oz(z,18,e,s,gg)){cKF.wxVkey=1
-var cVF=_mz(z,'error',['bind:__l',19,'bind:createdClick',1,'bind:relation',2,'data-event-opts',3,'text',4,'type',5,'vueId',6],[],e,s,gg)
-_(cKF,cVF)
-}
-oJF.wxXCkey=1
-oJF.wxXCkey=3
-cKF.wxXCkey=1
-cKF.wxXCkey=3
-_(r,hIF)
+_(r,cKF)
 return r
 }
 e_[x[20]]={f:m20,j:[],i:[],ti:[],ic:[]}
 d_[x[21]]={}
 var m21=function(e,s,r,gg){
 var z=gz$gwx_22()
-var oXF=_n('view')
-_rz(z,oXF,'class',0,e,s,gg)
-var cYF=_v()
-_(oXF,cYF)
-if(_oz(z,1,e,s,gg)){cYF.wxVkey=1
+var oZF=_n('view')
+_rz(z,oZF,'class',0,e,s,gg)
+var l1F=_v()
+_(oZF,l1F)
+if(_oz(z,1,e,s,gg)){l1F.wxVkey=1
 }
-var oZF=_v()
-_(oXF,oZF)
-if(_oz(z,2,e,s,gg)){oZF.wxVkey=1
+var a2F=_v()
+_(oZF,a2F)
+if(_oz(z,2,e,s,gg)){a2F.wxVkey=1
 }
-cYF.wxXCkey=1
-oZF.wxXCkey=1
-_(r,oXF)
+l1F.wxXCkey=1
+a2F.wxXCkey=1
+_(r,oZF)
 return r
 }
 e_[x[21]]={f:m21,j:[],i:[],ti:[],ic:[]}
@@ -4243,7 +4253,7 @@ require('components/watch-login/watch-input.js');
 __wxRoute = 'pages/login/login';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/login/login.js';
 
 define('pages/login/login.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/login/login"],{"6fee":function(t,n,o){"use strict";o.r(n);var e=o("dd16"),a=o("78bc");for(var i in a)"default"!==i&&function(t){o.d(n,t,function(){return a[t]})}(i);o("9cd8");var s=o("2877"),u=Object(s["a"])(a["default"],e["a"],e["b"],!1,null,null,null);n["default"]=u.exports},"78bc":function(t,n,o){"use strict";o.r(n);var e=o("a1b5"),a=o.n(e);for(var i in e)"default"!==i&&function(t){o.d(n,t,function(){return e[t]})}(i);n["default"]=a.a},"9cd8":function(t,n,o){"use strict";var e=o("c7f7"),a=o.n(e);a.a},a1b5:function(t,n,o){"use strict";(function(t){Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var e=function(){return o.e("components/watch-login/watch-input").then(o.bind(null,"d31c"))},a=function(){return o.e("components/watch-login/watch-button").then(o.bind(null,"9c3f"))},i={data:function(){return{type:"password",showPassword:!1,phoneData:"13617737126",passData:"zs123456",isRotate:!1,bgColor:"#A82127"}},components:{wInput:e,wButton:a},mounted:function(){},methods:{showPass:function(){this.showPassword=!this.showPassword},inputText:function(t){this.phoneData=t.detail.value},startLogin:function(){var n=this;if(this.isRotate)return!1;if(""!=this.phoneData.length)if(""!=this.passData.length){this.isRotate=!0,setTimeout(function(){this.isRotate=!1},3e3);var o={accountName:this.$common.trim(this.phoneData),password:this.$common.trim(this.passData)};t.showLoading({title:"登录中"}),this.$common.post(this.$common.goLogin,o).then(function(o){200===Number(o.data.statusCode)?(t.setStorageSync("setUserData",o.data.data),setTimeout(function(){n.$common.success("登陆成功")},1e3),setTimeout(function(){n.isRotate=!1,t.redirectTo({url:"../index/index"})},1e3)):(n.$common.showToast(o.data.statusMsg,"none"),n.isRotate=!1),setTimeout(function(){t.hideLoading()},1500)}).catch(function(n){t.hideLoading()})}else t.showToast({icon:"none",position:"bottom",title:"请输入商家密码"});else t.showToast({icon:"none",position:"bottom",title:"请输入商家账号或者手机号码"})}}};n.default=i}).call(this,o("6e42")["default"])},ba73:function(t,n,o){"use strict";(function(t){o("7b83"),o("921b");e(o("66fd"));var n=e(o("6fee"));function e(t){return t&&t.__esModule?t:{default:t}}t(n.default)}).call(this,o("6e42")["createPage"])},c7f7:function(t,n,o){},dd16:function(t,n,o){"use strict";var e=function(){var t=this,n=t.$createElement;t._self._c},a=[];o.d(n,"a",function(){return e}),o.d(n,"b",function(){return a})}},[["ba73","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/login/login"],{"6fee":function(t,n,o){"use strict";o.r(n);var e=o("b2a7"),a=o("78bc");for(var i in a)"default"!==i&&function(t){o.d(n,t,function(){return a[t]})}(i);o("9cd8");var s=o("2877"),u=Object(s["a"])(a["default"],e["a"],e["b"],!1,null,null,null);n["default"]=u.exports},"78bc":function(t,n,o){"use strict";o.r(n);var e=o("a1b5"),a=o.n(e);for(var i in e)"default"!==i&&function(t){o.d(n,t,function(){return e[t]})}(i);n["default"]=a.a},"9cd8":function(t,n,o){"use strict";var e=o("c7f7"),a=o.n(e);a.a},a1b5:function(t,n,o){"use strict";(function(t){Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var e=function(){return o.e("components/watch-login/watch-input").then(o.bind(null,"d31c"))},a=function(){return o.e("components/watch-login/watch-button").then(o.bind(null,"9c3f"))},i={data:function(){return{type:"password",showPassword:!1,phoneData:"",passData:"",isRotate:!1,bgColor:"#A82127"}},components:{wInput:e,wButton:a},mounted:function(){},methods:{showPass:function(){this.showPassword=!this.showPassword},inputText:function(t){this.phoneData=t.detail.value},startLogin:function(){var n=this;if(this.isRotate)return!1;if(""!=this.phoneData.length)if(""!=this.passData.length){this.isRotate=!0,setTimeout(function(){this.isRotate=!1},3e3);var o={accountName:this.$common.trim(this.phoneData),password:this.$common.trim(this.passData)};t.showLoading({title:"登录中"}),this.$common.post(this.$common.goLogin,o).then(function(o){200===Number(o.data.statusCode)?(t.setStorageSync("setUserData",o.data.data),setTimeout(function(){n.$common.success("登陆成功")},1e3),setTimeout(function(){n.isRotate=!1,t.redirectTo({url:"../index/index"})},1e3)):(n.$common.showToast(o.data.statusMsg,"none"),n.isRotate=!1),setTimeout(function(){t.hideLoading()},1500)}).catch(function(n){t.hideLoading()})}else t.showToast({icon:"none",position:"bottom",title:"请输入商家密码"});else t.showToast({icon:"none",position:"bottom",title:"请输入商家账号或者手机号码"})}}};n.default=i}).call(this,o("6e42")["default"])},b2a7:function(t,n,o){"use strict";var e=function(){var t=this,n=t.$createElement;t._self._c},a=[];o.d(n,"a",function(){return e}),o.d(n,"b",function(){return a})},ba73:function(t,n,o){"use strict";(function(t){o("7b83"),o("921b");e(o("66fd"));var n=e(o("6fee"));function e(t){return t&&t.__esModule?t:{default:t}}t(n.default)}).call(this,o("6e42")["createPage"])},c7f7:function(t,n,o){}},[["ba73","common/runtime","common/vendor"]]]);
 });
 require('pages/login/login.js');
 __wxRoute = 'pages/index/index';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/index/index.js';
@@ -4255,19 +4265,19 @@ require('pages/index/index.js');
 __wxRoute = 'pages/sellerMessage/sellerMessage';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/sellerMessage/sellerMessage.js';
 
 define('pages/sellerMessage/sellerMessage.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/sellerMessage/sellerMessage"],{"7d97":function(t,e,a){"use strict";var s=function(){var t=this,e=t.$createElement;t._self._c},o=[];a.d(e,"a",function(){return s}),a.d(e,"b",function(){return o})},a3de:function(t,e,a){"use strict";(function(t,a){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var s={data:function(){return{location:"",startName:"",tracePoint:"广东皮草批发部",showPopupBottom:!1,setUserData:{},editorOr:!0}},onShow:function(){this.setUserData=t.getStorageSync("setUserData"),console.log(a(this.setUserData," at pages\\sellerMessage\\sellerMessage.vue:55")),this.setUserData.role&&(9===this.setUserData.role.id||10===this.setUserData.role.id||11===this.setUserData.role.id?(9===this.setUserData.role.id?(this.location=this.setUserData.subMerchant.location,this.tracePoint=this.setUserData.merchant.merchantName,this.startName=this.tracePoint):(this.location=this.setUserData.distributeNode.location,this.tracePoint=this.setUserData.distributeNode.tracePoint,this.startName=this.tracePoint),this.editorOr=!1):(this.location=this.setUserData.merchant.merchantDetailSite,this.tracePoint=this.setUserData.merchant.merchantName,this.startName=this.tracePoint,this.editorOr=!0))},methods:{tapWeizhi:function(){t.navigateTo({url:"../getLocation/getLocation"})},changeName:function(t){this.showPopupBottom=!0},setUserMessage:function(){var e=this;this.$common.post("/accountCenter/account/updateNode",{location:this.location,tracePoint:this.tracePoint}).then(function(a){200===a.data.statusCode?(e.$common.showToast("修改成功","success"),t.setStorageSync("setUserData",a.data.data),e.showPopupBottom=!1):e.$common.showToast(a.data.statusMsg,"none")})},blurChangeName:function(){var e=this;this.startName!==this.tracePoint&&t.showModal({title:"此操作",content:"确定要更改用户信息?",success:function(t){console.log(a(t.confirm," at pages\\sellerMessage\\sellerMessage.vue:111")),t.confirm&&(e.startName=e.tracePoint,e.setUserMessage())}})}}};e.default=s}).call(this,a("6e42")["default"],a("0de9")["default"])},ac59:function(t,e,a){"use strict";(function(t){a("7b83"),a("921b");s(a("66fd"));var e=s(a("ec2a"));function s(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,a("6e42")["createPage"])},d188:function(t,e,a){"use strict";var s=a("f571"),o=a.n(s);o.a},d4d7:function(t,e,a){"use strict";a.r(e);var s=a("a3de"),o=a.n(s);for(var n in s)"default"!==n&&function(t){a.d(e,t,function(){return s[t]})}(n);e["default"]=o.a},ec2a:function(t,e,a){"use strict";a.r(e);var s=a("7d97"),o=a("d4d7");for(var n in o)"default"!==n&&function(t){a.d(e,t,function(){return o[t]})}(n);a("d188");var i=a("2877"),r=Object(i["a"])(o["default"],s["a"],s["b"],!1,null,null,null);e["default"]=r.exports},f571:function(t,e,a){}},[["ac59","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/sellerMessage/sellerMessage"],{a3de:function(t,e,a){"use strict";(function(t,a){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var s={data:function(){return{location:"",startName:"",tracePoint:"广东皮草批发部",showPopupBottom:!1,setUserData:{},editorOr:!0}},onShow:function(){this.setUserData=t.getStorageSync("setUserData"),console.log(a(this.setUserData," at pages\\sellerMessage\\sellerMessage.vue:55")),this.setUserData.role&&(9===this.setUserData.role.id||10===this.setUserData.role.id||11===this.setUserData.role.id?(9===this.setUserData.role.id?(this.location=this.setUserData.subMerchant.location,this.tracePoint=this.setUserData.merchant.merchantName,this.startName=this.tracePoint):(this.location=this.setUserData.distributeNode.location,this.tracePoint=this.setUserData.distributeNode.tracePoint,this.startName=this.tracePoint),this.editorOr=!1):(this.location=this.setUserData.merchant.merchantDetailSite,this.tracePoint=this.setUserData.merchant.merchantName,this.startName=this.tracePoint,this.editorOr=!0))},methods:{tapWeizhi:function(){t.navigateTo({url:"../getLocation/getLocation"})},changeName:function(t){this.showPopupBottom=!0},setUserMessage:function(){var e=this;this.$common.post("/accountCenter/account/updateNode",{location:this.location,tracePoint:this.tracePoint}).then(function(a){200===a.data.statusCode?(e.$common.showToast("修改成功","success"),t.setStorageSync("setUserData",a.data.data),e.showPopupBottom=!1):e.$common.showToast(a.data.statusMsg,"none")})},blurChangeName:function(){var e=this;this.startName!==this.tracePoint&&t.showModal({title:"此操作",content:"确定要更改用户信息?",success:function(t){console.log(a(t.confirm," at pages\\sellerMessage\\sellerMessage.vue:111")),t.confirm&&(e.startName=e.tracePoint,e.setUserMessage())}})}}};e.default=s}).call(this,a("6e42")["default"],a("0de9")["default"])},ac59:function(t,e,a){"use strict";(function(t){a("7b83"),a("921b");s(a("66fd"));var e=s(a("ec2a"));function s(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,a("6e42")["createPage"])},d188:function(t,e,a){"use strict";var s=a("f571"),o=a.n(s);o.a},d4d7:function(t,e,a){"use strict";a.r(e);var s=a("a3de"),o=a.n(s);for(var n in s)"default"!==n&&function(t){a.d(e,t,function(){return s[t]})}(n);e["default"]=o.a},ec2a:function(t,e,a){"use strict";a.r(e);var s=a("f8ea"),o=a("d4d7");for(var n in o)"default"!==n&&function(t){a.d(e,t,function(){return o[t]})}(n);a("d188");var i=a("2877"),r=Object(i["a"])(o["default"],s["a"],s["b"],!1,null,null,null);e["default"]=r.exports},f571:function(t,e,a){},f8ea:function(t,e,a){"use strict";var s=function(){var t=this,e=t.$createElement;t._self._c},o=[];a.d(e,"a",function(){return s}),a.d(e,"b",function(){return o})}},[["ac59","common/runtime","common/vendor"]]]);
 });
 require('pages/sellerMessage/sellerMessage.js');
 __wxRoute = 'pages/deliverSellerNode/deliverSellerNode';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/deliverSellerNode/deliverSellerNode.js';
 
 define('pages/deliverSellerNode/deliverSellerNode.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/deliverSellerNode/deliverSellerNode"],{"1f8d":function(e,t,o){"use strict";o.r(t);var r=o("b967"),a=o.n(r);for(var n in r)"default"!==n&&function(e){o.d(t,e,function(){return r[e]})}(n);t["default"]=a.a},"3e61":function(e,t,o){"use strict";var r=function(){var e=this,t=e.$createElement,o=(e._self._c,Number(e.active)),r=Number(e.active);e._isMounted||(e.e0=function(t){e.active=0}),e.$mp.data=Object.assign({},{$root:{m0:o,m1:r}})},a=[];o.d(t,"a",function(){return r}),o.d(t,"b",function(){return a})},"6e3f":function(e,t,o){"use strict";var r=o("8c98"),a=o.n(r);a.a},"8c98":function(e,t,o){},afad:function(e,t,o){"use strict";o.r(t);var r=o("3e61"),a=o("1f8d");for(var n in a)"default"!==n&&function(e){o.d(t,e,function(){return a[e]})}(n);o("6e3f");var c=o("2877"),s=Object(c["a"])(a["default"],r["a"],r["b"],!1,null,null,null);t["default"]=s.exports},b967:function(e,t,o){"use strict";(function(e,r){Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var a=function(){return o.e("components/scodeError").then(o.bind(null,"94bf"))},n={components:{error:a},data:function(){return{sellerNameSelect:!0,userNameSelect:!1,userName:"",type:"scanCode",text:"扫码错误",showError:!1,current:0,codeArr:[],arr:[],index:0,active:0,count:0,timeId:"",mobileInfo:{},orSearch:!1,otherMerchant:{tracePointName:"",personInCharge:""},contactNumber:"",activity:"",flag:"",info:{}}},watch:{codeArr:{handler:function(e){var t=0,o=!0,r=!1,a=void 0;try{for(var n,c=this.codeArr[Symbol.iterator]();!(o=(n=c.next()).done);o=!0){var s=n.value;t+=s.count}}catch(i){r=!0,a=i}finally{try{o||null==c.return||c.return()}finally{if(r)throw a}}this.count=t},deep:!0},contactNumber:function(){this.getMoblieUserMess()}},onShow:function(){var e=plus.android.runtimeMainActivity();this.activity=e;plus.android.importClass("android.content.Context");var t=plus.android.implements("io.dcloud.feature.internal.reflect.BroadcastReceiver",{onReceive:n});this.flag=t;var o=plus.android.importClass("android.content.IntentFilter"),r=(plus.android.importClass("android.content.Intent"),new o);r.addAction("android.intent.ACTION_DECODE_DATA"),e.registerReceiver(t,r);var a=this;function n(e,t){plus.android.importClass(t);var o=t.getByteArrayExtra("barcode"),r=c(o),n=(t.getIntExtra("length",0),t.getByteExtra("barcodeType",0));c(n);if(r&&r.indexOf(a.$common.host_name)>-1){var s=r.split(a.$common.host_name)[1];a.getzsCodeMumber(s)}else a.showError=!0,a.text="关联子码获取失败",a.type="scanCode"}function c(e){if("string"===typeof e)return e;for(var t="",o=e,r=0;r<o.length;r++){var a=o[r].toString(2),n=a.match(/^1+?(?=0)/);if(n&&8==a.length){for(var c=n[0].length,s=o[r].toString(2).slice(7-c),i=1;i<c;i++)s+=o[i+r].toString(2).slice(2);t+=String.fromCharCode(parseInt(s,2)),r+=c-1}else t+=String.fromCharCode(o[r])}return t}},destroyed:function(){this.activity.unregisterReceiver(this.flag)},onHide:function(){this.activity.unregisterReceiver(this.flag)},onUnload:function(){this.activity.unregisterReceiver(this.flag)},methods:{getzsCodeMumber:function(t){var o=this,r=this;this.$common.get("/trace-api/other/isCurrentNodeNewest?sid="+t).then(function(a){console.log(e(a," at pages\\deliverSellerNode\\deliverSellerNode.vue:229")),200===a.data.code?a.data.data?o.$common.get("/trace-api/trace/getSubCodeById?sid="+t).then(function(t){if(200===Number(t.data.code)){if(console.log(e("发货对象",t," at pages\\deliverSellerNode\\deliverSellerNode.vue:234")),r.showError=!1,Number(t.data.data.isEnable)>0)if(r.codeArr.length>0){var o=[],a=!0,n=!1,c=void 0;try{for(var s,i=r.codeArr[Symbol.iterator]();!(a=(s=i.next()).done);a=!0){var d=s.value;o.push(d.traceSubCodeNumber)}}catch(l){n=!0,c=l}finally{try{a||null==i.return||i.return()}finally{if(n)throw c}}o.indexOf(t.data.data.traceSubCodeNumber)>-1?r.$common.showToast("子码编号已存在","none"):(r.$common.showToast("扫码成功","success"),r.codeArr.push({traceSid:t.data.data.traceSid,count:t.data.data.count,traceSubCodeNumber:t.data.data.traceSubCodeNumber}))}else r.$common.showToast("扫码成功","success"),r.codeArr.push({traceSid:t.data.data.traceSid,count:t.data.data.count,traceSubCodeNumber:t.data.data.traceSubCodeNumber});else r.$common.showToast("此编码已发货","none");console.log(e(r.codeArr," at pages\\deliverSellerNode\\deliverSellerNode.vue:263"))}else r.showError=!1,r.$common.showToast(t.data.message,"none")}):r.$common.showToast("不属于该追溯码最新的流通节点","none"):r.$common.showToast(a.data.message,"none")})},radioChange:function(t){console.log(e(t," at pages\\deliverSellerNode\\deliverSellerNode.vue:280")),this.current=Number(t.detail.value),console.log(e(this.current," at pages\\deliverSellerNode\\deliverSellerNode.vue:282"))},next:function(){this.codeArr.length>0?this.active=1:this.$common.showToast("请添加货物","none")},getMoblieUserMess:function(){var t=this;r.showLoading({mask:!0,title:"正在检索..."}),this.$common.getNot("/trace-api/other/getNodeByMobile?mobile="+this.contactNumber).then(function(o){console.log(e(typeof o.data.data," at pages\\deliverSellerNode\\deliverSellerNode.vue:298")),200===o.data.code?("number"===typeof o.data.data?(t.otherMerchant={tracePointName:"",personInCharge:""},t.sellerNameSelect=!1,t.userNameSelect=!1,t.$common.showToast("暂无信息","none"),t.orSearch=!1):(t.info=o.data.data,t.otherMerchant={tracePointName:o.data.data.tracePointName,personInCharge:o.data.data.personInCharge},t.orSearch=!0,t.contactNumber=o.data.data.contactNumber,t.sellerNameSelect=!0,t.userNameSelect=!0),console.log(e(t.otherMerchant," at pages\\deliverSellerNode\\deliverSellerNode.vue:321"))):t.$common.showToast("信息获取失败","none")})},nextConfirm:function(){var t=this;if(this.otherMerchant.contactNumber=this.contactNumber,0!==this.codeArr.length){for(var o=Object.values(this.otherMerchant),a=0;a<o.length;a++){var n=o[a];if(!n)return this.$common.showToast("节点信息需填写完整","none"),!1}var c=[],s=!0,i=!1,d=void 0;try{for(var l,u=this.codeArr[Symbol.iterator]();!(s=(l=u.next()).done);s=!0){var m=l.value;c.push(m.traceSubCodeNumber)}}catch(f){i=!0,d=f}finally{try{s||null==u.return||u.return()}finally{if(i)throw d}}var h={codeNumber:c,accountId:this.orSearch?this.info.accountId:-1,otherMerchant:this.otherMerchant,mode:0===this.current?1:2};console.log(e(h," at pages\\deliverSellerNode\\deliverSellerNode.vue:350")),this.$common.post("/trace-api/trace/deliverGoods",h).then(function(o){console.log(e(o," at pages\\deliverSellerNode\\deliverSellerNode.vue:352")),200===Number(o.data.code)?(t.$common.showToast(o.data.message,"success"),setTimeout(function(){r.navigateBack({delta:1})},1500)):t.$common.showToast(o.data.message,"none")})}else this.$common.showToast("外码或内码不能为空","none")},jump:function(){this.active=1},deleteCode:function(e){var t=this;r.showModal({title:"提示",content:"此操作将删除此编号",success:function(o){o.confirm&&(t.codeArr.splice(e,1),t.$common.showToast("删除成功","success"))}})},scanCode:function(){var t=this;r.scanCode({success:function(o){var r=t;if(o.result&&o.result.indexOf(r.$common.host_name)>-1){var a=o.result.split(r.$common.host_name)[1];t.$common.get("/trace-api/other/isCurrentNodeNewest?sid="+a).then(function(o){console.log(e(o," at pages\\deliverSellerNode\\deliverSellerNode.vue:392")),200===o.data.code?o.data.data?t.$common.get("/trace-api/trace/getSubCodeById?sid="+a).then(function(t){if(200===Number(t.data.code)){if(console.log(e("发货对象",t," at pages\\deliverSellerNode\\deliverSellerNode.vue:397")),r.showError=!1,Number(t.data.data.isEnable)>0)if(r.codeArr.length>0){var o=[],a=!0,n=!1,c=void 0;try{for(var s,i=r.codeArr[Symbol.iterator]();!(a=(s=i.next()).done);a=!0){var d=s.value;o.push(d.traceSubCodeNumber)}}catch(l){n=!0,c=l}finally{try{a||null==i.return||i.return()}finally{if(n)throw c}}o.indexOf(t.data.data.traceSubCodeNumber)>-1?r.$common.showToast("子码编号已存在","none"):(r.$common.showToast("扫码成功","success"),r.codeArr.push({traceSid:t.data.data.traceSid,count:t.data.data.count,traceSubCodeNumber:t.data.data.traceSubCodeNumber}))}else r.$common.showToast("扫码成功","success"),r.codeArr.push({traceSid:t.data.data.traceSid,count:t.data.data.count,traceSubCodeNumber:t.data.data.traceSubCodeNumber});else r.$common.showToast("此编码已发货","none");console.log(e(r.codeArr," at pages\\deliverSellerNode\\deliverSellerNode.vue:429"))}else r.showError=!1,r.$common.showToast(t.data.message,"none")}):r.$common.showToast("不属于该追溯码最新的流通节点","none"):r.$common.showToast(o.data.message,"none")})}else t.showError=!0,t.text="关联子码获取失败",t.type="scanCode"}})}}};t.default=n}).call(this,o("0de9")["default"],o("6e42")["default"])},cd5e:function(e,t,o){"use strict";(function(e){o("7b83"),o("921b");r(o("66fd"));var t=r(o("afad"));function r(e){return e&&e.__esModule?e:{default:e}}e(t.default)}).call(this,o("6e42")["createPage"])}},[["cd5e","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/deliverSellerNode/deliverSellerNode"],{"1f8d":function(e,t,o){"use strict";o.r(t);var r=o("b967"),a=o.n(r);for(var n in r)"default"!==n&&function(e){o.d(t,e,function(){return r[e]})}(n);t["default"]=a.a},"6e3f":function(e,t,o){"use strict";var r=o("8c98"),a=o.n(r);a.a},"8c98":function(e,t,o){},"932c":function(e,t,o){"use strict";var r=function(){var e=this,t=e.$createElement,o=(e._self._c,Number(e.active)),r=Number(e.active);e._isMounted||(e.e0=function(t){e.active=0}),e.$mp.data=Object.assign({},{$root:{m0:o,m1:r}})},a=[];o.d(t,"a",function(){return r}),o.d(t,"b",function(){return a})},afad:function(e,t,o){"use strict";o.r(t);var r=o("932c"),a=o("1f8d");for(var n in a)"default"!==n&&function(e){o.d(t,e,function(){return a[e]})}(n);o("6e3f");var c=o("2877"),s=Object(c["a"])(a["default"],r["a"],r["b"],!1,null,null,null);t["default"]=s.exports},b967:function(e,t,o){"use strict";(function(e,r){Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var a=function(){return o.e("components/scodeError").then(o.bind(null,"94bf"))},n={components:{error:a},data:function(){return{sellerNameSelect:!0,userNameSelect:!1,userName:"",type:"scanCode",text:"扫码错误",showError:!1,current:0,codeArr:[],arr:[],index:0,active:0,count:0,timeId:"",mobileInfo:{},orSearch:!1,otherMerchant:{tracePointName:"",personInCharge:""},contactNumber:"",activity:"",flag:"",info:{}}},watch:{codeArr:{handler:function(e){var t=0,o=!0,r=!1,a=void 0;try{for(var n,c=this.codeArr[Symbol.iterator]();!(o=(n=c.next()).done);o=!0){var s=n.value;t+=s.count}}catch(i){r=!0,a=i}finally{try{o||null==c.return||c.return()}finally{if(r)throw a}}this.count=t},deep:!0},contactNumber:function(){this.getMoblieUserMess()}},onShow:function(){var e=plus.android.runtimeMainActivity();this.activity=e;plus.android.importClass("android.content.Context");var t=plus.android.implements("io.dcloud.feature.internal.reflect.BroadcastReceiver",{onReceive:n});this.flag=t;var o=plus.android.importClass("android.content.IntentFilter"),r=(plus.android.importClass("android.content.Intent"),new o);r.addAction("android.intent.ACTION_DECODE_DATA"),e.registerReceiver(t,r);var a=this;function n(e,t){plus.android.importClass(t);var o=t.getByteArrayExtra("barcode"),r=c(o),n=(t.getIntExtra("length",0),t.getByteExtra("barcodeType",0));c(n);if(r&&r.indexOf(a.$common.host_name)>-1){var s=r.split(a.$common.host_name)[1];a.getzsCodeMumber(s)}else a.showError=!0,a.text="关联子码获取失败",a.type="scanCode"}function c(e){if("string"===typeof e)return e;for(var t="",o=e,r=0;r<o.length;r++){var a=o[r].toString(2),n=a.match(/^1+?(?=0)/);if(n&&8==a.length){for(var c=n[0].length,s=o[r].toString(2).slice(7-c),i=1;i<c;i++)s+=o[i+r].toString(2).slice(2);t+=String.fromCharCode(parseInt(s,2)),r+=c-1}else t+=String.fromCharCode(o[r])}return t}},destroyed:function(){this.activity.unregisterReceiver(this.flag)},onHide:function(){this.activity.unregisterReceiver(this.flag)},onUnload:function(){this.activity.unregisterReceiver(this.flag)},methods:{getzsCodeMumber:function(t){var o=this,r=this;this.$common.get("/trace-api/other/isCurrentNodeNewest?sid="+t).then(function(a){console.log(e(a," at pages\\deliverSellerNode\\deliverSellerNode.vue:231")),200===a.data.code?a.data.data?o.$common.get("/trace-api/trace/getSubCodeById?sid="+t).then(function(t){if(200===Number(t.data.code)){if(console.log(e("发货对象",t," at pages\\deliverSellerNode\\deliverSellerNode.vue:236")),r.showError=!1,Number(t.data.data.isEnable)>0)if(r.codeArr.length>0){var o=[],a=!0,n=!1,c=void 0;try{for(var s,i=r.codeArr[Symbol.iterator]();!(a=(s=i.next()).done);a=!0){var d=s.value;o.push(d.traceSubCodeNumber)}}catch(l){n=!0,c=l}finally{try{a||null==i.return||i.return()}finally{if(n)throw c}}o.indexOf(t.data.data.traceSubCodeNumber)>-1?r.$common.showToast("子码编号已存在","none"):(r.$common.showToast("扫码成功","success"),r.codeArr.push({traceSid:t.data.data.traceSid,count:t.data.data.count,traceSubCodeNumber:t.data.data.traceSubCodeNumber}))}else r.$common.showToast("扫码成功","success"),r.codeArr.push({traceSid:t.data.data.traceSid,count:t.data.data.count,traceSubCodeNumber:t.data.data.traceSubCodeNumber});else r.$common.showToast("此编码已发货","none");console.log(e(r.codeArr," at pages\\deliverSellerNode\\deliverSellerNode.vue:265"))}else r.showError=!1,r.$common.showToast(t.data.message,"none")}):r.$common.showToast("不属于该追溯码最新的流通节点","none"):r.$common.showToast(a.data.message,"none")})},radioChange:function(t){console.log(e(t," at pages\\deliverSellerNode\\deliverSellerNode.vue:282")),this.current=Number(t.detail.value),console.log(e(this.current," at pages\\deliverSellerNode\\deliverSellerNode.vue:284")),this.otherMerchant={tracePointName:"",personInCharge:""},this.contactNumber=""},next:function(){this.codeArr.length>0?this.active=1:this.$common.showToast("请添加货物","none")},getMoblieUserMess:function(){var t=this;r.showLoading({mask:!0,title:"正在检索..."}),this.$common.getNot("/trace-api/other/getNodeByMobile?mobile="+this.contactNumber).then(function(o){console.log(e(typeof o.data.data," at pages\\deliverSellerNode\\deliverSellerNode.vue:305")),200===o.data.code?("number"===typeof o.data.data?(t.otherMerchant={tracePointName:"",personInCharge:""},t.sellerNameSelect=!1,t.userNameSelect=!1,t.$common.showToast("暂无信息","none"),t.orSearch=!1):(t.info=o.data.data,t.otherMerchant={tracePointName:o.data.data.tracePointName,personInCharge:o.data.data.personInCharge},t.orSearch=!0,t.contactNumber=o.data.data.contactNumber,t.sellerNameSelect=!0,t.userNameSelect=!0),console.log(e(t.otherMerchant," at pages\\deliverSellerNode\\deliverSellerNode.vue:328"))):t.$common.showToast("信息获取失败","none")})},nextConfirm:function(){var t=this;if(this.otherMerchant.contactNumber=this.contactNumber,0!==this.codeArr.length){if(1===this.current)for(var o=Object.values(this.otherMerchant),a=0;a<o.length;a++){var n=o[a];if(!n)return this.$common.showToast("节点信息需填写完整","none"),!1}var c=[],s=!0,i=!1,d=void 0;try{for(var l,u=this.codeArr[Symbol.iterator]();!(s=(l=u.next()).done);s=!0){var m=l.value;c.push(m.traceSubCodeNumber)}}catch(f){i=!0,d=f}finally{try{s||null==u.return||u.return()}finally{if(i)throw d}}var h={codeNumber:c,accountId:this.orSearch?this.info.accountId:-1,otherMerchant:this.otherMerchant,mode:0===this.current?1:2};console.log(e(h," at pages\\deliverSellerNode\\deliverSellerNode.vue:360")),this.$common.post("/trace-api/trace/deliverGoods",h).then(function(o){console.log(e(o," at pages\\deliverSellerNode\\deliverSellerNode.vue:362")),200===Number(o.data.code)?(t.$common.showToast(o.data.message,"success"),setTimeout(function(){r.navigateBack({delta:1})},1500)):t.$common.showToast(o.data.message,"none")})}else this.$common.showToast("外码或内码不能为空","none")},jump:function(){this.active=1},deleteCode:function(e){var t=this;r.showModal({title:"提示",content:"此操作将删除此编号",success:function(o){o.confirm&&(t.codeArr.splice(e,1),t.$common.showToast("删除成功","success"))}})},scanCode:function(){var t=this;r.scanCode({success:function(o){var r=t;if(o.result&&o.result.indexOf(r.$common.host_name)>-1){var a=o.result.split(r.$common.host_name)[1];t.$common.get("/trace-api/other/isCurrentNodeNewest?sid="+a).then(function(o){console.log(e(o," at pages\\deliverSellerNode\\deliverSellerNode.vue:402")),200===o.data.code?o.data.data?t.$common.get("/trace-api/trace/getSubCodeById?sid="+a).then(function(t){if(200===Number(t.data.code)){if(console.log(e("发货对象",t," at pages\\deliverSellerNode\\deliverSellerNode.vue:407")),r.showError=!1,Number(t.data.data.isEnable)>0)if(r.codeArr.length>0){var o=[],a=!0,n=!1,c=void 0;try{for(var s,i=r.codeArr[Symbol.iterator]();!(a=(s=i.next()).done);a=!0){var d=s.value;o.push(d.traceSubCodeNumber)}}catch(l){n=!0,c=l}finally{try{a||null==i.return||i.return()}finally{if(n)throw c}}o.indexOf(t.data.data.traceSubCodeNumber)>-1?r.$common.showToast("子码编号已存在","none"):(r.$common.showToast("扫码成功","success"),r.codeArr.push({traceSid:t.data.data.traceSid,count:t.data.data.count,traceSubCodeNumber:t.data.data.traceSubCodeNumber}))}else r.$common.showToast("扫码成功","success"),r.codeArr.push({traceSid:t.data.data.traceSid,count:t.data.data.count,traceSubCodeNumber:t.data.data.traceSubCodeNumber});else r.$common.showToast("此编码已发货","none");console.log(e(r.codeArr," at pages\\deliverSellerNode\\deliverSellerNode.vue:439"))}else r.showError=!1,r.$common.showToast(t.data.message,"none")}):r.$common.showToast("不属于该追溯码最新的流通节点","none"):r.$common.showToast(o.data.message,"none")})}else t.showError=!0,t.text="关联子码获取失败",t.type="scanCode"}})}}};t.default=n}).call(this,o("0de9")["default"],o("6e42")["default"])},cd5e:function(e,t,o){"use strict";(function(e){o("7b83"),o("921b");r(o("66fd"));var t=r(o("afad"));function r(e){return e&&e.__esModule?e:{default:e}}e(t.default)}).call(this,o("6e42")["createPage"])}},[["cd5e","common/runtime","common/vendor"]]]);
 });
 require('pages/deliverSellerNode/deliverSellerNode.js');
 __wxRoute = 'pages/getLocation/getLocation';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/getLocation/getLocation.js';
 
 define('pages/getLocation/getLocation.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/getLocation/getLocation"],{"46a5":function(t,e,o){"use strict";var a=o("ddd7"),i=o.n(a);i.a},"56d1":function(t,e,o){"use strict";var a=function(){var t=this,e=t.$createElement;t._self._c;t._isMounted||(t.e0=function(e){t.show=!1},t.e1=function(e){e.stopPropagation(),t.show=!0})},i=[];o.d(e,"a",function(){return a}),o.d(e,"b",function(){return i})},"5efa":function(t,e,o){"use strict";(function(t){o("7b83"),o("921b");a(o("66fd"));var e=a(o("72ac"));function a(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,o("6e42")["createPage"])},"72ac":function(t,e,o){"use strict";o.r(e);var a=o("56d1"),i=o("ed15");for(var n in i)"default"!==n&&function(t){o.d(e,t,function(){return i[t]})}(n);o("46a5");var c=o("2877"),s=Object(c["a"])(i["default"],a["a"],a["b"],!1,null,"2026b55d",null);e["default"]=s.exports},c5e1:function(t,e,o){"use strict";(function(t,a){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var i=o("17b8"),n=new i.AMapWX({key:"2649cf46ba2417b42f9fe36f53c57f63"}),c={data:function(){return{keywords:"",setUserData:{},show:!0,markers:[],latitude:23.13,longitude:113.27,city:"",myAmapFunflag:"",dataArr:[],maskerClick:!1,labels:[]}},onLoad:function(){var e=this;t.getLocation({type:"gcj02",success:function(o){console.log(a(o," at pages\\getLocation\\getLocation.vue:68")),console.log(a("当前位置的经度："+o.longitude," at pages\\getLocation\\getLocation.vue:69")),console.log(a("当前位置的纬度："+o.latitude," at pages\\getLocation\\getLocation.vue:70"));n.getRegeo({iconPath:"../../static/img/marker.png",location:o.longitude+","+o.latitude,success:function(t){console.log(a(t," at pages\\getLocation\\getLocation.vue:76")),e.markers=[{id:t[0].id,latitude:t[0].latitude,longitude:t[0].longitude,iconPath:t[0].iconPath,width:40,height:60,label:{content:t[0].name,fontSize:16,bgColor:"#fff",textAlign:"left",borderRadius:5,padding:3,color:"red",width:200}}],e.latitude=t[0].latitude,e.longitude=t[0].longitude},fail:function(e){t.showModal({title:e.errMsg})}})}})},methods:{makertap:function(t){var e=t.markerId,o=this;o.changeMarkerColor(this.markers,e)},changeMarkerColor:function(e,o){var i=this;this.maskerClick||(console.log(a(e," at pages\\getLocation\\getLocation.vue:124")),t.showModal({content:"确定更改地址?",success:function(t){if(t.confirm){var o=[];e[0].iconPath="../../static/img/marker_checked.png",i.setUserMessage(e[0].label.content),i.maskerClick=!0,console.log(a(e," at pages\\getLocation\\getLocation.vue:138")),o.push({id:e[0].id,latitude:e[0].latitude,longitude:e[0].longitude,iconPath:e[0].iconPath,width:e[0].width,height:e[0].height,label:{content:e[0].label.content||e[0].regeocodeData.formatted_address,fontSize:16,bgColor:"#fff",textAlign:"right",borderRadius:5,padding:3,color:"red"}}),i.latitude=e[0].latitude,i.longitude=e[0].longitude,i.markers=o,console.log(a("可以了"," at pages\\getLocation\\getLocation.vue:163"))}}}))},selectAdress:function(e){var o=this;if(this.maskerClick=!1,0===e.location.length)return t.showToast({title:"请输入具体地址",icon:"none"}),!1;this.longitude=e.location.split(",")[0],this.latitude=e.location.split(",")[1],this.show=!1,this.myAmapFunflag.getRegeo({iconPath:"../../static/img/marker.png",location:this.longitude+","+this.latitude,success:function(e){console.log(a(e," at pages\\getLocation\\getLocation.vue:185")),o.maskerClick=!0,o.markers=[{id:e[0].id,latitude:e[0].latitude,longitude:e[0].longitude,iconPath:e[0].iconPath,width:40,height:60,label:{content:e[0].regeocodeData.formatted_address,fontSize:16,bgColor:"#fff",textAlign:"right",borderRadius:5,padding:3,color:"red"}}],o.latitude=e[0].latitude,o.longitude=e[0].longitude,t.showModal({content:"确定更改地址?",success:function(t){if(t.confirm){var i=[];e[0].iconPath="../../static/img/marker_checked.png",i.push({id:e[0].id,latitude:e[0].latitude,longitude:e[0].longitude,iconPath:e[0].iconPath,width:e[0].width,height:e[0].height,label:{content:e[0].regeocodeData.formatted_address,fontSize:16,bgColor:"#fff",textAlign:"right",borderRadius:5,padding:3,color:"red"}}),o.latitude=e[0].latitude,o.longitude=e[0].longitude,o.markers=i,o.setUserMessage(e[0].regeocodeData.formatted_address),console.log(a("可以了"," at pages\\getLocation\\getLocation.vue:241"))}}})},fail:function(e){t.showModal({title:e.errMsg})}}),console.log(a(this.myAmapFunflag," at pages\\getLocation\\getLocation.vue:252"))},setUserMessage:function(e){var o=this;this.setUserData=t.getStorageSync("setUserData"),this.$common.post("/accountCenter/account/updateNode",{location:e,tracePoint:this.setUserData.distributeNode.tracePoint}).then(function(e){console.log(a(e," at pages\\getLocation\\getLocation.vue:262")),200===e.data.statusCode?(o.$common.showToast("修改成功","success"),t.setStorageSync("setUserData",e.data.data),setTimeout(function(){t.navigateBack({url:-1})},2e3)):o.$common.showToast(e.data.statusMsg,"none")})},bindInput:function(t){if(!t.detail.value)return this.dataArr=[],!1;console.log(a(t," at pages\\getLocation\\getLocation.vue:281")),this.myAmapFunflag=n;var e=this;n.getInputtips({keywords:t.detail.value,success:function(t){console.log(a(t.tips," at pages\\getLocation\\getLocation.vue:287")),e.dataArr=t.tips,console.log(a(e.dataArr," at pages\\getLocation\\getLocation.vue:290"))}});var o={iconPathSelected:"../../static/img/marker_checked.png",iconPath:"../../static/img/marker.png",success:function(t){console.log(a(t," at pages\\getLocation\\getLocation.vue:297"))}};n.getPoiAround(o)}}};e.default=c}).call(this,o("6e42")["default"],o("0de9")["default"])},ddd7:function(t,e,o){},ed15:function(t,e,o){"use strict";o.r(e);var a=o("c5e1"),i=o.n(a);for(var n in a)"default"!==n&&function(t){o.d(e,t,function(){return a[t]})}(n);e["default"]=i.a}},[["5efa","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/getLocation/getLocation"],{"5efa":function(t,e,o){"use strict";(function(t){o("7b83"),o("921b");a(o("66fd"));var e=a(o("72ac"));function a(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,o("6e42")["createPage"])},"72ac":function(t,e,o){"use strict";o.r(e);var a=o("b66f"),i=o("ed15");for(var n in i)"default"!==n&&function(t){o.d(e,t,function(){return i[t]})}(n);o("c8ff");var s=o("2877"),c=Object(s["a"])(i["default"],a["a"],a["b"],!1,null,"4599f38c",null);e["default"]=c.exports},b66f:function(t,e,o){"use strict";var a=function(){var t=this,e=t.$createElement;t._self._c;t._isMounted||(t.e0=function(e){t.show=!1},t.e1=function(e){e.stopPropagation(),t.show=!0})},i=[];o.d(e,"a",function(){return a}),o.d(e,"b",function(){return i})},c5e1:function(t,e,o){"use strict";(function(t,a){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var i=o("17b8"),n=new i.AMapWX({key:"2649cf46ba2417b42f9fe36f53c57f63"}),s={data:function(){return{keywords:"",setUserData:{},show:!0,markers:[],latitude:23.13,longitude:113.27,city:"",myAmapFunflag:"",dataArr:[],maskerClick:!1,labels:[]}},onLoad:function(){var e=this;t.getLocation({type:"gcj02",success:function(o){console.log(a(o," at pages\\getLocation\\getLocation.vue:68")),console.log(a("当前位置的经度："+o.longitude," at pages\\getLocation\\getLocation.vue:69")),console.log(a("当前位置的纬度："+o.latitude," at pages\\getLocation\\getLocation.vue:70"));n.getRegeo({iconPath:"../../static/img/marker.png",location:o.longitude+","+o.latitude,success:function(t){console.log(a(t," at pages\\getLocation\\getLocation.vue:76")),e.markers=[{id:t[0].id,latitude:t[0].latitude,longitude:t[0].longitude,iconPath:t[0].iconPath,width:40,height:60,label:{content:t[0].name,fontSize:16,bgColor:"#fff",textAlign:"left",borderRadius:5,padding:3,color:"red",width:200}}],e.latitude=t[0].latitude,e.longitude=t[0].longitude},fail:function(e){t.showModal({title:e.errMsg})}})}})},methods:{makertap:function(t){var e=t.markerId,o=this;o.changeMarkerColor(this.markers,e)},changeMarkerColor:function(e,o){var i=this;this.maskerClick||(console.log(a(e," at pages\\getLocation\\getLocation.vue:124")),t.showModal({content:"确定更改地址?",success:function(t){if(t.confirm){var o=[];e[0].iconPath="../../static/img/marker_checked.png",i.setUserMessage(e[0].label.content),i.maskerClick=!0,console.log(a(e," at pages\\getLocation\\getLocation.vue:138")),o.push({id:e[0].id,latitude:e[0].latitude,longitude:e[0].longitude,iconPath:e[0].iconPath,width:e[0].width,height:e[0].height,label:{content:e[0].label.content||e[0].regeocodeData.formatted_address,fontSize:16,bgColor:"#fff",textAlign:"right",borderRadius:5,padding:3,color:"red"}}),i.latitude=e[0].latitude,i.longitude=e[0].longitude,i.markers=o,console.log(a("可以了"," at pages\\getLocation\\getLocation.vue:163"))}}}))},selectAdress:function(e){var o=this;if(this.maskerClick=!1,0===e.location.length)return t.showToast({title:"请输入具体地址",icon:"none"}),!1;this.longitude=e.location.split(",")[0],this.latitude=e.location.split(",")[1],this.show=!1,this.myAmapFunflag.getRegeo({iconPath:"../../static/img/marker.png",location:this.longitude+","+this.latitude,success:function(e){console.log(a(e," at pages\\getLocation\\getLocation.vue:185")),o.maskerClick=!0,o.markers=[{id:e[0].id,latitude:e[0].latitude,longitude:e[0].longitude,iconPath:e[0].iconPath,width:40,height:60,label:{content:e[0].regeocodeData.formatted_address,fontSize:16,bgColor:"#fff",textAlign:"right",borderRadius:5,padding:3,color:"red"}}],o.latitude=e[0].latitude,o.longitude=e[0].longitude,t.showModal({content:"确定更改地址?",success:function(t){if(t.confirm){var i=[];e[0].iconPath="../../static/img/marker_checked.png",i.push({id:e[0].id,latitude:e[0].latitude,longitude:e[0].longitude,iconPath:e[0].iconPath,width:e[0].width,height:e[0].height,label:{content:e[0].regeocodeData.formatted_address,fontSize:16,bgColor:"#fff",textAlign:"right",borderRadius:5,padding:3,color:"red"}}),o.latitude=e[0].latitude,o.longitude=e[0].longitude,o.markers=i,o.setUserMessage(e[0].regeocodeData.formatted_address),console.log(a("可以了"," at pages\\getLocation\\getLocation.vue:241"))}}})},fail:function(e){t.showModal({title:e.errMsg})}}),console.log(a(this.myAmapFunflag," at pages\\getLocation\\getLocation.vue:252"))},setUserMessage:function(e){var o=this,i="";this.setUserData=t.getStorageSync("setUserData"),console.log(a(this.setUserData," at pages\\getLocation\\getLocation.vue:259")),i=9===this.setUserData.role.id||10===this.setUserData.role.id||11===this.setUserData.role.id?9===this.setUserData.role.id?this.setUserData.merchant.merchantName:this.setUserData.distributeNode.tracePoint:this.setUserData.merchant.merchantName,this.$common.post("/accountCenter/account/updateNode",{location:e,tracePoint:i}).then(function(e){200===e.data.statusCode?(o.$common.showToast("修改成功","success"),t.setStorageSync("setUserData",e.data.data),setTimeout(function(){t.navigateBack({url:-1})},2e3)):o.$common.showToast(e.data.statusMsg,"none")})},bindInput:function(t){if(!t.detail.value)return this.dataArr=[],!1;this.myAmapFunflag=n;var e=this;n.getInputtips({keywords:t.detail.value,success:function(t){console.log(a(t.tips," at pages\\getLocation\\getLocation.vue:298")),e.dataArr=t.tips,console.log(a(e.dataArr," at pages\\getLocation\\getLocation.vue:301"))}});var o={iconPathSelected:"../../static/img/marker_checked.png",iconPath:"../../static/img/marker.png",success:function(t){console.log(a(t," at pages\\getLocation\\getLocation.vue:308"))}};n.getPoiAround(o)}}};e.default=s}).call(this,o("6e42")["default"],o("0de9")["default"])},c877:function(t,e,o){},c8ff:function(t,e,o){"use strict";var a=o("c877"),i=o.n(a);i.a},ed15:function(t,e,o){"use strict";o.r(e);var a=o("c5e1"),i=o.n(a);for(var n in a)"default"!==n&&function(t){o.d(e,t,function(){return a[t]})}(n);e["default"]=i.a}},[["5efa","common/runtime","common/vendor"]]]);
 });
 require('pages/getLocation/getLocation.js');
 __wxRoute = 'pages/test/test';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/test/test.js';
@@ -4291,13 +4301,13 @@ require('pages/print/print.js');
 __wxRoute = 'pages/insideCode/insideCode';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/insideCode/insideCode.js';
 
 define('pages/insideCode/insideCode.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/insideCode/insideCode"],{3856:function(t,e,n){"use strict";(function(t){n("7b83"),n("921b");o(n("66fd"));var e=o(n("5d1a"));function o(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,n("6e42")["createPage"])},"3b80":function(t,e,n){},"539f":function(t,e,n){"use strict";n.r(e);var o=n("878e"),i=n.n(o);for(var r in o)"default"!==r&&function(t){n.d(e,t,function(){return o[t]})}(r);e["default"]=i.a},"5d1a":function(t,e,n){"use strict";n.r(e);var o=n("68ba"),i=n("539f");for(var r in i)"default"!==r&&function(t){n.d(e,t,function(){return i[t]})}(r);n("a88d");var a=n("2877"),s=Object(a["a"])(i["default"],o["a"],o["b"],!1,null,null,null);e["default"]=s.exports},"68ba":function(t,e,n){"use strict";var o=function(){var t=this,e=t.$createElement;t._self._c},i=[];n.d(e,"a",function(){return o}),n.d(e,"b",function(){return i})},"878e":function(t,e,n){"use strict";(function(t,o){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var i=function(){return n.e("components/scodeError").then(n.bind(null,"94bf"))},r={components:{error:i},data:function(){return{title:"你好！",type:"scode",text:"扫码错误",showError:!1,zscode:"",flag:"",activity:""}},onShow:function(){this.title="开始监听！";var t=plus.android.runtimeMainActivity();this.activity=t;plus.android.importClass("android.content.Context");var e=plus.android.implements("io.dcloud.feature.internal.reflect.BroadcastReceiver",{onReceive:r});this.flag=e;var n=plus.android.importClass("android.content.IntentFilter"),o=(plus.android.importClass("android.content.Intent"),new n);o.addAction("android.intent.ACTION_DECODE_DATA"),t.registerReceiver(e,o);var i=this;function r(t,e){plus.android.importClass(e);var n=e.getByteArrayExtra("barcode"),o=a(n),r=(e.getIntExtra("length",0),e.getByteExtra("barcodeType",0));a(r);if(o&&o.indexOf(i.$common.host_name)>-1){var s=o.split(i.$common.host_name)[1];i.getCodeZsNumber(s)}else i.showError=!0,i.text="内码获取失败",i.type="scode";i.title=o}function a(t){if("string"===typeof t)return t;for(var e="",n=t,o=0;o<n.length;o++){var i=n[o].toString(2),r=i.match(/^1+?(?=0)/);if(r&&8==i.length){for(var a=r[0].length,s=n[o].toString(2).slice(7-a),c=1;c<a;c++)s+=n[c+o].toString(2).slice(2);e+=String.fromCharCode(parseInt(s,2)),o+=a-1}else e+=String.fromCharCode(n[o])}return e}},destroyed:function(){this.activity.unregisterReceiver(this.flag)},onHide:function(){this.activity.unregisterReceiver(this.flag)},onUnload:function(){this.activity.unregisterReceiver(this.flag)},methods:{createdClick:function(){this.scode()},confirm:function(){this.$common.get("/trace-api/trace/changeOutCode?outCode="+this.zscode).then(function(e){console.log(t(e," at pages\\insideCode\\insideCode.vue:145")),200===Number(e.data.code)?(o.showToast({title:e.data.message,duration:2e3}),setTimeout(function(){o.navigateBack({delta:1})},1500)):o.showToast({title:e.data.message,duration:2e3,icon:"none"})})},scode:function(){var t=this,e=this;o.scanCode({success:function(n){if(n.result&&n.result.indexOf(e.$common.host_name)>-1){var o=n.result.split(e.$common.host_name)[1];t.getCodeZsNumber(o)}else t.showError=!0,t.text="内码获取失败",t.type="scode"}})},getCodeZsNumber:function(e){var n=this,o=this;this.$common.get("/trace-api/trace/getSubCodeById?sid="+Number(e)).then(function(e){console.log(t(e," at pages\\insideCode\\insideCode.vue:184")),200===Number(e.data.code)?"Y"===e.data.data.isLeaf?(o.$common.showToast("扫码成功","success"),o.showError=!1,o.zscode=e.data.data.traceSubCodeNumber||""):(n.showError=!0,n.text="此码不是内码,内码获取失败",n.type="scode"):(o.showError=!1,o.$common.showToast(e.data.message,"none"))})}}};e.default=r}).call(this,n("0de9")["default"],n("6e42")["default"])},a88d:function(t,e,n){"use strict";var o=n("3b80"),i=n.n(o);i.a}},[["3856","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/insideCode/insideCode"],{3856:function(t,e,n){"use strict";(function(t){n("7b83"),n("921b");o(n("66fd"));var e=o(n("5d1a"));function o(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,n("6e42")["createPage"])},"3b80":function(t,e,n){},"539f":function(t,e,n){"use strict";n.r(e);var o=n("878e"),i=n.n(o);for(var r in o)"default"!==r&&function(t){n.d(e,t,function(){return o[t]})}(r);e["default"]=i.a},"5d1a":function(t,e,n){"use strict";n.r(e);var o=n("7b31"),i=n("539f");for(var r in i)"default"!==r&&function(t){n.d(e,t,function(){return i[t]})}(r);n("a88d");var a=n("2877"),s=Object(a["a"])(i["default"],o["a"],o["b"],!1,null,null,null);e["default"]=s.exports},"7b31":function(t,e,n){"use strict";var o=function(){var t=this,e=t.$createElement;t._self._c},i=[];n.d(e,"a",function(){return o}),n.d(e,"b",function(){return i})},"878e":function(t,e,n){"use strict";(function(t,o){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var i=function(){return n.e("components/scodeError").then(n.bind(null,"94bf"))},r={components:{error:i},data:function(){return{title:"你好！",type:"scode",text:"扫码错误",showError:!1,zscode:"",flag:"",activity:""}},onShow:function(){this.title="开始监听！";var t=plus.android.runtimeMainActivity();this.activity=t;plus.android.importClass("android.content.Context");var e=plus.android.implements("io.dcloud.feature.internal.reflect.BroadcastReceiver",{onReceive:r});this.flag=e;var n=plus.android.importClass("android.content.IntentFilter"),o=(plus.android.importClass("android.content.Intent"),new n);o.addAction("android.intent.ACTION_DECODE_DATA"),t.registerReceiver(e,o);var i=this;function r(t,e){plus.android.importClass(e);var n=e.getByteArrayExtra("barcode"),o=a(n),r=(e.getIntExtra("length",0),e.getByteExtra("barcodeType",0));a(r);if(o&&o.indexOf(i.$common.host_name)>-1){var s=o.split(i.$common.host_name)[1];i.getCodeZsNumber(s)}else i.showError=!0,i.text="内码获取失败",i.type="scode";i.title=o}function a(t){if("string"===typeof t)return t;for(var e="",n=t,o=0;o<n.length;o++){var i=n[o].toString(2),r=i.match(/^1+?(?=0)/);if(r&&8==i.length){for(var a=r[0].length,s=n[o].toString(2).slice(7-a),c=1;c<a;c++)s+=n[c+o].toString(2).slice(2);e+=String.fromCharCode(parseInt(s,2)),o+=a-1}else e+=String.fromCharCode(n[o])}return e}},destroyed:function(){this.activity.unregisterReceiver(this.flag)},onHide:function(){this.activity.unregisterReceiver(this.flag)},onUnload:function(){this.activity.unregisterReceiver(this.flag)},methods:{createdClick:function(){this.scode()},confirm:function(){this.$common.get("/trace-api/trace/changeOutCode?outCode="+this.zscode).then(function(e){console.log(t(e," at pages\\insideCode\\insideCode.vue:145")),200===Number(e.data.code)?(o.showToast({title:e.data.message,duration:2e3}),setTimeout(function(){o.navigateBack({delta:1})},1500)):o.showToast({title:e.data.message,duration:2e3,icon:"none"})})},scode:function(){var t=this,e=this;o.scanCode({success:function(n){if(n.result&&n.result.indexOf(e.$common.host_name)>-1){var o=n.result.split(e.$common.host_name)[1];e.getCodeZsNumber(o)}else t.showError=!0,t.text="内码获取失败",t.type="scode"}})},getCodeZsNumber:function(e){var n=this,o=this;this.$common.get("/trace-api/trace/getSubCodeById?sid="+Number(e)).then(function(e){console.log(t(e," at pages\\insideCode\\insideCode.vue:184")),200===Number(e.data.code)?"Y"===e.data.data.isLeaf?(o.$common.showToast("扫码成功","success"),o.showError=!1,o.zscode=e.data.data.traceSubCodeNumber||""):(n.showError=!0,n.text="此码不是内码,内码获取失败",n.type="scode"):(o.showError=!1,o.$common.showToast(e.data.message,"none"))})}}};e.default=r}).call(this,n("0de9")["default"],n("6e42")["default"])},a88d:function(t,e,n){"use strict";var o=n("3b80"),i=n.n(o);i.a}},[["3856","common/runtime","common/vendor"]]]);
 });
 require('pages/insideCode/insideCode.js');
 __wxRoute = 'pages/outsideCode/outsideCode';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/outsideCode/outsideCode.js';
 
 define('pages/outsideCode/outsideCode.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/outsideCode/outsideCode"],{"282b":function(t,o,n){"use strict";var e=n("c344"),i=n.n(e);i.a},"5dfd":function(t,o,n){"use strict";(function(t){n("7b83"),n("921b");e(n("66fd"));var o=e(n("de0e"));function e(t){return t&&t.__esModule?t:{default:t}}t(o.default)}).call(this,n("6e42")["createPage"])},"703d":function(t,o,n){"use strict";n.r(o);var e=n("b9d8"),i=n.n(e);for(var u in e)"default"!==u&&function(t){n.d(o,t,function(){return e[t]})}(u);o["default"]=i.a},b9d8:function(t,o,n){"use strict";(function(t,n){Object.defineProperty(o,"__esModule",{value:!0}),o.default=void 0;var e={data:function(){return{info:{outCodeStart:"",outCodeEnd:"",inCodeStart:"",inCodeEnd:""}}},methods:{confirm:function(){this.info.outCodeStart?this.info.outCodeEnd?Number(this.info.outCodeStart)>Number(this.info.outCodeEnd)?this.$common.showToast("外码结束编号不能小于开始编号","none"):this.info.inCodeStart?this.info.inCodeEnd?Number(this.info.inCodeStart)>Number(this.info.inCodeEnd)?this.$common.showToast("内码结束编号不能小于开始编号","none"):Number(this.info.inCodeEnd)-Number(this.info.inCodeStart)===Number(this.info.outCodeEnd)-Number(this.info.outCodeStart)?this.$common.post("/trace-api/trace/changOutCodeBatch",this.info).then(function(o){console.log(t(o," at pages\\outsideCode\\outsideCode.vue:96")),200===Number(o.data.code)?(n.showToast({title:o.data.message,duration:2e3}),setTimeout(function(){n.navigateBack({delta:1})},1500)):n.showToast({title:o.data.message,duration:2e3,icon:"none"})}):this.$common.showToast("外码与内码比值为1","none"):this.$common.showToast("请输入内码结束编号","none"):this.$common.showToast("请输入内码开始编号","none"):this.$common.showToast("请输入外码结束编号","none"):this.$common.showToast("请输入外码开始编号","none")}}};o.default=e}).call(this,n("0de9")["default"],n("6e42")["default"])},be4d:function(t,o,n){"use strict";var e=function(){var t=this,o=t.$createElement;t._self._c},i=[];n.d(o,"a",function(){return e}),n.d(o,"b",function(){return i})},c344:function(t,o,n){},de0e:function(t,o,n){"use strict";n.r(o);var e=n("be4d"),i=n("703d");for(var u in i)"default"!==u&&function(t){n.d(o,t,function(){return i[t]})}(u);n("282b");var a=n("2877"),d=Object(a["a"])(i["default"],e["a"],e["b"],!1,null,null,null);o["default"]=d.exports}},[["5dfd","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/outsideCode/outsideCode"],{"282b":function(t,o,n){"use strict";var e=n("c344"),i=n.n(e);i.a},"5dfd":function(t,o,n){"use strict";(function(t){n("7b83"),n("921b");e(n("66fd"));var o=e(n("de0e"));function e(t){return t&&t.__esModule?t:{default:t}}t(o.default)}).call(this,n("6e42")["createPage"])},"703d":function(t,o,n){"use strict";n.r(o);var e=n("b9d8"),i=n.n(e);for(var a in e)"default"!==a&&function(t){n.d(o,t,function(){return e[t]})}(a);o["default"]=i.a},b9d8:function(t,o,n){"use strict";(function(t,n){Object.defineProperty(o,"__esModule",{value:!0}),o.default=void 0;var e={data:function(){return{info:{outCodeStart:"",outCodeEnd:"",inCodeStart:"",inCodeEnd:""}}},methods:{confirm:function(){this.info.outCodeStart?this.info.outCodeEnd?Number(this.info.outCodeStart)>Number(this.info.outCodeEnd)?this.$common.showToast("外码结束编号不能小于开始编号","none"):this.info.inCodeStart?this.info.inCodeEnd?Number(this.info.inCodeStart)>Number(this.info.inCodeEnd)?this.$common.showToast("内码结束编号不能小于开始编号","none"):Number(this.info.inCodeEnd)-Number(this.info.inCodeStart)===Number(this.info.outCodeEnd)-Number(this.info.outCodeStart)?this.$common.post("/trace-api/trace/changOutCodeBatch",this.info).then(function(o){console.log(t(o," at pages\\outsideCode\\outsideCode.vue:96")),200===Number(o.data.code)?(n.showToast({title:o.data.message,duration:2e3}),setTimeout(function(){n.navigateBack({delta:1})},1500)):n.showToast({title:o.data.message,duration:2e3,icon:"none"})}):this.$common.showToast("外码与内码比值为1","none"):this.$common.showToast("请输入内码结束编号","none"):this.$common.showToast("请输入内码开始编号","none"):this.$common.showToast("请输入外码结束编号","none"):this.$common.showToast("请输入外码开始编号","none")}}};o.default=e}).call(this,n("0de9")["default"],n("6e42")["default"])},c344:function(t,o,n){},de0e:function(t,o,n){"use strict";n.r(o);var e=n("eca7"),i=n("703d");for(var a in i)"default"!==a&&function(t){n.d(o,t,function(){return i[t]})}(a);n("282b");var u=n("2877"),s=Object(u["a"])(i["default"],e["a"],e["b"],!1,null,null,null);o["default"]=s.exports},eca7:function(t,o,n){"use strict";var e=function(){var t=this,o=t.$createElement;t._self._c},i=[];n.d(o,"a",function(){return e}),n.d(o,"b",function(){return i})}},[["5dfd","common/runtime","common/vendor"]]]);
 });
 require('pages/outsideCode/outsideCode.js');
 __wxRoute = 'pages/relation/relation';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/relation/relation.js';
@@ -4309,7 +4319,7 @@ require('pages/relation/relation.js');
 __wxRoute = 'pages/deliverGoods/deliverGoods';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/deliverGoods/deliverGoods.js';
 
 define('pages/deliverGoods/deliverGoods.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/deliverGoods/deliverGoods"],{"0a94":function(e,t,o){"use strict";var a=function(){var e=this,t=e.$createElement,o=(e._self._c,Number(e.active)),a=Number(e.active);e._isMounted||(e.e0=function(t){e.active=0}),e.$mp.data=Object.assign({},{$root:{m0:o,m1:a}})},r=[];o.d(t,"a",function(){return a}),o.d(t,"b",function(){return r})},"2cb2":function(e,t,o){"use strict";o.r(t);var a=o("bf7b"),r=o.n(a);for(var n in a)"default"!==n&&function(e){o.d(t,e,function(){return a[e]})}(n);t["default"]=r.a},"3f4a":function(e,t,o){"use strict";o.r(t);var a=o("0a94"),r=o("2cb2");for(var n in r)"default"!==n&&function(e){o.d(t,e,function(){return r[e]})}(n);o("b799");var s=o("2877"),i=Object(s["a"])(r["default"],a["a"],a["b"],!1,null,null,null);t["default"]=i.exports},b6bc:function(e,t,o){},b799:function(e,t,o){"use strict";var a=o("b6bc"),r=o.n(a);r.a},bf7b:function(e,t,o){"use strict";(function(e,a){Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var r=function(){return o.e("components/scodeError").then(o.bind(null,"94bf"))},n={components:{error:r},data:function(){return{sellerNameSelect:!1,userNameSelect:!1,type:"scanCode",text:"扫码错误",showError:!1,current:0,codeArr:[],arr:["中国","美国","巴西","日本"],index:0,active:0,List:[],count:0,flag:"",orSearch:!1,activity:"",otherMerchant:{tracePointName:"",personInCharge:""},info:{},contactNumber:""}},watch:{codeArr:{handler:function(e){var t=0,o=!0,a=!1,r=void 0;try{for(var n,s=this.codeArr[Symbol.iterator]();!(o=(n=s.next()).done);o=!0){var i=n.value;t+=i.count}}catch(c){a=!0,r=c}finally{try{o||null==s.return||s.return()}finally{if(a)throw r}}this.count=t},deep:!0},contactNumber:function(e){1===this.current&&e&&this.getMoblieUserMess()}},methods:{onShow:function(){var e=plus.android.runtimeMainActivity();this.activity=e;plus.android.importClass("android.content.Context");var t=plus.android.implements("io.dcloud.feature.internal.reflect.BroadcastReceiver",{onReceive:n});this.flag=t;var o=plus.android.importClass("android.content.IntentFilter"),a=(plus.android.importClass("android.content.Intent"),new o);a.addAction("android.intent.ACTION_DECODE_DATA"),e.registerReceiver(t,a);var r=this;function n(e,t){plus.android.importClass(t);var o=t.getByteArrayExtra("barcode"),a=s(o),n=(t.getIntExtra("length",0),t.getByteExtra("barcodeType",0));s(n);if(a&&a.indexOf(r.$common.host_name)>-1){var i=a.split(r.$common.host_name)[1];r.getzsCodeMumber(i)}else r.showError=!0,r.text="关联子码获取失败",r.type="scanCode"}function s(e){if("string"===typeof e)return e;for(var t="",o=e,a=0;a<o.length;a++){var r=o[a].toString(2),n=r.match(/^1+?(?=0)/);if(n&&8==r.length){for(var s=n[0].length,i=o[a].toString(2).slice(7-s),c=1;c<s;c++)i+=o[c+a].toString(2).slice(2);t+=String.fromCharCode(parseInt(i,2)),a+=s-1}else t+=String.fromCharCode(o[a])}return t}},destroyed:function(){this.activity.unregisterReceiver(this.flag)},onHide:function(){this.activity.unregisterReceiver(this.flag)},onUnload:function(){this.activity.unregisterReceiver(this.flag)},getMoblieUserMess:function(){var t=this;e.showLoading({mask:!0,title:"正在检索..."}),this.$common.getNot("/trace-api/other/getNodeByMobile?mobile="+this.contactNumber).then(function(e){console.log(a(typeof e.data.data," at pages\\deliverGoods\\deliverGoods.vue:222")),200===e.data.code?("number"===typeof e.data.data?(t.otherMerchant={tracePointName:"",personInCharge:""},t.sellerNameSelect=!1,t.userNameSelect=!1,t.orSearch=!1,t.$common.showToast("暂无信息","none")):(t.info=e.data.data,t.otherMerchant={tracePointName:e.data.data.tracePointName,personInCharge:e.data.data.personInCharge},t.orSearch=!0,t.contactNumber=e.data.data.contactNumber,t.sellerNameSelect=!0,t.userNameSelect=!0),console.log(a(t.otherMerchant," at pages\\deliverGoods\\deliverGoods.vue:245"))):t.$common.showToast("信息获取失败","none")})},radioChange:function(e){console.log(a(e.detail.value," at pages\\deliverGoods\\deliverGoods.vue:252")),this.current=Number(e.detail.value),console.log(a(1===this.current," at pages\\deliverGoods\\deliverGoods.vue:254")),1===this.current?this.contactNumber="":(this.contactNumber=this.List[this.index].mobile,this.getMoblieUserMess()),this.otherMerchant={tracePointName:"",personInCharge:""},console.log(a(this.current," at pages\\deliverGoods\\deliverGoods.vue:266"))},getzsCodeMumber:function(e){var t=this,o=this;this.$common.get("/trace-api/other/isCurrentNodeNewest?sid="+e).then(function(r){200===r.data.code?r.data.data?t.$common.get("/trace-api/trace/getSubCodeById?sid="+e).then(function(e){if(200===Number(e.data.code)){if(console.log(a("发货对象",e," at pages\\deliverGoods\\deliverGoods.vue:277")),o.showError=!1,Number(e.data.data.isEnable)>0)if(o.codeArr.length>0){var t=[],r=!0,n=!1,s=void 0;try{for(var i,c=o.codeArr[Symbol.iterator]();!(r=(i=c.next()).done);r=!0){var d=i.value;t.push(d.traceSubCodeNumber)}}catch(u){n=!0,s=u}finally{try{r||null==c.return||c.return()}finally{if(n)throw s}}t.indexOf(e.data.data.traceSubCodeNumber)>-1?o.$common.showToast("子码编号已存在","none"):(o.$common.showToast("扫码成功","success"),o.codeArr.push({traceSid:e.data.data.traceSid,count:e.data.data.count,traceSubCodeNumber:e.data.data.traceSubCodeNumber})),console.log(a(t," at pages\\deliverGoods\\deliverGoods.vue:295"))}else o.$common.showToast("扫码成功","success"),o.codeArr.push({traceSid:e.data.data.traceSid,count:e.data.data.count,traceSubCodeNumber:e.data.data.traceSubCodeNumber});else o.$common.showToast("此编码已发货","none");console.log(a(o.codeArr," at pages\\deliverGoods\\deliverGoods.vue:309"))}else o.showError=!1,o.$common.showToast(e.data.message,"none")}):o.$common.showToast("不属于该追溯码最新的流通节点","none"):o.$common.showToast(r.data.message,"none")})},next:function(){this.codeArr.length>0?this.active=1:this.$common.showToast("请添加货物","none")},nextConfirm:function(){var t=this;if(0!==this.codeArr.length){this.otherMerchant.contactNumber=this.contactNumber;var o=[],r=!0,n=!1,s=void 0;try{for(var i,c=this.codeArr[Symbol.iterator]();!(r=(i=c.next()).done);r=!0){var d=i.value;o.push(d.traceSubCodeNumber)}}catch(v){n=!0,s=v}finally{try{r||null==c.return||c.return()}finally{if(n)throw s}}for(var u={codeNumber:o,accountId:this.orSearch?this.info.accountId:-1,otherMerchant:this.otherMerchant,mode:0===this.current?1:2},l=Object.values(this.otherMerchant),h=0;h<l.length;h++){var m=l[h];if(!m)return this.$common.showToast("节点信息需填写完整","none"),!1}console.log(a(u," at pages\\deliverGoods\\deliverGoods.vue:355")),this.$common.post("/trace-api/trace/deliverGoods",u).then(function(o){console.log(a(o," at pages\\deliverGoods\\deliverGoods.vue:359")),200===Number(o.data.code)?(t.$common.showToast(o.data.message,"success"),setTimeout(function(){e.navigateBack({delta:1})},1500)):t.$common.showToast(o.data.message,"none")})}else this.$common.showToast("外码或内码不能为空","none")},getList:function(){var t=this,o=e.getStorageSync("setUserData").merchant.merchantId;this.$common.get("/agent/merchantAgent/normal?merchantId="+o).then(function(e){console.log(a(e," at pages\\deliverGoods\\deliverGoods.vue:375")),t.List=e.data.data||[],t.getOneData()})},getOneData:function(){0===this.current&&this.List.length>0&&(this.contactNumber=this.List[0].mobile,this.getMoblieUserMess())},bindPickerChange:function(e){0===this.current&&(console.log(a(Number(e.target.value)," at pages\\deliverGoods\\deliverGoods.vue:395")),this.List[Number(e.target.value)]&&this.List[Number(e.target.value)].mobile&&(this.contactNumber=this.List[Number(e.target.value)].mobile,this.getMoblieUserMess())),this.index=Number(e.target.value)},jump:function(){this.active=1},deleteCode:function(t){var o=this;e.showModal({title:"提示",content:"此操作将删除此编号",success:function(e){e.confirm&&(o.codeArr.splice(t,1),o.$common.showToast("删除成功","success"))}})},scanCode:function(){var t=this;e.scanCode({success:function(e){var o=t;if(e.result&&e.result.indexOf(o.$common.host_name)>-1){var r=e.result.split(o.$common.host_name)[1];console.log(a("sid",r," at pages\\deliverGoods\\deliverGoods.vue:429")),t.$common.get("/trace-api/other/isCurrentNodeNewest?sid="+r).then(function(e){console.log(a(e," at pages\\deliverGoods\\deliverGoods.vue:432")),200===e.data.code?e.data.data?t.$common.get("/trace-api/trace/getSubCodeById?sid="+r).then(function(e){if(200===Number(e.data.code)){if(console.log(a("发货对象",e," at pages\\deliverGoods\\deliverGoods.vue:437")),o.showError=!1,Number(e.data.data.isEnable)>0)if(o.codeArr.length>0){var t=[],r=!0,n=!1,s=void 0;try{for(var i,c=o.codeArr[Symbol.iterator]();!(r=(i=c.next()).done);r=!0){var d=i.value;t.push(d.traceSubCodeNumber)}}catch(u){n=!0,s=u}finally{try{r||null==c.return||c.return()}finally{if(n)throw s}}t.indexOf(e.data.data.traceSubCodeNumber)>-1?o.$common.showToast("子码编号已存在","none"):(o.$common.showToast("扫码成功","success"),o.codeArr.push({traceSid:e.data.data.traceSid,count:e.data.data.count,traceSubCodeNumber:e.data.data.traceSubCodeNumber})),console.log(a(t," at pages\\deliverGoods\\deliverGoods.vue:455"))}else o.$common.showToast("扫码成功","success"),o.codeArr.push({traceSid:e.data.data.traceSid,count:e.data.data.count,traceSubCodeNumber:e.data.data.traceSubCodeNumber});else o.$common.showToast("此编码已发货","none");console.log(a(o.codeArr," at pages\\deliverGoods\\deliverGoods.vue:469"))}else o.showError=!1,o.$common.showToast(e.data.message,"none")}):o.$common.showToast("不属于该追溯码最新的流通节点","none"):o.$common.showToast(e.data.message,"none")})}else t.showError=!0,t.text="关联子码获取失败",t.type="scanCode"}})}},created:function(){this.getList()}};t.default=n}).call(this,o("6e42")["default"],o("0de9")["default"])},ee9c:function(e,t,o){"use strict";(function(e){o("7b83"),o("921b");a(o("66fd"));var t=a(o("3f4a"));function a(e){return e&&e.__esModule?e:{default:e}}e(t.default)}).call(this,o("6e42")["createPage"])}},[["ee9c","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/deliverGoods/deliverGoods"],{"2cb2":function(e,t,o){"use strict";o.r(t);var a=o("bf7b"),r=o.n(a);for(var n in a)"default"!==n&&function(e){o.d(t,e,function(){return a[e]})}(n);t["default"]=r.a},"3f4a":function(e,t,o){"use strict";o.r(t);var a=o("bc88"),r=o("2cb2");for(var n in r)"default"!==n&&function(e){o.d(t,e,function(){return r[e]})}(n);o("b799");var s=o("2877"),i=Object(s["a"])(r["default"],a["a"],a["b"],!1,null,null,null);t["default"]=i.exports},b6bc:function(e,t,o){},b799:function(e,t,o){"use strict";var a=o("b6bc"),r=o.n(a);r.a},bc88:function(e,t,o){"use strict";var a=function(){var e=this,t=e.$createElement,o=(e._self._c,Number(e.active)),a=Number(e.active);e._isMounted||(e.e0=function(t){e.active=0}),e.$mp.data=Object.assign({},{$root:{m0:o,m1:a}})},r=[];o.d(t,"a",function(){return a}),o.d(t,"b",function(){return r})},bf7b:function(e,t,o){"use strict";(function(e,a){Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var r=function(){return o.e("components/scodeError").then(o.bind(null,"94bf"))},n={components:{error:r},data:function(){return{sellerNameSelect:!1,userNameSelect:!1,type:"scanCode",text:"扫码错误",showError:!1,current:0,codeArr:[],arr:["中国","美国","巴西","日本"],index:0,active:0,List:[],count:0,flag:"",orSearch:!1,activity:"",otherMerchant:{tracePointName:"",personInCharge:""},info:{},contactNumber:""}},watch:{codeArr:{handler:function(e){var t=0,o=!0,a=!1,r=void 0;try{for(var n,s=this.codeArr[Symbol.iterator]();!(o=(n=s.next()).done);o=!0){var i=n.value;t+=i.count}}catch(c){a=!0,r=c}finally{try{o||null==s.return||s.return()}finally{if(a)throw r}}this.count=t},deep:!0},contactNumber:function(t){1===this.current&&(console.log(e(t," at pages\\deliverGoods\\deliverGoods.vue:113")),t.length>10&&t&&this.getMoblieUserMess())}},methods:{onShow:function(){var e=plus.android.runtimeMainActivity();this.activity=e;plus.android.importClass("android.content.Context");var t=plus.android.implements("io.dcloud.feature.internal.reflect.BroadcastReceiver",{onReceive:n});this.flag=t;var o=plus.android.importClass("android.content.IntentFilter"),a=(plus.android.importClass("android.content.Intent"),new o);a.addAction("android.intent.ACTION_DECODE_DATA"),e.registerReceiver(t,a);var r=this;function n(e,t){plus.android.importClass(t);var o=t.getByteArrayExtra("barcode"),a=s(o),n=(t.getIntExtra("length",0),t.getByteExtra("barcodeType",0));s(n);if(a&&a.indexOf(r.$common.host_name)>-1){var i=a.split(r.$common.host_name)[1];r.getzsCodeMumber(i)}else r.showError=!0,r.text="关联子码获取失败",r.type="scanCode"}function s(e){if("string"===typeof e)return e;for(var t="",o=e,a=0;a<o.length;a++){var r=o[a].toString(2),n=r.match(/^1+?(?=0)/);if(n&&8==r.length){for(var s=n[0].length,i=o[a].toString(2).slice(7-s),c=1;c<s;c++)i+=o[c+a].toString(2).slice(2);t+=String.fromCharCode(parseInt(i,2)),a+=s-1}else t+=String.fromCharCode(o[a])}return t}},destroyed:function(){this.activity.unregisterReceiver(this.flag)},onHide:function(){this.activity.unregisterReceiver(this.flag)},onUnload:function(){this.activity.unregisterReceiver(this.flag)},getMoblieUserMess:function(){var t=this;a.showLoading({mask:!0,title:"正在检索..."}),this.$common.getNot("/trace-api/other/getNodeByMobile?mobile="+this.contactNumber).then(function(o){console.log(e(typeof o.data.data," at pages\\deliverGoods\\deliverGoods.vue:227")),200===o.data.code?("number"===typeof o.data.data?(t.otherMerchant={tracePointName:"",personInCharge:""},t.sellerNameSelect=!1,t.userNameSelect=!1,t.orSearch=!1,t.$common.showToast("暂无信息","none")):(t.info=o.data.data,t.otherMerchant={tracePointName:o.data.data.tracePointName,personInCharge:o.data.data.personInCharge},t.orSearch=!0,t.contactNumber=o.data.data.contactNumber,t.sellerNameSelect=!0,t.userNameSelect=!0),console.log(e(t.otherMerchant," at pages\\deliverGoods\\deliverGoods.vue:250"))):t.$common.showToast("信息获取失败","none")})},radioChange:function(t){console.log(e(t.detail.value," at pages\\deliverGoods\\deliverGoods.vue:257")),this.current=Number(t.detail.value),console.log(e(1===this.current," at pages\\deliverGoods\\deliverGoods.vue:259")),1===this.current?this.contactNumber="":(this.contactNumber=this.List[this.index].mobile,this.getMoblieUserMess()),this.otherMerchant={tracePointName:"",personInCharge:""},console.log(e(this.current," at pages\\deliverGoods\\deliverGoods.vue:271"))},getzsCodeMumber:function(t){var o=this,a=this;this.$common.get("/trace-api/other/isCurrentNodeNewest?sid="+t).then(function(r){200===r.data.code?r.data.data?o.$common.get("/trace-api/trace/getSubCodeById?sid="+t).then(function(t){if(200===Number(t.data.code)){if(console.log(e("发货对象",t," at pages\\deliverGoods\\deliverGoods.vue:282")),a.showError=!1,Number(t.data.data.isEnable)>0)if(a.codeArr.length>0){var o=[],r=!0,n=!1,s=void 0;try{for(var i,c=a.codeArr[Symbol.iterator]();!(r=(i=c.next()).done);r=!0){var d=i.value;o.push(d.traceSubCodeNumber)}}catch(u){n=!0,s=u}finally{try{r||null==c.return||c.return()}finally{if(n)throw s}}o.indexOf(t.data.data.traceSubCodeNumber)>-1?a.$common.showToast("子码编号已存在","none"):(a.$common.showToast("扫码成功","success"),a.codeArr.push({traceSid:t.data.data.traceSid,count:t.data.data.count,traceSubCodeNumber:t.data.data.traceSubCodeNumber})),console.log(e(o," at pages\\deliverGoods\\deliverGoods.vue:300"))}else a.$common.showToast("扫码成功","success"),a.codeArr.push({traceSid:t.data.data.traceSid,count:t.data.data.count,traceSubCodeNumber:t.data.data.traceSubCodeNumber});else a.$common.showToast("此编码已发货","none");console.log(e(a.codeArr," at pages\\deliverGoods\\deliverGoods.vue:314"))}else a.showError=!1,a.$common.showToast(t.data.message,"none")}):a.$common.showToast("不属于该追溯码最新的流通节点","none"):a.$common.showToast(r.data.message,"none")})},next:function(){this.codeArr.length>0?this.active=1:this.$common.showToast("请添加货物","none")},nextConfirm:function(){var t=this;if(0!==this.codeArr.length){this.otherMerchant.contactNumber=this.contactNumber;var o=[],r=!0,n=!1,s=void 0;try{for(var i,c=this.codeArr[Symbol.iterator]();!(r=(i=c.next()).done);r=!0){var d=i.value;o.push(d.traceSubCodeNumber)}}catch(v){n=!0,s=v}finally{try{r||null==c.return||c.return()}finally{if(n)throw s}}for(var u={codeNumber:o,accountId:this.orSearch?this.info.accountId:-1,otherMerchant:this.otherMerchant,mode:2},l=Object.values(this.otherMerchant),h=0;h<l.length;h++){var m=l[h];if(!m)return this.$common.showToast("节点信息需填写完整","none"),!1}console.log(e(u," at pages\\deliverGoods\\deliverGoods.vue:360")),this.$common.post("/trace-api/trace/deliverGoods",u).then(function(o){console.log(e(o," at pages\\deliverGoods\\deliverGoods.vue:364")),200===Number(o.data.code)?(t.$common.showToast(o.data.message,"success"),setTimeout(function(){a.navigateBack({delta:1})},1500)):t.$common.showToast(o.data.message,"none")})}else this.$common.showToast("外码或内码不能为空","none")},getList:function(){var t=this,o=a.getStorageSync("setUserData").merchant.merchantId;this.$common.get("/agent/merchantAgent/normal?merchantId="+o).then(function(o){console.log(e(o," at pages\\deliverGoods\\deliverGoods.vue:380")),t.List=o.data.data||[],t.getOneData()})},getOneData:function(){0===this.current&&this.List.length>0&&(this.contactNumber=this.List[0].mobile,this.getMoblieUserMess())},bindPickerChange:function(t){0===this.current&&(console.log(e(Number(t.target.value)," at pages\\deliverGoods\\deliverGoods.vue:400")),this.List[Number(t.target.value)]&&this.List[Number(t.target.value)].mobile&&(this.contactNumber=this.List[Number(t.target.value)].mobile,this.getMoblieUserMess())),this.index=Number(t.target.value)},jump:function(){this.active=1},deleteCode:function(e){var t=this;a.showModal({title:"提示",content:"此操作将删除此编号",success:function(o){o.confirm&&(t.codeArr.splice(e,1),t.$common.showToast("删除成功","success"))}})},scanCode:function(){var t=this;a.scanCode({success:function(o){var a=t;if(o.result&&o.result.indexOf(a.$common.host_name)>-1){var r=o.result.split(a.$common.host_name)[1];console.log(e("sid",r," at pages\\deliverGoods\\deliverGoods.vue:434")),t.$common.get("/trace-api/other/isCurrentNodeNewest?sid="+r).then(function(o){console.log(e(o," at pages\\deliverGoods\\deliverGoods.vue:437")),200===o.data.code?o.data.data?t.$common.get("/trace-api/trace/getSubCodeById?sid="+r).then(function(t){if(200===Number(t.data.code)){if(console.log(e("发货对象",t," at pages\\deliverGoods\\deliverGoods.vue:442")),a.showError=!1,Number(t.data.data.isEnable)>0)if(a.codeArr.length>0){var o=[],r=!0,n=!1,s=void 0;try{for(var i,c=a.codeArr[Symbol.iterator]();!(r=(i=c.next()).done);r=!0){var d=i.value;o.push(d.traceSubCodeNumber)}}catch(u){n=!0,s=u}finally{try{r||null==c.return||c.return()}finally{if(n)throw s}}o.indexOf(t.data.data.traceSubCodeNumber)>-1?a.$common.showToast("子码编号已存在","none"):(a.$common.showToast("扫码成功","success"),a.codeArr.push({traceSid:t.data.data.traceSid,count:t.data.data.count,traceSubCodeNumber:t.data.data.traceSubCodeNumber})),console.log(e(o," at pages\\deliverGoods\\deliverGoods.vue:460"))}else a.$common.showToast("扫码成功","success"),a.codeArr.push({traceSid:t.data.data.traceSid,count:t.data.data.count,traceSubCodeNumber:t.data.data.traceSubCodeNumber});else a.$common.showToast("此编码已发货","none");console.log(e(a.codeArr," at pages\\deliverGoods\\deliverGoods.vue:474"))}else a.showError=!1,a.$common.showToast(t.data.message,"none")}):a.$common.showToast("不属于该追溯码最新的流通节点","none"):a.$common.showToast(o.data.message,"none")})}else t.showError=!0,t.text="关联子码获取失败",t.type="scanCode"}})}},onReady:function(){this.getList()}};t.default=n}).call(this,o("0de9")["default"],o("6e42")["default"])},ee9c:function(e,t,o){"use strict";(function(e){o("7b83"),o("921b");a(o("66fd"));var t=a(o("3f4a"));function a(e){return e&&e.__esModule?e:{default:e}}e(t.default)}).call(this,o("6e42")["createPage"])}},[["ee9c","common/runtime","common/vendor"]]]);
 });
 require('pages/deliverGoods/deliverGoods.js');
 ;(function(global) {

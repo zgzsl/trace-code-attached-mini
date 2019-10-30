@@ -41,7 +41,7 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "pages/index/index",
+					"name": "pages/login/login",
 					"pathName": "pages/index/index",
 					"query": "",
 					"scene": null
@@ -50,20 +50,6 @@
 					"id": -1,
 					"name": "pages/deliverGoods/deliverGoods",
 					"pathName": "pages/deliverGoods/deliverGoods",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/deliverSellerNode/deliverSellerNode",
-					"pathName": "pages/deliverSellerNode/deliverSellerNode",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/getLocation/getLocation",
-					"pathName": "pages/getLocation/getLocation",
 					"scene": null
 				}
 			]

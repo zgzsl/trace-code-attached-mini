@@ -38,7 +38,7 @@
 						<view class="context_item">
 
 							<view class="title">手机号码：</view>
-							<input type="text" v-model="contactNumber" :disabled="current===0" placeholder="输入手机号码" />
+							<input type="number" v-model="contactNumber" :disabled="current===0" placeholder="输入手机号码" />
 						</view>
 						<view class="context_item">
 
@@ -110,9 +110,13 @@
 			},
 			'contactNumber'(val) {
 				if (this.current === 1) {
-					if (val) {
-						this.getMoblieUserMess()
+					console.log(val)
+					if (val.length > 10) {
+						if (val) {
+							this.getMoblieUserMess()
+						}
 					}
+
 				}
 			}
 
@@ -213,7 +217,7 @@
 				// #endif
 			},
 			getMoblieUserMess() {
-				
+
 				uni.showLoading({
 					mask: true,
 					title: '正在检索...'
@@ -390,9 +394,9 @@
 				}
 			},
 			bindPickerChange(e) {
-				
+
 				if (this.current === 0) {
-			
+
 					console.log(Number(e.target.value))
 					if (this.List[Number(e.target.value)]) {
 						if (this.List[Number(e.target.value)].mobile) {
@@ -403,7 +407,7 @@
 				}
 
 				this.index = Number(e.target.value)
-		
+
 			},
 			jump() {
 				this.active = 1
@@ -513,7 +517,8 @@
 				margin: 10px 0;
 
 				.title {
-					padding: 20rpx 20rpx;
+					padding: 20rpx 10rpx;
+					font-size: 24upx;
 				}
 
 				.picker {

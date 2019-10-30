@@ -20,7 +20,8 @@
   margin: 10px 0;
 }
 .deliverFinish .context .context_item .title {
-  padding: 20rpx 20rpx;
+  padding: 20rpx 10rpx;
+  font-size: 24rpx;
 }
 .deliverFinish .context .context_item .picker {
   -webkit-box-flex: 1;

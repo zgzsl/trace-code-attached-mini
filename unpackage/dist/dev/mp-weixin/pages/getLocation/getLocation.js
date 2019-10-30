@@ -423,7 +423,7 @@ var myAmapFun = new amapFile.AMapWX({
         this.dataArr = [];
         return false;
       }
-      console.log(e);
+
       this.myAmapFunflag = myAmapFun;
       var that = this;
       myAmapFun.getInputtips({

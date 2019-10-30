@@ -5,7 +5,7 @@
 				手机号码：
 			</view>
 			<view class="center">
-				{{setUserData.mobile}}
+				{{setUserData.mobile || '暂无手机号码'}}
 			</view>
 
 		</view>
