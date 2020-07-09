@@ -30,12 +30,10 @@
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
-      -ms-flex-direction: column;
           flex-direction: column;
 }
 .uni-list:after {
@@ -47,8 +45,7 @@
     height: 1px;
     content: '';
     -webkit-transform: scaleY(0.5);
-    -ms-transform: scaleY(0.5);
-        transform: scaleY(0.5);
+    transform: scaleY(0.5);
     background-color: #c8c7cc;
 }
 .uni-list:before {
@@ -60,8 +57,7 @@
     height: 1px;
     content: '';
     -webkit-transform: scaleY(0.5);
-    -ms-transform: scaleY(0.5);
-        transform: scaleY(0.5);
+    transform: scaleY(0.5);
     background-color: #c8c7cc;
 }
 

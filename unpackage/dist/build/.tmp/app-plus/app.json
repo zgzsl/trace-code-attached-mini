@@ -19,13 +19,13 @@
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
-  "nvueCompiler": "weex",
+  "nvueCompiler": "uni-app",
   "renderer": "auto",
   "splashscreen": {
     "alwaysShowBeforeRender": true,
     "autoclose": false
   },
-  "appname": "赋码工具",
-  "compilerVersion": "2.3.6",
+  "appname": "优博讯专属PDA",
+  "compilerVersion": "2.6.5",
   "usingComponents": {}
 }

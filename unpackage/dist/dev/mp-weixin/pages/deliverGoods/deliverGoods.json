@@ -1,6 +1,8 @@
 {
   "navigationBarTitleText": "发货",
   "usingComponents": {
+    "uni-drawer": "/components/uni-drawer/uni-drawer",
+    "hj-dragabledrawer": "/components/hj-dragabledrawer/hj-dragabledrawer",
     "error": "/components/scodeError"
   }
 }

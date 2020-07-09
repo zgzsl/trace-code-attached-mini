@@ -1,6 +1,7 @@
 export default class common {
+	
 	static goLogin = '/accountCenter/account/login/zs/mini'
-	static host = "https://zs-beta.cntracechain.com"
+	static host = "https://zs.cntracechain.com"
 	static host_name='https://2641.cn/'
 	static post(url, data) {
 		const value = uni.getStorageSync('setUserData');
@@ -54,13 +55,13 @@ export default class common {
 
 					setTimeout(() => {
 						common.hideLoading()
-					}, 800)
+					}, 1500)
 				},
 				fail: (err) => {
 					reject(err)
 					setTimeout(() => {
 						common.hideLoading()
-					}, 800)
+					}, 1500)
 				}
 			});
 		})

@@ -26,10 +26,12 @@
 						<view class="context_item">
 							<radio style="margin-left: 10px;" color='rgb(246, 64, 70)' value="0" :checked="0 === current" />
 							<view class="title">代理商：</view>
-							<picker class="picker" range-key="agentName" mode="selector" @change="bindPickerChange" :value="index" :range="List">
-								{{List[index].agentName || '暂无数据'}}
-							</picker>
-
+							<!-- 	<picker class="picker" range-key="agentName" mode="selector" @change="bindPickerChange" :value="index" :range="List">
+								{{List.length>0 ?  List[index].agentName : '' || '暂无数据'}}
+							</picker> -->
+							<view style="width: 100%;flex: 1;" @tap="visibleMethod">
+								{{List.length>0 ?  List[index].agentName  : flagValue || '暂无数据'}}
+							</view>
 						</view>
 						<view class="context_item">
 							<radio style="margin-left: 10px;" color='rgb(246, 64, 70)' value="1" :checked="1 === current" />
@@ -56,11 +58,28 @@
 
 			</view>
 			<view class="btn_box">
-				<button type="primary" class="btn" @tap="active=0" v-if=" active===1">上一步</button>
+				<button type="primary" class="btn" @tap="last" v-if=" active===1">上一步</button>
 				<button type="primary" class="btn" @tap="next" v-if="active===0">下一步</button>
 				<button type="primary" class="btn" v-if="active===1" @tap="nextConfirm">完成</button>
 			</view>
 		</view>
+		<uni-drawer  mode='right' ref='uniDrawer'>
+
+		</uni-drawer>
+		<hj-dragabledrawer :options="options" ref="dragBox">
+			<view style="position: relative;padding-top: 80upx;">
+				<input type="text" v-model="inputValue" placeholder="请输入代理商名称" style="font-size: 24upx;padding: 12px 0;;position: absolute;left: 0;top: 0;width: 100%;"
+				 @input="inputSearch" />
+				<scroll-view scroll-y="true" style="height: 100vh;">
+					<view v-if="List.length>0" v-for="(item,index) in List" :key="index" @tap='select(item,index)' style="font-size: 24upx; padding: 12px ;margin:5upx 0 ;background: rgb(228, 230, 241);">
+						{{item.agentName}}
+					</view>
+					<view v-if="List.length===0" style="font-size: 24upx; padding: 12px ;margin:5upx 0 ;text-align: center;background: rgb(228, 230, 241);">
+						检索结果为空
+					</view>
+				</scroll-view>
+			</view>
+		</hj-dragabledrawer>
 		<error :text="text" v-if="showError" :type="type" @scanCode='scanCode'></error>
 	</view>
 
@@ -68,12 +87,23 @@
 
 <script>
 	import error from '../../components/scodeError.vue'
+	import hjDragabledrawer from '@/components/hj-dragabledrawer/hj-dragabledrawer.vue';
+	let dragBox;
 	export default {
 		components: {
-			error
+			error,
+			hjDragabledrawer
 		},
 		data() {
 			return {
+				options: {
+					visible: false,
+					rightMode: false,
+					autoClose: true,
+					pulldown: true
+				},
+				flagValue:'',
+				inputValue: '',
 				sellerNameSelect: false,
 				userNameSelect: false,
 				type: 'scanCode',
@@ -93,6 +123,7 @@
 					tracePointName: '',
 					personInCharge: ''
 				},
+				merchantId:'',
 				info: {},
 				contactNumber: ''
 			}
@@ -122,8 +153,43 @@
 
 		},
 		methods: {
-			onShow() {
+			inputSearch() {
+				
+				// console.log("merchantId",merchantId)
+				this.$common.getNot('/agent/merchantAgent/normal?merchantId='+this.merchantId+'&agentName='+this.inputValue).then((res) => {
+					console.log(res)
+					this.List = res.data.data || []
+				})
 
+			},
+			open() {
+				dragBox.open();
+			},
+			hello() {
+				uni.showToast({
+					title: 'hello',
+					icon: 'none'
+				});
+			},
+			close() {
+				dragBox.close();
+			},
+			toggle() {
+				this.options.rightMode = !this.options.rightMode;
+			},
+			toggle1() {
+				this.$set(this.options, 'mask', !this.options.mask);
+			},
+
+			last() {
+				this.active = 0;
+				dragBox.close();
+			},
+			visibleMethod() {
+				dragBox.open();
+			},
+			onShow() {
+			this.merchantId = uni.getStorageSync("setUserData").merchant.merchantId
 				// #ifdef APP-PLUS
 
 				let main = plus.android.runtimeMainActivity(); //获取activity  
@@ -162,6 +228,7 @@
 
 					if (barcode && barcode.indexOf(that.$common.host_name) > -1) {
 						let sid = barcode.split(that.$common.host_name)[1]
+
 						that.getzsCodeMumber(sid)
 					} else {
 						that.showError = true
@@ -248,6 +315,7 @@
 								this.userNameSelect = true
 						}
 						console.log(this.otherMerchant)
+						uni.hideLoading()
 					} else {
 						this.$common.showToast("信息获取失败", 'none')
 					}
@@ -260,6 +328,7 @@
 				if (this.current === 1) {
 					this.contactNumber = ''
 				} else {
+					console.log("this.List[this.index].contactNumber",this.List[this.index])
 					this.contactNumber = this.List[this.index].mobile
 					this.getMoblieUserMess()
 				}
@@ -329,6 +398,7 @@
 			next() {
 				if (this.codeArr.length > 0) {
 					this.active = 1;
+					// dragBox.open();
 				} else {
 					this.$common.showToast("请添加货物", 'none')
 				}
@@ -359,26 +429,34 @@
 
 				console.log(param)
 
-
-				this.$common.post('/trace-api/trace/deliverGoods', param).then((res) => {
-					console.log(res)
-					if (Number(res.data.code) === 200) {
-						this.$common.showToast(res.data.message, 'success')
-						setTimeout(() => {
-							uni.navigateBack({
-								delta: 1
-							});
-						}, 1500)
-					} else {
-						this.$common.showToast(res.data.message, 'none')
-					}
-				})
+				uni.showModal({
+				    title: '确定要发货?',
+				    success:  (res) =>{
+				        if (res.confirm) {
+				            this.$common.post('/trace-api/trace/deliverGoods', param).then((res) => {
+				            	console.log(res)
+				            	if (Number(res.data.code) === 200) {
+				            		this.$common.showToast(res.data.message, 'success')
+				            		setTimeout(() => {
+				            			uni.navigateBack({
+				            				delta: 1
+				            			});
+				            		}, 1500)
+				            	} else {
+				            		this.$common.showToast(res.data.message || '发货失败', 'none')
+				            	}
+				            })
+				        } 
+				    }
+				});
 			},
 			getList() {
 				let merchantId = uni.getStorageSync("setUserData").merchant.merchantId
 				this.$common.get("/agent/merchantAgent/normal?merchantId=" + merchantId).then((res) => {
 					console.log(res)
 					this.List = res.data.data || []
+					this.flagValue=this.List[0].agentName
+					console.log("this.flagValue",this.flagValue)
 					// this.List[0].mobile
 					this.getOneData()
 
@@ -393,8 +471,24 @@
 					}
 				}
 			},
-			bindPickerChange(e) {
+			select(item, index) {
+				if (this.current === 0) {
 
+					console.log(item)
+					if (item) {
+						if (item.mobile) {
+							this.contactNumber = item.mobile
+							this.flagValue=item.agentName
+							this.getMoblieUserMess()
+						}
+					}
+				}
+
+				this.index = index
+				dragBox.close();
+			},
+			bindPickerChange(e) {
+				console.log(e)
 				if (this.current === 0) {
 
 					console.log(Number(e.target.value))
@@ -497,6 +591,7 @@
 		},
 		onReady() {
 			this.getList()
+			dragBox = this.$refs.dragBox;
 			// this.scanCode()
 		}
 	}
@@ -519,6 +614,9 @@
 				.title {
 					padding: 20rpx 10rpx;
 					font-size: 24upx;
+				}
+				input{
+					width: calc(100vw - 240upx);
 				}
 
 				.picker {

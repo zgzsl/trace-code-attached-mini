@@ -1,6 +1,6 @@
 {
-    "name" : "赋码工具",
-    "appid" : "__UNI__8F33895",
+    "name" : "赋码应用",
+    "appid" : "__UNI__98D4852",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -58,7 +58,8 @@
                         "appkey_ios" : "2649cf46ba2417b42f9fe36f53c57f63",
                         "appkey_android" : "2649cf46ba2417b42f9fe36f53c57f63"
                     }
-                }
+                },
+                "ad" : {}
             },
             "icons" : {
                 "android" : {

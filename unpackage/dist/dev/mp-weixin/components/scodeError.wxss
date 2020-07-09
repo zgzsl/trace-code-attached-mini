@@ -20,8 +20,7 @@
 }
 .error .btn {
   margin-top: 10%;
-  background: -webkit-gradient(linear, right top, left top, from(#f53647), to(#fd973c));
-  background: -o-linear-gradient(right, #f53647, #fd973c);
+  background: -webkit-linear-gradient(right, #f53647, #fd973c);
   background: linear-gradient(to left, #f53647, #fd973c);
   width: 50%;
   border-radius: 20px;

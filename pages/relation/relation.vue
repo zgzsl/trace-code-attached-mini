@@ -77,21 +77,20 @@
 
 			function doReceive(context, intent) {
 
-
+			
 				//通过intent实例引入intent类，方便以后的‘.’操作  
 				plus.android.importClass(intent);
 
 				//条码内容
 				let barcodeBytes = intent.getByteArrayExtra("barcode");
 				let barcode = byteToString(barcodeBytes);
-
 				//条码长度
 				let barcodeLength = intent.getIntExtra("length", 0);
 				//var myArray = new ArrayBuffer(0);
 				//条码类型
 				let barcodeTypeBytes = intent.getByteExtra("barcodeType", (0 | 0));
 				let barcodeType = byteToString(barcodeTypeBytes);
-				
+
 				if (barcode && barcode.indexOf(that.$common.host_name) > -1) {
 					let sid = barcode.split(that.$common.host_name)[1]
 					if(that.outCode){

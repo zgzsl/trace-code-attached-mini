@@ -1,2 +1,0 @@
-setCssToHead([".",[1],"container .",[1],"uni-list-cell__extra { -webkit-box-flex: 0.5 !important; -webkit-flex: 0.5 !important; -ms-flex: 0.5 !important; flex: 0.5 !important; }\n",],undefined,{path:"./pages/index/index.wxss"})();
-document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/index/index.wxml') } }));

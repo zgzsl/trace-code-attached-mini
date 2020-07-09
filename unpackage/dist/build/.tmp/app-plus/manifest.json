@@ -4,8 +4,8 @@
     "iPhone",
     "iPad"
   ],
-  "id": "__UNI__8F33895",
-  "name": "赋码工具",
+  "id": "__UNI__98D4852",
+  "name": "优博讯专属PDA",
   "version": {
     "name": "1.0.0",
     "code": "100"
@@ -118,6 +118,7 @@
             "appkey_android": "2649cf46ba2417b42f9fe36f53c57f63"
           }
         },
+        "ad": {},
         "audio": {
           "mp3": {
             "description": "Android平台录音支持MP3格式文件"
@@ -127,10 +128,14 @@
     },
     "allowsInlineMediaPlayback": true,
     "uni-app": {
-      "compilerVersion": "2.3.6",
+      "compilerVersion": "2.6.5",
       "control": "v8",
-      "nvueCompiler": "weex",
-      "renderer": "auto"
+      "nvueCompiler": "uni-app",
+      "renderer": "auto",
+      "nvue": {
+        "flex-direction": "column"
+      }
     }
-  }
+  },
+  "usingComponents": {}
 }
