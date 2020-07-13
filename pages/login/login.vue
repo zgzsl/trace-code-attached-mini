@@ -20,6 +20,9 @@
 						@tap="showPass"
 					></image>
 				</view>
+				<view class="text" style="font-size: 28upx;">
+					登陆说明：请使用在中追溯源PaaS平台后台注册的账号登陆  
+				</view>
 				<!-- <wInput v-model="passData" type="password" isShowPass="true" placeholder="商家密码"></wInput> -->
 			</view>
 			<wButton text="登 录" :bgColor="bgColor" :rotate="isRotate" @click.native="startLogin()"></wButton>
