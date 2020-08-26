@@ -263,8 +263,7 @@
 					return str;
 				}
 				// #endif
-
-			},
+			}, 
 			destroyed() {
 				// #ifdef APP-PLUS
 				this.activity.unregisterReceiver(this.flag); //取消监听  

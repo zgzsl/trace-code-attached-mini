@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "关联子码",
-  "usingComponents": {
-    "mix-tree": "/components/mix-tree/mix-tree",
-    "error": "/components/scodeError"
-  }
-}

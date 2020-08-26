@@ -98,12 +98,12 @@
 										desc: "扫码发货",
 										router: '../deliverGoods/deliverGoods'
 									}
-									// , {
-									// 	src: '../../static/images/logo1.png',
-									// 	name: "标签码录入信息",
-									// 	desc: "标签码录入信息",
-									// 	router: '../codeInformation/codeInformation'
-									// }
+									, {
+										src: '../../static/images/logo1.png',
+										name: "标签码录入信息",
+										desc: "标签码录入信息",
+										router: '../codeInformation/codeInformation'
+									}
 								]
 							} else {
 								this.menuList = [

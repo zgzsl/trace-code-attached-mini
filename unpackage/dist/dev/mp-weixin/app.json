@@ -2,6 +2,7 @@
   "pages": [
     "pages/login/login",
     "pages/index/index",
+    "pages/codeInformation/codeInformation",
     "pages/sellerMessage/sellerMessage",
     "pages/deliverSellerNode/deliverSellerNode",
     "pages/getLocation/getLocation",
@@ -25,5 +26,6 @@
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }

@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "内码转换外码",
-  "usingComponents": {
-    "error": "/components/scodeError"
-  }
-}

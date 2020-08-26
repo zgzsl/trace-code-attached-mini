@@ -1,7 +1,7 @@
 export default class common {
 	
 	static goLogin = '/accountCenter/account/login/zs/mini'
-	static host = "https://zs.cntracechain.com"
+	static host = "https://zs-beta.cntracechain.com"
 	static host_name='https://2641.cn/'
 	static post(url, data) {
 		const value = uni.getStorageSync('setUserData');
@@ -37,8 +37,11 @@ export default class common {
 
 	}
 
-	static get(url) {
-		common.showLoading()
+	static get(url,flag=true) {
+		if(flag){
+			common.showLoading()
+		}
+		
 		const value = uni.getStorageSync('setUserData');
 		return new Promise((resolve, reject) => {
 			uni.request({

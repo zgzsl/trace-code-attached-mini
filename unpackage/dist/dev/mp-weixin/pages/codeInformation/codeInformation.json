@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "录入信息",
+  "usingComponents": {
+    "error": "/components/scodeError",
+    "mix-tree": "/components/mix-tree/mix-tree"
+  }
+}
