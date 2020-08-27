@@ -203,7 +203,8 @@ var dragBox;var _default =
   methods: {
     inputContactNumber: function inputContactNumber(val) {var _this = this;
       if (val.detail.value) {
-        this.$common.get("/trace-api/p_batch/goodsListByBatchNo/SCPC202007221645", false).then(function (res) {
+        this.goodList = [];
+        this.$common.get("/trace-api/p_batch/goodsListByBatchNo/" + val.detail.value, false).then(function (res) {
           if (res.data.code === 200) {
             _this.goodAllData = res.data.data;var _iterator = _createForOfIteratorHelper(
             res.data.data),_step;try {for (_iterator.s(); !(_step = _iterator.n()).done;) {var s = _step.value;

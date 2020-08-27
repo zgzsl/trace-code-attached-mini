@@ -19,7 +19,7 @@
 				<view class="context_item">
 
 					<view class="title">生产批次号：</view>
-					<input type="number" style="font-size: 12px!important;" v-model="info.productionBatch" @input="inputContactNumber"
+					<input type="text" style="font-size: 12px!important;" v-model="info.productionBatch" @input="inputContactNumber"
 					 placeholder="请输入" />
 				</view>
 				<view class="context_item">
@@ -71,7 +71,8 @@
 		methods: {
 			inputContactNumber(val) {
 				if (val.detail.value) {
-					this.$common.get("/trace-api/p_batch/goodsListByBatchNo/SCPC202007221645", false).then((res) => {
+					this.goodList = []
+					this.$common.get("/trace-api/p_batch/goodsListByBatchNo/"+val.detail.value, false).then((res) => {
 						if (res.data.code === 200) {
 							this.goodAllData = res.data.data
 							for (let s of res.data.data) {
